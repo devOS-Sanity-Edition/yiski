@@ -1,4 +1,9 @@
+import json
 from defectio.ext import commands
+
+with open("token.json", "r") as yiskiBotTokenLoader:
+    yiskiBotToken = json.load(yiskiBotTokenLoader)
+
 
 yiski = commands.Bot(command_prefix="/")
 
@@ -14,4 +19,4 @@ async def hello(ctx):
 async def httpcat(ctx, httpcode: str):
     await ctx.reply("[cat](https://http.cat/" + httpcode + ")")
 
-yiski.run("Fkf_adLmBvlI_IGRjzF8VN-it6eC7At-NLJadYgOhu3OaQ4Q6pQOaZpqduuSs_Dn")
+yiski.run(yiskiBotToken["yiskiBotToken"])
