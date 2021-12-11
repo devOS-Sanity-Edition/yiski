@@ -1,0 +1,6 @@
+{
+  "yiskiBotToken": "REVOLT_BOT_TOKEN_HERE",
+  "yiskiDiscordBotToken": "DISCORD_BOT_TOKEN_HERE",
+
+  "yiskiBotPrefix": "yk!"
+}
