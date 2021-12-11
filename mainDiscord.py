@@ -1,4 +1,5 @@
 import json
+import os
 
 # Maintained Discord.py Lib
 import discord
@@ -15,6 +16,18 @@ commandPrefix = yiskiConfiguration["yiskiBotPrefix"]
 
 yiskiDiscord = commands.Bot(command_prefix=(commandPrefix), help_command=None, activity=yiskiActivity, status=discord.Status.dnd)
 
+# load cogs on startup
+for filename in sorted(os.listdir('./commands/')):
+    if filename.endswith('.py'):
+        yiskiDiscord.load_extension(f'commands.{filename[:-3]}')
+
+def embedCreator(title, desc, color):
+    embed = discord.Embed(
+        title=f"{title}",
+        description=f"{desc}",
+        color=color
+    )
+    return embed
 
 @yiskiDiscord.event
 async def on_ready():
@@ -29,21 +42,17 @@ async def on_command_error(ctx: commands.Context, error):
             mention_author=True)
 
 
-@yiskiDiscord.command()
-async def help(ctx):
-    yiskiHelpEmbed = discord.Embed(title="Yiski Help",
-                                   description="Here's the commands you can use on Yiski. Note that the Discord version won't be well maintained, as Revolt is the primary goal for this bot.",
-                                   color=0x00a86b)
-    yiskiHelpEmbed.add_field(name="help", value=f"- Help Command\n- `{commandPrefix}help`")
-    yiskiHelpEmbed.add_field(name="hello", value=f"- Hello Command\n- `{commandPrefix}hello`")
-    yiskiHelpEmbed.add_field(name="httpcat", value=f"- HTTP Cats go brrr\n- `{commandPrefix}httpcat [http code]`")
-    yiskiHelpEmbed.add_field(name="ghr", value=f"- Preview a GitHub Repo\n- `{commandPrefix}ghr [username/orgname] [reponame]`")
-    yiskiHelpEmbed.add_field(name="memoryleak", value=f"- Funni Memory Leak video go brrr\n- `{commandPrefix}memoryleak`")
-    yiskiHelpEmbed.set_footer(text="Bot writen by HiItsDevin_, powered by Py-cord, a Discord.py continuation of the original Discord.py library. Written with 💖!")
-
-
-    await ctx.reply(embed=yiskiHelpEmbed)
-
+#Reloads all commands
+@yiskiDiscord.command(aliases=["relaod"]) #this is here seriously just because i was tired of speed type misspelling it
+async def reload(ctx):
+    try:
+        for filename in os.listdir('./commands/'):
+            if filename.endswith('.py'):
+                yiskiDiscord.unload_extension(f'commands.{filename[:-3]}')
+                yiskiDiscord.load_extension(f'commands.{filename[:-3]}')
+        await ctx.send(embed=embedCreator("Reloaded", "All cogs reloaded", 0x00ad10))
+    except Exception as e:
+        await ctx.send(embed=embedCreator("Error Reloading", f"`{e}`", 0xbf1300))
 
 @yiskiDiscord.command()
 async def hello(ctx: commands.Context):
