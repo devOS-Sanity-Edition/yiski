@@ -2,7 +2,7 @@
   // You can find your Rovolt Bot Token in Revolt, under User Settings -> My Bots
   // -> Click on the ***** under your Bot's name
   // If you don't have a bot, in that same area, click on "Create a Bot" and name it
-  "yiskiBotToken": "REVOLT_BOT_TOKEN_HERE",
+  yiskiBotToken: "REVOLT_BOT_TOKEN_HERE",
 
   // You can find your Discord Bot Token at https://discord.com/developers/applications
   // Click on your Application [or Create one] -> Bot [Add a Bot if it's a new Application
@@ -13,8 +13,8 @@
   // - Server Members Intent
   // - Message Content Intent
   // BOT COULD BREAK IF THOSE AREN'T ON
-  "yiskiDiscordBotToken": "DISCORD_BOT_TOKEN_HERE",
+  yiskiDiscordBotToken: "DISCORD_BOT_TOKEN_HERE",
 
   // Just bot prefix for running commands, like yk!help or yk!gasp
-  "yiskiBotPrefix": "yk!"
+  yiskiBotPrefix: "yk!"
 }
