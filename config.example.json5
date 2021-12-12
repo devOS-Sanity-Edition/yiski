@@ -20,6 +20,6 @@
   */
   yiskiDiscordBotToken: "DISCORD_BOT_TOKEN_HERE",
 
-  // Just bot prefix for running commands, like yk!help or yk!gasp or yk!gasp.
+  // Just bot prefix for running commands, like yk!help or yk!gasp.
   yiskiBotPrefix: "yk!",
 }
