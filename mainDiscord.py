@@ -18,9 +18,9 @@ yiskiDiscord = commands.Bot(help_command=None, command_prefix=commandPrefix, int
                             status=discord.Status.dnd)
 
 # load cogs on startup
-for filename in sorted(os.listdir('./commands/')):
+for filename in sorted(os.listdir('./discordCommands/')):
     if filename.endswith('.py'):
-        yiskiDiscord.load_extension(f'commands.{filename[:-3]}')
+        yiskiDiscord.load_extension(f'discordCommands.{filename[:-3]}')
 
 
 def embedCreator(title, desc, color):
@@ -50,10 +50,10 @@ async def on_command_error(ctx: commands.Context, error):
     aliases=["relaod"])  # this is here seriously just because i was tired of speed type misspelling it
 async def reload(ctx):
     try:
-        for filename in os.listdir('./commands/'):
+        for filename in os.listdir('./discordCommands/'):
             if filename.endswith('.py'):
-                yiskiDiscord.unload_extension(f'commands.{filename[:-3]}')
-                yiskiDiscord.load_extension(f'commands.{filename[:-3]}')
+                yiskiDiscord.unload_extension(f'discordCommands.{filename[:-3]}')
+                yiskiDiscord.load_extension(f'discordCommands.{filename[:-3]}')
         await ctx.send(embed=embedCreator("Reloaded", "All cogs reloaded", 0x00ad10))
     except Exception as e:
         await ctx.send(embed=embedCreator("Error Reloading", f"`{e}`", 0xbf1300))
