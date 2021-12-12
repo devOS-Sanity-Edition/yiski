@@ -1,5 +1,5 @@
 # Yiski
-Trying to learn Python and Revolt stuff for fun. Uses Python 3.10, but 3.9+ should work.
+Trying to learn Python and Revolt stuff for fun. Discord **should** be secondary. Uses Python 3.10, but 3.9+ should work.
 
 **This is something I'm doing just for fun and to learn Python, excuse anything shitty going on.**
 
