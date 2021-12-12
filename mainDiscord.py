@@ -14,7 +14,9 @@ yiskiActivity = discord.Activity(type=discord.ActivityType.watching, name="snake
 
 commandPrefix = yiskiConfiguration["yiskiBotPrefix"]
 
-yiskiDiscord = commands.Bot(command_prefix=(commandPrefix), help_command=None, activity=yiskiActivity, status=discord.Status.dnd)
+intents = discord.Intents().all()
+
+yiskiDiscord = commands.Bot(help_command=None, command_prefix=(commandPrefix), intents=intents, activity=yiskiActivity, status=discord.Status.dnd)
 
 # load cogs on startup
 for filename in sorted(os.listdir('./commands/')):

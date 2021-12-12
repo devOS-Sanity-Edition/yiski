@@ -3,12 +3,11 @@ from discord.ext import commands
 from mainDiscord import commandPrefix, yiskiDiscord
 
 
-class Util(commands.Cog): #this defines what "class" things will be in, can be completely custom
-    def __init__(self, client): #needed or smth
-        super().__init__(help_command=None)
+class Util(commands.Cog): #this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+    def __init__(self, client):
         self.client = client
 
-    @yiskiDiscord.command() #says its a command
+    @commands.command() #says its a command
     async def help(self, ctx): #self always needs to be before ctx in cogs
         yiskiHelpEmbed = discord.Embed(title="Yiski Help",
                                        description="Here's the commands you can use on Yiski. Note that the Discord version won't be well maintained, as Revolt is the primary goal for this bot.",
