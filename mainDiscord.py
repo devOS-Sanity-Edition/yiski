@@ -11,7 +11,7 @@ commandPrefix = yiskiConf["yiskiBotPrefix"]
 
 intents = discord.Intents().all()
 
-yiskiDiscord = commands.Bot(command_prefix=commandPrefix, intents=intents, activity=discord.Activity(type=discord.ActivityType.watching, name="snakes slither"), status=discord.Status.dnd, help_command=None)
+yiskiDiscord = commands.Bot(command_prefix=commandPrefix, intents=intents, activity=discord.Activity(type=discord.ActivityType.listening, name="my bones snap"), status=discord.Status.dnd, help_command=None)
 
 def embedCreator(title, desc, color):
     embed = discord.Embed(

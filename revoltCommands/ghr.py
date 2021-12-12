@@ -1,4 +1,5 @@
 import defectio, requests
+import json5
 from defectio import ext
 from defectio.ext import commands
 

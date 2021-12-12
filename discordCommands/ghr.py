@@ -38,6 +38,7 @@ class FunDiscord(
             embed.add_field(name="Forks", value=request.json()["forks_count"])
             embed.add_field(name="Watchers", value=request.json()["watchers_count"])
             embed.add_field(name="Open Issues", value=request.json()["open_issues_count"])
+            embed.add_field(name="Visibility", value=request.json()["visibility"])
             embed.set_thumbnail(url=request.json()["owner"]["avatar_url"])
 
 
