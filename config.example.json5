@@ -6,8 +6,6 @@
   */
   yiskiBotToken: "REVOLT_BOT_TOKEN_HERE",
 
-
-
   /*
     PSA: make sure you have these ENABLED in the Bots Section of your Application:
     - Presence Intent
