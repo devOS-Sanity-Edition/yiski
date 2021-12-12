@@ -34,6 +34,8 @@
 
     Do Note that if you can see any private repositories, the bot will also be able to see and display those.
     If you do not want this, you can set the "repo" permission to false.
+
+    Make this a string and not null if you are to use a token.
   */
-  githubToken: "GITHUB_TOKEN_HERE",
+  githubToken: null,
 }

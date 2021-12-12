@@ -48,7 +48,7 @@ async def reload(ctx):
 
 @yiskiDiscord.command()
 async def load(ctx, extension):
-    yiskiDiscord.load_extension(f'commands.{extension}')
+    yiskiDiscord.load_extension(f'discordCommands.{extension}')
     await ctx.send(f"loaded {extension}")
 
 # load cogs on startup
