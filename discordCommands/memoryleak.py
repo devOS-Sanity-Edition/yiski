@@ -7,8 +7,7 @@ class Fun(commands.Cog):  # this defines what "class" things will be in, can be 
 
     @commands.command()  # says its a command
     async def memoryleak(self, ctx):  # self always needs to be before ctx in cogs
-        await ctx.reply("https://cdn.discordapp.com/attachments/631654541942849536/890731131698282507/video0.mp4",
-                        mention_author=True)
+        await ctx.send("https://youtu.be/QbFtogkOFLc")
 
 
 def setup(client):  # actually register the command
