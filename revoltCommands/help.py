@@ -4,11 +4,11 @@ from defectio.ext import commands
 from mainRevolt import commandPrefix
 
 
-class HelpRevolt(defectio.ext.commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+class HelpRevolt(commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
     def __init__(self, bot):
         self.bot = bot
 
-    @defectio.ext.commands.command()
+    @commands.command()
     async def help(self, ctx):
         await ctx.reply(
             "| Command Name  | Description           | Command                                         |\n" +

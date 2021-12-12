@@ -3,8 +3,7 @@ from defectio import ext
 from defectio.ext import commands
 
 
-class MemoryLeakRevolt(
-    defectio.ext.commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+class MemoryLeakRevolt(commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
     def __init__(self, bot):
         self.bot = bot
 
