@@ -1,13 +1,12 @@
-import os
-import json5
+import os, json5, defectio
 
-# Revolt Python Lib
-import defectio
 from defectio.ext import commands
 
 with open("config.json5", "r") as yiskiConfig:
     yiskiConf = json5.load(yiskiConfig)
 
+# Variables so they can be used in other files
+githubToken = yiskiConf["githubToken"]
 commandPrefix = yiskiConf["yiskiBotPrefix"]
 
 yiskiRevolt = defectio.ext.commands.Bot(command_prefix=commandPrefix, help_command=None)
@@ -46,4 +45,4 @@ async def reload(ctx):
         await ctx.send("# Cogs Reload Failed.\n" + f"Error: {e}")
 
 
-yiskiRevolt.run(yiskiConf["yiskiRevoltBotToken"])
+yiskiRevolt.run(yiskiConf["yiskiBotToken"])
