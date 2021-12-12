@@ -1,9 +1,10 @@
+import defectio.ext.commands
 import requests
-from discord.ext import commands
+from defectio.ext import commands
 
 
-class FunRevolt(commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
-    def __init__(self, bot: commands.Bot):
+class HTTPCatRevolt(defectio.ext.commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+    def __init__(self, bot):
         self.bot = bot
 
     @commands.command()  # says its a command
@@ -16,4 +17,4 @@ class FunRevolt(commands.Cog):  # this defines what "class" things will be in, c
 
 
 def setup(bot):  # actually register the command
-    bot.add_cog(FunRevolt(bot))  # add the cog, you need to use the same thing in the cog as the class above
+    bot.add_cog(HTTPCatRevolt(bot))  # add the cog, you need to use the same thing in the cog as the class above

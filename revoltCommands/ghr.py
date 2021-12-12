@@ -3,8 +3,8 @@ from defectio import ext
 from defectio.ext import commands
 
 
-class FunRevolt(commands.Cog):
-    def __init__(self, bot: commands.Bot):
+class GHRRevolt(commands.Cog):
+    def __init__(self, bot):
         self.bot = bot
 
     @defectio.ext.commands.command()
@@ -15,4 +15,4 @@ class FunRevolt(commands.Cog):
 
 
 def setup(bot: defectio.ext.commands.Bot):  # actually register the command
-    bot.add_cog(FunRevolt(bot))
+    bot.add_cog(GHRRevolt(bot))
