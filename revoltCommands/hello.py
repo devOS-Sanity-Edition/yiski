@@ -1,4 +1,5 @@
-import defectio.ext.commands
+import defectio
+from defectio import ext
 from defectio.ext import commands
 
 
