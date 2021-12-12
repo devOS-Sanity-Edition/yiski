@@ -3,12 +3,12 @@ from discord.ext import commands
 from mainDiscord import commandPrefix
 
 
-class UtilDiscord(commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+class UtilDiscord(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()  # says its a command
-    async def help(self, ctx):  # self always needs to be before ctx in cogs
+    @commands.command()
+    async def help(self, ctx):
         yiskiHelpEmbed = discord.Embed(title="Yiski Help",
                                        description="Here's the commands you can use on Yiski. Note that the Discord version won't be well maintained, as Revolt is the primary goal for this bot.",
                                        color=0x00a86b)
@@ -28,5 +28,5 @@ class UtilDiscord(commands.Cog):  # this defines what "class" things will be in,
         await ctx.reply(embed=yiskiHelpEmbed)
 
 
-def setup(client):  # actually register the command
-    client.add_cog(UtilDiscord(client))  # add the cog, you need to use the same thing in the cog as the class above
+def setup(client):
+    client.add_cog(UtilDiscord(client))

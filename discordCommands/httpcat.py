@@ -3,12 +3,12 @@ from discord.ext import commands
 from mainDiscord import embedCreator
 
 
-class FunDiscord(commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+class FunDiscord(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()  # says its a command
-    async def httpcat(self, ctx, httpcode: str):  # self always needs to be before ctx in cogs
+    @commands.command()
+    async def httpcat(self, ctx, httpcode: str):
         httpcodeResponse = requests.get(f"https://http.cat/{httpcode}")
         if httpcodeResponse.status_code != 200:
             embed=embedCreator("Cat not found", "Here is missing cat", 0x404404)
@@ -20,5 +20,5 @@ class FunDiscord(commands.Cog):  # this defines what "class" things will be in, 
             await ctx.reply(embed=embed)
 
 
-def setup(client):  # actually register the command
-    client.add_cog(FunDiscord(client))  # add the cog, you need to use the same thing in the cog as the class above
+def setup(client):
+    client.add_cog(FunDiscord(client))

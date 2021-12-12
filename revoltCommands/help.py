@@ -4,7 +4,7 @@ from defectio.ext import commands
 from mainRevolt import commandPrefix
 
 
-class HelpRevolt(commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+class HelpRevolt(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -23,5 +23,5 @@ class HelpRevolt(commands.Cog):  # this defines what "class" things will be in, 
             mention=True)
 
 
-def setup(bot):  # actually register the command
-    bot.add_cog(HelpRevolt(bot))  # add the cog, you need to use the same thing in the cog as the class above
+def setup(bot):
+    bot.add_cog(HelpRevolt(bot))

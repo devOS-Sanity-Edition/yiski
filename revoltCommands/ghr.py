@@ -64,5 +64,5 @@ class GHRRevolt(commands.Cog):
             await ctx.reply(f"Unknown Error. [Here's a cat regarding your error.](https://http.cat/{request.status_code})")
 
 
-def setup(bot: defectio.ext.commands.Bot):  # actually register the command
+def setup(bot: defectio.ext.commands.Bot):
     bot.add_cog(GHRRevolt(bot))

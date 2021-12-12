@@ -5,12 +5,12 @@ from mainDiscord import embedCreator, githubToken
 
 
 class FunDiscord(
-    commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
+    commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()  # says its a command
-    async def ghr(self, ctx, name: str, repo: str):  # self always needs to be before ctx in cogs
+    @commands.command()
+    async def ghr(self, ctx, name: str, repo: str):
 
         if githubToken != None:
             headers = {"Authorization": "token " + githubToken}
@@ -63,5 +63,5 @@ class FunDiscord(
         await ctx.send(embed=embed)
 
 
-def setup(client):  # actually register the command
-    client.add_cog(FunDiscord(client))  # add the cog, you need to use the same thing in the cog as the class above
+def setup(client):
+    client.add_cog(FunDiscord(client))
