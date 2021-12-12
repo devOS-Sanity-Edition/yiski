@@ -1,12 +1,12 @@
-import json
 import os
+import json5
 
 # Revolt Python Lib
 import defectio
 from defectio.ext import commands
 
-with open("config.json", "r") as yiskiConfig:
-    yiskiConfiguration = json.load(yiskiConfig)
+with open("config.json5", "r") as yiskiConfig:
+    yiskiConfiguration = json5.load(yiskiConfig)
 
 commandPrefix = yiskiConfiguration["yiskiBotPrefix"]
 

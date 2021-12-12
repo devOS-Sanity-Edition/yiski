@@ -1,12 +1,12 @@
-import json
 import os
+import json5
 
 # Maintained Discord.py Lib
 import discord
 from discord.ext import commands
 
-with open("config.json", "r") as yiskiConfig:
-    yiskiConfiguration = json.load(yiskiConfig)
+with open("config.json5", "r") as yiskiConfig:
+    yiskiConfiguration = json5.load(yiskiConfig)
 
 yiskiActivity = discord.Activity(type=discord.ActivityType.watching, name="snakes slither")
 
