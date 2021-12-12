@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from mainDiscord import commandPrefix, yiskiDiscord
+from mainDiscord import commandPrefix
 
 
 class UtilDiscord(commands.Cog):  # this defines what "class" things will be in, can be completely custom, ie Util, Admin, etc.
