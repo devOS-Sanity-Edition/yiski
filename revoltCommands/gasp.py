@@ -1,6 +1,7 @@
 import defectio
 from defectio import ext
 from defectio.ext import commands
+from loguru import logger
 
 
 class GaspRevolt(commands.Cog):
@@ -14,3 +15,4 @@ class GaspRevolt(commands.Cog):
 
 def setup(bot):
     bot.add_cog(GaspRevolt(bot))
+    logger.debug("Gasp Cog loaded.")

@@ -2,6 +2,7 @@ import defectio, requests
 import json5
 from defectio import ext
 from defectio.ext import commands
+from loguru import logger
 
 from mainRevolt import githubToken
 
@@ -66,3 +67,4 @@ class GHRRevolt(commands.Cog):
 
 def setup(bot: defectio.ext.commands.Bot):
     bot.add_cog(GHRRevolt(bot))
+    logger.debug("GHR Cog loaded.")

@@ -1,6 +1,7 @@
 import defectio
 from defectio import ext
 from defectio.ext import commands
+from loguru import logger
 
 
 class MemoryLeakRevolt(commands.Cog):
@@ -14,3 +15,4 @@ class MemoryLeakRevolt(commands.Cog):
 
 def setup(bot):
     bot.add_cog(MemoryLeakRevolt(bot))
+    logger.debug("Memory Leak Cog loaded.")

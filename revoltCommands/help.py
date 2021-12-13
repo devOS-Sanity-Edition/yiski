@@ -1,6 +1,8 @@
 import defectio
 from defectio import ext
 from defectio.ext import commands
+from loguru import logger
+
 from mainRevolt import commandPrefix
 
 
@@ -25,3 +27,4 @@ class HelpRevolt(commands.Cog):
 
 def setup(bot):
     bot.add_cog(HelpRevolt(bot))
+    logger.debug("Help Cog loaded.")

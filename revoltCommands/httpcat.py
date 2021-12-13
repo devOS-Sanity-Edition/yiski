@@ -2,6 +2,7 @@ import defectio
 import requests
 from defectio import ext
 from defectio.ext import commands
+from loguru import logger
 
 
 class HTTPCatRevolt(commands.Cog):
@@ -19,3 +20,4 @@ class HTTPCatRevolt(commands.Cog):
 
 def setup(bot):
     bot.add_cog(HTTPCatRevolt(bot))
+    logger.debug("HTTPCat Cog loaded.")

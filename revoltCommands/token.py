@@ -1,6 +1,7 @@
 import defectio
 from defectio import ext
 from defectio.ext import commands
+from loguru import logger
 
 
 class TokenRevolt(commands.Cog):
@@ -14,3 +15,4 @@ class TokenRevolt(commands.Cog):
 
 def setup(bot):
     bot.add_cog(TokenRevolt(bot))
+    logger.debug("Token Cog loaded.")

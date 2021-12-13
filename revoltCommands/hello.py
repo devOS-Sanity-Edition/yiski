@@ -1,6 +1,7 @@
 import defectio
 from defectio import ext
 from defectio.ext import commands
+from loguru import logger
 
 
 class HelloRevolt(commands.Cog):
@@ -14,3 +15,4 @@ class HelloRevolt(commands.Cog):
 
 def setup(bot):
     bot.add_cog(HelloRevolt(bot))
+    logger.debug("Hello Cog loaded.")
