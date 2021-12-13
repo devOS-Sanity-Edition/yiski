@@ -1,6 +1,6 @@
 # Yiski
 
-<p align="center"><img title="Yiski" height="348" src="https://user-images.githubusercontent.com/30705254/145766997-e2d851ab-45bf-4878-bde3-56c15254207b.png"></p>
+<p align="center"><img title="Yiski" width="960" alt="YiskiBanner" src="https://user-images.githubusercontent.com/30705254/145800210-a36286c0-ba38-45b6-b3ae-34e6481f9ff5.png"></p>
 
 # What is Yiski
 A bot to replace the original idea of devOS Core for the devOS: Sanity Edition server. Also used to try to learn Python and Revolt stuff for fun. Discord **should** be secondary. 
