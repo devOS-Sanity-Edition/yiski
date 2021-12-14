@@ -56,11 +56,6 @@ async def unload(ctx, extension):
     yiskiDiscord.unload_extension(f'discordCommands.{extension}')
     await ctx.send(f"Unloaded {extension}")
 
-@yiskiDiscord.command()
-async def shutdown(ctx):
-    await ctx.send("Bye! I hope to talk to you soon! :C")
-    await yiskiDiscord.logout()
-
 # load cogs on startup
 for filename in sorted(os.listdir('./discordCommands/')):
     if filename.endswith('.py'):

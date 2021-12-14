@@ -61,10 +61,4 @@ async def unload(ctx, extension):
     logger.debug(f"Attempted unload of {extension}")
     await ctx.reply(f"Unloaded {extension}", mention=True)
 
-@yiskiRevolt.command()
-async def shutdown(ctx):
-    await ctx.reply("Bye! I hope to talk to you soon! :C")
-    yiskiRevolt.close()
-    sys.exit()
-
 yiskiRevolt.run(yiskiConf["yiskiBotToken"])
