@@ -49,7 +49,17 @@ async def reload(ctx):
 @yiskiDiscord.command()
 async def load(ctx, extension):
     yiskiDiscord.load_extension(f'discordCommands.{extension}')
-    await ctx.send(f"loaded {extension}")
+    await ctx.send(f"Loaded {extension}")
+
+@yiskiDiscord.command()
+async def unload(ctx, extension):
+    yiskiDiscord.unload_extension(f'discordCommands.{extension}')
+    await ctx.send(f"Unloaded {extension}")
+
+@yiskiDiscord.command()
+async def shutdown(ctx):
+    await ctx.send("Bye! I hope to talk to you soon! :C")
+    await yiskiDiscord.logout()
 
 # load cogs on startup
 for filename in sorted(os.listdir('./discordCommands/')):

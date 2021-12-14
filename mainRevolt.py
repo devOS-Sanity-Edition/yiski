@@ -1,4 +1,5 @@
 import sys, os, json5, defectio, loguru
+import time
 
 from loguru import logger
 from defectio.ext import commands
@@ -42,11 +43,28 @@ async def reload(ctx):
             if filename.endswith('.py'):
                 yiskiRevolt.unload_extension(f'revoltCommands.{filename[:-3]}')
                 yiskiRevolt.load_extension(f'revoltCommands.{filename[:-3]}')
-        await ctx.send("# Reloaded\n" + "All cogs have been reloaded.")
+        await ctx.reply("# Reloaded\n" + "All cogs have been reloaded.", mention=True)
         logger.debug("Attempted reload of cogs successful.")
     except Exception as e:
-        await ctx.send("# Cogs Reload Failed.\n" + f"Error: {e}")
+        await ctx.reply("# Cogs Reload Failed.\n" + f"Error: {e}", mention=True)
         logger.error(f"Attempted reload of cogs failed, error {e}")
 
+@yiskiRevolt.command()
+async def load(ctx, extension):
+    yiskiRevolt.load_extension(f'revoltCommands.{extension}')
+    logger.debug(f"Attempted load of {extension}")
+    await ctx.reply(f"Loaded {extension}", mention=True)
+
+@yiskiRevolt.command()
+async def unload(ctx, extension):
+    yiskiRevolt.unload_extension(f'revoltCommands.{extension}')
+    logger.debug(f"Attempted unload of {extension}")
+    await ctx.reply(f"Unloaded {extension}", mention=True)
+
+@yiskiRevolt.command()
+async def shutdown(ctx):
+    await ctx.reply("Bye! I hope to talk to you soon! :C")
+    yiskiRevolt.close()
+    sys.exit()
 
 yiskiRevolt.run(yiskiConf["yiskiBotToken"])
