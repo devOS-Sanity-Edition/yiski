@@ -36,4 +36,9 @@
     Make this a string and not null if you are to use a token.
   */
   githubToken: null,
+
+  // Server Related shindigs
+
+  ventChannelRevoltID: "",
+  ventChannelDiscordID: "", // Stereo really loves their stranded comma, so don't remove this please, thanks 🥰
 }
