@@ -1,5 +1,4 @@
 import sys, os, json5, defectio, loguru
-import time
 
 from loguru import logger
 from defectio.ext import commands
