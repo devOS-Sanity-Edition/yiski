@@ -35,18 +35,28 @@ async def on_command_error(ctx, error):
 
 # Reloads all commands
 @yiskiRevolt.command(aliases=["relaod"])  # this is here seriously just because i was tired of speed type misspelling it
-async def reload(ctx):
+async def reload(ctx, extension = None): # ftr, `extension: None` doesn't work, but `extension = None` does, so that's nice lol.
     logger.debug("Attempt to reload cogs have started")
-    try:
-        for filename in os.listdir('./revoltCommands/'):
-            if filename.endswith('.py'):
-                yiskiRevolt.unload_extension(f'revoltCommands.{filename[:-3]}')
-                yiskiRevolt.load_extension(f'revoltCommands.{filename[:-3]}')
-        await ctx.reply("# Reloaded\n" + "All cogs have been reloaded.", mention=True)
-        logger.debug("Attempted reload of cogs successful.")
-    except Exception as e:
-        await ctx.reply("# Cogs Reload Failed.\n" + f"Error: {e}", mention=True)
-        logger.error(f"Attempted reload of cogs failed, error {e}")
+    if not extension:
+        try:
+            for filename in os.listdir('./revoltCommands/'):
+                if filename.endswith('.py'):
+                    yiskiRevolt.unload_extension(f'revoltCommands.{filename[:-3]}')
+                    yiskiRevolt.load_extension(f'revoltCommands.{filename[:-3]}')
+            await ctx.reply("# Reloaded\n" + "All cogs have been reloaded.", mention=True)
+            logger.debug("Attempted reload of cogs successful.")
+        except Exception as e:
+            await ctx.reply("# Cogs Reload Failed.\n" + f"Error: {e}", mention=True)
+            logger.error(f"Attempted reload of cogs failed, error {e}")
+    else:
+        try:
+            yiskiRevolt.unload_extension(f'revoltCommands.{extension}')
+            yiskiRevolt.load_extension(f'revoltCommands.{extension}')
+            await ctx.reply("# Reloaded\n" + f"{extension} has been reloaded.", mention=True)
+            logger.debug(f"Attempted reload of {extension} cog successful.")
+        except Exception as e:
+            await ctx.reply(f"# {extension} Reload Failed.\n" + f"Error {e}", mention=True)
+            logger.error(f"Attempted reload of {extension} cog failed, error {e}")
 
 @yiskiRevolt.command()
 async def load(ctx, extension):

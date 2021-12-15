@@ -36,25 +36,33 @@ async def on_command_error(ctx, error):
 
 # Reloads all commands
 @yiskiDiscord.command(aliases=["relaod"])  # this alias is here seriously just because i was tired of speed type misspelling it
-async def reload(ctx):
-    try:
-        for filename in os.listdir('./discordCommands/'):
-            if filename.endswith('.py'):
-                yiskiDiscord.unload_extension(f'discordCommands.{filename[:-3]}')
-                yiskiDiscord.load_extension(f'discordCommands.{filename[:-3]}')
-        await ctx.send(embed=embedCreator("Reloaded", "All cogs reloaded", 0x00ad10))
-    except Exception as e:
-        await ctx.send(embed=embedCreator("Error Reloading", f"`{e}`", 0xbf1300))
+async def reload(ctx, extension = None):
+    if not extension:
+        try:
+            for filename in os.listdir('./discordCommands/'):
+                if filename.endswith('.py'):
+                    yiskiDiscord.unload_extension(f'discordCommands.{filename[:-3]}')
+                    yiskiDiscord.load_extension(f'discordCommands.{filename[:-3]}')
+            await ctx.send(embed=embedCreator("Reloaded", "All cogs reloaded", 0x00ad10))
+        except Exception as e:
+            await ctx.send(embed=embedCreator("Error Reloading", f"`{e}`", 0xbf1300))
+    else:
+        try:
+            yiskiDiscord.unload_extension(f'discordCommands.{extension}')
+            yiskiDiscord.load_extension(f'discordCommands.{extension}')
+            await ctx.send(embed=embedCreator(f"Reloaded", f"{extension} has been reloaded.", 0x00ad10))
+        except Exception as e:
+            await ctx.send(embed=embedCreator(f"Error reloading {extension}", f"{e}", 0xbf1300))
 
 @yiskiDiscord.command()
 async def load(ctx, extension):
     yiskiDiscord.load_extension(f'discordCommands.{extension}')
-    await ctx.send(f"Loaded {extension}")
+    await ctx.send(embed=embedCreator(f"Loaded", f"{extension} has been loaded.", 0x00ad10))
 
 @yiskiDiscord.command()
 async def unload(ctx, extension):
     yiskiDiscord.unload_extension(f'discordCommands.{extension}')
-    await ctx.send(f"Unloaded {extension}")
+    await ctx.send(embed=embedCreator(f"Unloaded", f"{extension} has been unloaded.", 0x00ad10))
 
 # load cogs on startup
 for filename in sorted(os.listdir('./discordCommands/')):

@@ -10,7 +10,7 @@ class ChaosRevolt(commands.Cog):
     @commands.command()
     async def chaos(self, ctx):
         quote = inspirobot.generate()
-        await ctx.reply(f"{quote.url}", mention=True)
+        await ctx.reply(f"[Here's your slice of chaos.]({quote.url})", mention=True)
 
 
 def setup(bot):
