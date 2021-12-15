@@ -1,4 +1,5 @@
 import os, json5, discord
+from discord.utils import async_all
 
 from discord.ext import commands
 
@@ -8,6 +9,7 @@ with open("config.json5", "r") as yiskiConfig:
 # Variables so they can be used in other files
 githubToken = yiskiConf["githubToken"]
 commandPrefix = yiskiConf["yiskiBotPrefix"]
+ventChannel = yiskiConf["ventChannelDiscordID"]
 
 intents = discord.Intents().all()
 
@@ -34,6 +36,10 @@ async def on_command_error(ctx, error):
     else:
         await ctx.send(embed=embedCreator("Error", f"Unexpected Error: `{error}`", 0xff0000))
 
+@yiskiDiscord.command(aliases=["https://www.youtube.com/watch?v=U9t-slLl30E"])
+async def stop(ctx):
+    await ctx.send(embed=embedCreator("Stopping", "Shutting Down Yiski", 0xFF0000))
+    await yiskiDiscord.close()
 # Reloads all commands
 @yiskiDiscord.command(aliases=["relaod"])  # this alias is here seriously just because i was tired of speed type misspelling it
 async def reload(ctx, extension = None):
