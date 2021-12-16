@@ -16,5 +16,7 @@ This project is licensed under the [MIT License](LICENSE)
 - [py-cord for Discord](https://pypi.org/project/py-cord/)
 - [requests](https://pypi.org/project/requests/)
 - [loguru](https://pypi.org/project/loguru/)
-- [json-five](https://github.com/spyoungtech/json-five) [JSON5 is love JSON5 is life 💖]
+- [json-five](https://github.com/spyoungtech/json-five/) [JSON5 is love JSON5 is life 💖]
 - [inspiro](https://pypi.org/project/inspiro/)
+- [text-to-owo](https://pypi.org/project/text-to-owo/)
+- [uwuify](https://pypi.org/project/uwuify/)
