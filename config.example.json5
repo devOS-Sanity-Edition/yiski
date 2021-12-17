@@ -21,6 +21,10 @@
   // Just bot prefix for running commands, like yk!help or yk!gasp.
   yiskiBotPrefix: "yk!",
 
+  // Whatever you want your "Admin" role to be to have Cog Control over the bot
+  discordOwnerRoleID: "Put Role Name Here",
+  revoltOwnerRoleID: "Put Role Name Here",
+
   /*
     This token is required if you want to use the GitHub API and not get rate limited.
     Having a token allows you 5000 requests per hour while being unauthenticated (no token) is 60 per hour.

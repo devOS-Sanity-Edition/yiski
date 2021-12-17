@@ -1,4 +1,5 @@
 import os, json5, discord
+
 from discord.utils import async_all
 
 from discord.ext import commands
@@ -37,11 +38,13 @@ async def on_command_error(ctx, error):
         await ctx.send(embed=embedCreator("Error", f"Unexpected Error: `{error}`", 0xff0000))
 
 @yD.command(aliases=["https://www.youtube.com/watch?v=U9t-slLl30E"])
+@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def stop(ctx):
     await ctx.send(embed=embedCreator("Stopping", "Shutting Down Yiski", 0xFF0000))
     await yD.close()
 # Reloads all commands
 @yD.command(aliases=["relaod"])  # this alias is here seriously just because i was tired of speed type misspelling it
+@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def reload(ctx, extension = None):
     if not extension:
         try:
@@ -61,12 +64,15 @@ async def reload(ctx, extension = None):
             await ctx.send(embed=embedCreator(f"Error reloading {extension}", f"{e}", 0xbf1300))
 
 @yD.command()
+@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def load(ctx, extension):
     yD.load_extension(f'discordCommands.{extension}')
     await ctx.send(embed=embedCreator(f"Loaded", f"{extension} has been loaded.", 0x00ad10))
 
 @yD.command()
+@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def unload(ctx, extension):
+
     yD.unload_extension(f'discordCommands.{extension}')
     await ctx.send(embed=embedCreator(f"Unloaded", f"{extension} has been unloaded.", 0x00ad10))
 
