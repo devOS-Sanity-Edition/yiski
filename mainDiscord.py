@@ -11,6 +11,7 @@ with open("config.json5", "r") as yiskiConfig:
 githubToken = yiskiConf["githubToken"]
 commandPrefix = yiskiConf["yiskiBotPrefix"]
 ventChannel = yiskiConf["ventChannelDiscordID"]
+ownerRole = yiskiConf["discordOwnerRoleID"]
 
 intents = discord.Intents().all()
 
@@ -23,6 +24,18 @@ def embedCreator(title, desc, color):
         color=color
     )
     return embed
+
+def roleCheck(ctx, role_id):
+    userRolesList = []
+    for h in list(ctx.message.author.roles):
+        userRolesList.append(h.id)
+        print(f"{userRolesList}" + f" {h} " + f"{role_id}")
+    if role_id in userRolesList:
+        print("HHHHHHHHHHHhh")
+        return True   
+    else:
+        print("hhhhhhhhhhiiiiiiiii")
+        return False
 
 @yD.event
 async def on_ready():
@@ -38,41 +51,40 @@ async def on_command_error(ctx, error):
         await ctx.send(embed=embedCreator("Error", f"Unexpected Error: `{error}`", 0xff0000))
 
 @yD.command(aliases=["https://www.youtube.com/watch?v=U9t-slLl30E"])
-@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def stop(ctx):
     await ctx.send(embed=embedCreator("Stopping", "Shutting Down Yiski", 0xFF0000))
     await yD.close()
+
 # Reloads all commands
 @yD.command(aliases=["relaod"])  # this alias is here seriously just because i was tired of speed type misspelling it
-@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def reload(ctx, extension = None):
-    if not extension:
-        try:
-            for filename in os.listdir('./discordCommands/'):
-                if filename.endswith('.py'):
-                    yD.unload_extension(f'discordCommands.{filename[:-3]}')
-                    yD.load_extension(f'discordCommands.{filename[:-3]}')
-            await ctx.send(embed=embedCreator("Reloaded", "All cogs reloaded", 0x00ad10))
-        except Exception as e:
-            await ctx.send(embed=embedCreator("Error Reloading", f"`{e}`", 0xbf1300))
+    if roleCheck(ctx, yiskiConf["discordOwnerRoleID"]):
+        if not extension:
+            try:
+                for filename in os.listdir('./discordCommands/'):
+                    if filename.endswith('.py'):
+                        yD.unload_extension(f'discordCommands.{filename[:-3]}')
+                        yD.load_extension(f'discordCommands.{filename[:-3]}')
+                await ctx.send(embed=embedCreator("Reloaded", "All cogs reloaded", 0x00ad10))
+            except Exception as e:
+                await ctx.send(embed=embedCreator("Error Reloading", f"`{e}`", 0xbf1300))
+        else:
+            try:
+                yD.unload_extension(f'discordCommands.{extension}')
+                yD.load_extension(f'discordCommands.{extension}')
+                await ctx.send(embed=embedCreator(f"Reloaded", f"{extension} has been reloaded.", 0x00ad10))
+            except Exception as e:
+                await ctx.send(embed=embedCreator(f"Error reloading {extension}", f"{e}", 0xbf1300))
     else:
-        try:
-            yD.unload_extension(f'discordCommands.{extension}')
-            yD.load_extension(f'discordCommands.{extension}')
-            await ctx.send(embed=embedCreator(f"Reloaded", f"{extension} has been reloaded.", 0x00ad10))
-        except Exception as e:
-            await ctx.send(embed=embedCreator(f"Error reloading {extension}", f"{e}", 0xbf1300))
+        await ctx.reply(embed=embedCreator("Insufficient Perms", f"You do not have the required role/permissions to use this command!", 0xFF0000), mention_author=False)
 
 @yD.command()
-@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def load(ctx, extension):
     yD.load_extension(f'discordCommands.{extension}')
     await ctx.send(embed=embedCreator(f"Loaded", f"{extension} has been loaded.", 0x00ad10))
 
 @yD.command()
-@commands.has_role(yiskiConf["discordOwnerRoleID"])
 async def unload(ctx, extension):
-
     yD.unload_extension(f'discordCommands.{extension}')
     await ctx.send(embed=embedCreator(f"Unloaded", f"{extension} has been unloaded.", 0x00ad10))
 
