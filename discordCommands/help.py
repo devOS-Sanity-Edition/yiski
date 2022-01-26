@@ -22,6 +22,9 @@ class UtilDiscord(commands.Cog):
                                  value=f"- Just find out for yourself.\n- `{commandPrefix}gasp`")
         yiskiHelpEmbed.add_field(name="token",
                                  value=f"- So about that funky config.json5...\n- `{commandPrefix}token`")
+        yiskiHelpEmbed.add_field(name="devtools",
+                                 value=f"- Discord disabled devtools by default, here's how to get it back.\n- `{commandPrefix}devtools`")
+
         yiskiHelpEmbed.set_footer(
             text="Bot writen by HiItsDevin_, powered by Py-cord, a Discord.py continuation of the original Discord.py library. Written with 💖!")
 
