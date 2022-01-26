@@ -22,8 +22,8 @@
   yiskiBotPrefix: "yk!",
 
   // Whatever you want your "Admin" role to be to have Cog Control over the bot
-  discordOwnerRoleID: "Put Role Name Here",
-  revoltOwnerRoleID: "Put Role Name Here",
+  discordOwnerRoleID: "Put Role ID Here", //has to be int
+  revoltOwnerRoleID: "Put Role ID Here", //has to be int
 
   /*
     This token is required if you want to use the GitHub API and not get rate limited.
