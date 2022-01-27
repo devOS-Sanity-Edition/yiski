@@ -80,13 +80,19 @@ async def reload(ctx, extension = None):
 
 @yD.command()
 async def load(ctx, extension):
-    yD.load_extension(f'discordCommands.{extension}')
-    await ctx.send(embed=embedCreator(f"Loaded", f"{extension} has been loaded.", 0x00ad10))
+    if roleCheck(ctx, yiskiConf["discordOwnerRoleID"]):
+        yD.load_extension(f'discordCommands.{extension}')
+        await ctx.send(embed=embedCreator(f"Loaded", f"{extension} has been loaded.", 0x00ad10))
+    else:
+        await ctx.reply(embed=embedCreator("Insufficient Perms", f"You do not have the required role/permissions to use this command!", 0xFF0000), mention_author=False)
 
 @yD.command()
 async def unload(ctx, extension):
-    yD.unload_extension(f'discordCommands.{extension}')
-    await ctx.send(embed=embedCreator(f"Unloaded", f"{extension} has been unloaded.", 0x00ad10))
+    if roleCheck(ctx, yiskiConf["discordOwnerRoleID"]):
+        yD.unload_extension(f'discordCommands.{extension}')
+        await ctx.send(embed=embedCreator(f"Unloaded", f"{extension} has been unloaded.", 0x00ad10))
+    else:
+        await ctx.reply(embed=embedCreator("Insufficient Perms", f"You do not have the required role/permissions to use this command!", 0xFF0000), mention_author=False)
 
 # load cogs on startup
 for filename in sorted(os.listdir('./discordCommands/')):
