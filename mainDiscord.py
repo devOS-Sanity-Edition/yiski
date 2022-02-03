@@ -42,7 +42,7 @@ def roleCheck(ctx, role_id):
 
 @yD.event
 async def on_ready():
-    logger.debug("Bots started on Revolt end.")
+    logger.debug(f"Bots started on Discord's end.")
 
 # Error Handling
 @yD.event
