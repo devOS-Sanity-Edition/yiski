@@ -1,16 +1,18 @@
-import sys, os, json5, defectio, loguru
+import sys, os, tomli, defectio, loguru
 
 from loguru import logger
 from defectio.ext import commands
 
-with open("config.json5", "r") as yiskiConfig:
-    yiskiConf = json5.load(yiskiConfig)
+with open("config.toml", "rb") as yiskiConfig:
+    yiskiConf = tomli.load(yiskiConfig)
 
 # Variables so they can be used in other files
-githubToken = yiskiConf["githubToken"]
-commandPrefix = yiskiConf["yiskiBotPrefix"]
+githubToken = yiskiConf["universal"]["githubToken"]
+botPrefix = yiskiConf["universal"]["botPrefix"]
+revoltOwnerRole = yiskiConf["revolt"]["ownerRoleName"]
+revoltVentChannel = yiskiConf["revolt"]["ventChannelID"]
 
-yR = defectio.ext.commands.Bot(command_prefix=commandPrefix, help_command=None)
+yR = defectio.ext.commands.Bot(command_prefix=botPrefix, help_command=None)
 logger.add("logs/yiskiRevolt_{time}.log", format="[Yiski Revolt][{time:HH:mm:ss}][{level}] {message}", enqueue=True, colorize=True)
 
 # load cogs on startup
@@ -29,7 +31,7 @@ async def on_ready():
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.reply(
-            f"Hm... looks like this isn't valid syntax? Are you sure you followed the proper syntax for this command? If you need help, refer to `{commandPrefix}help`. If you think this is an error, ping Devin!",
+            f"Hm... looks like this isn't valid syntax? Are you sure you followed the proper syntax for this command? If you need help, refer to `{botPrefix}help`. If you think this is an error, ping Devin!",
             mention=True)
 
 
@@ -70,4 +72,4 @@ async def unload(ctx, extension):
     logger.debug(f"Attempted unload of {extension}")
     await ctx.reply(f"Unloaded {extension}", mention=True)
 
-yR.run(yiskiConf["yiskiBotToken"])
+yR.run(yiskiConf["revolt"]["botToken"])

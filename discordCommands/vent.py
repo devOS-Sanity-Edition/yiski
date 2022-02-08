@@ -1,7 +1,7 @@
 from discord import channel
 from discord.ext import commands
-from mainDiscord import embedCreator, ventChannel
-import discord, json5, asyncio, datetime
+from mainDiscord import embedCreator, discordVentChannel
+import discord, tomli, json5, asyncio, datetime
 
 wipeTime = datetime.time(hour=8)
 

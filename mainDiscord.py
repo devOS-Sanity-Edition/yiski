@@ -1,4 +1,4 @@
-import os, json5, discord
+import os, tomli, discord
 
 from discord.utils import async_all
 
@@ -6,18 +6,18 @@ from discord.ext import commands
 
 from loguru import logger
 
-with open("config.json5", "r") as yiskiConfig:
-    yiskiConf = json5.load(yiskiConfig)
+with open("config.toml", "rb") as yiskiConfig:
+    yiskiConf = tomli.load(yiskiConfig)
 
 # Variables so they can be used in other files
-githubToken = yiskiConf["githubToken"]
-commandPrefix = yiskiConf["yiskiBotPrefix"]
-ventChannel = yiskiConf["ventChannelDiscordID"]
-ownerRole = yiskiConf["discordOwnerRoleID"]
+githubToken = yiskiConf["universal"]["githubToken"]
+botPrefix = yiskiConf["universal"]["botPrefix"]
+discordVentChannel = yiskiConf["discord"]["ventChannelID"]
+discordOwnerRole = yiskiConf["discord"]["ownerRoleID"]
 
 intents = discord.Intents().all()
 
-yD = commands.Bot(command_prefix=commandPrefix, intents=intents, activity=discord.Activity(type=discord.ActivityType.listening, name="my bones snap"), status=discord.Status.dnd, help_command=None)
+yD = commands.Bot(command_prefix=botPrefix, intents=intents, activity=discord.Activity(type=discord.ActivityType.listening, name="my bones snap"), status=discord.Status.dnd, help_command=None)
 logger.add("logs/yiskiDiscord_{time}.log", format="[Yiski Discord][{time:HH:mm:ss}][{level}] {message}", enqueue=True, colorize=True)
 
 def embedCreator(title, desc, color):
@@ -48,7 +48,7 @@ async def on_ready():
 @yD.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send(embed=embedCreator("Unknown Command", f"The command `{ctx.message.content.split(' ')[0]}` is not found! Use `{commandPrefix}help` to list all commands!", 0xbf1300))
+        await ctx.send(embed=embedCreator("Unknown Command", f"The command `{ctx.message.content.split(' ')[0]}` is not found! Use `{botPrefix}help` to list all commands!", 0xbf1300))
         return
     else:
         await ctx.send(embed=embedCreator("Error", f"Unexpected Error: `{error}`", 0xff0000))
@@ -61,7 +61,7 @@ async def stop(ctx):
 # Reloads all commands
 @yD.command(aliases=["relaod"])  # this alias is here seriously just because i was tired of speed type misspelling it
 async def reload(ctx, extension = None):
-    if roleCheck(ctx, yiskiConf["discordOwnerRoleID"]):
+    if roleCheck(ctx, yiskiConf["discord"]["ownerRoleID"]):
         logger.debug("Attempt to reload cogs have started")
         if not extension:
             try:
@@ -88,7 +88,7 @@ async def reload(ctx, extension = None):
 
 @yD.command()
 async def load(ctx, extension):
-    if roleCheck(ctx, yiskiConf["discordOwnerRoleID"]):
+    if roleCheck(ctx, yiskiConf["discord"]["ownerRoleID"]):
         yD.load_extension(f'discordCommands.{extension}')
         await ctx.send(embed=embedCreator(f"Loaded", f"{extension} has been loaded.", 0x00ad10))
         logger.debug(f"Attempted load of {extension}")
@@ -97,7 +97,7 @@ async def load(ctx, extension):
 
 @yD.command()
 async def unload(ctx, extension):
-    if roleCheck(ctx, yiskiConf["discordOwnerRoleID"]):
+    if roleCheck(ctx, yiskiConf["discord"]["ownerRoleID"]):
         yD.unload_extension(f'discordCommands.{extension}')
         await ctx.send(embed=embedCreator(f"Unloaded", f"{extension} has been unloaded.", 0x00ad10))
         logger.debug(f"Attempted unload of {extension}")
@@ -110,4 +110,4 @@ for filename in sorted(os.listdir('./discordCommands/')):
         logger.debug("Loading Cog:" + f'discordCommands.{filename[:-3]}')
         yD.load_extension(f'discordCommands.{filename[:-3]}')
 
-yD.run(yiskiConf["yiskiDiscordBotToken"])
+yD.run(yiskiConf["discord"]["botToken"])

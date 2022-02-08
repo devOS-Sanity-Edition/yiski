@@ -218,6 +218,7 @@ fabric.properties
 
 # Yiski Bot
 config.json5
+config.toml
 logs/
 
 # FOR LEGACY REASONS

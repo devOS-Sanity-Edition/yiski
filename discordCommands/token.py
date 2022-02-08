@@ -8,7 +8,7 @@ class FunDiscord(commands.Cog):
 
     @commands.command()
     async def token(self, ctx):
-        embed=embedCreator("be careful with your token in config.json5 lol", "", 0x00ff00)
+        embed=embedCreator("be careful with your token in config.toml lol", "", 0x00ff00)
         embed.set_image(url=f"https://cdn.discordapp.com/attachments/724142050429108245/919572878951862323/unknown.png")
         await ctx.send(embed=embed)
 
