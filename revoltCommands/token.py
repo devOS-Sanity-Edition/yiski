@@ -10,7 +10,7 @@ class TokenRevolt(commands.Cog):
 
     @commands.command()
     async def token(self, ctx):
-        await ctx.reply("[be careful with your token in config.json5 lol](https://cdn.discordapp.com/attachments/724142050429108245/919572878951862323/unknown.png)", mention=True)
+        await ctx.reply("[be careful with your token in config.toml lol](https://cdn.discordapp.com/attachments/724142050429108245/919572878951862323/unknown.png)", mention=True)
 
 
 def setup(bot):

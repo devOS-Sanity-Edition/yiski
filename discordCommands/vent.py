@@ -1,7 +1,8 @@
 from discord import channel
 from discord.ext import commands
-from mainDiscord import embedCreator, ventChannel
-import discord, json5, asyncio, datetime
+from mainDiscord import embedCreator, discordVentChannel
+import discord, tomli, json5, asyncio, datetime
+from loguru import logger
 
 wipeTime = datetime.time(hour=8)
 
@@ -65,3 +66,4 @@ class WindshieldWiper(commands.Cog):
 def setup(client):
     client.add_cog(WindshieldWiper(client))
     #client.loop.create_task(client.get_cog("Windshieldwiper").wipeLogic())
+    logger.debug("Vent Wipe Cog loaded.")

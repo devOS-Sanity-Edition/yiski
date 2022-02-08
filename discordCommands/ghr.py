@@ -1,10 +1,11 @@
 from discord.ext import commands
+from loguru import logger
 import requests
 
 from mainDiscord import embedCreator, githubToken
 
 
-class FunDiscord(
+class GHRDiscord(
     commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -55,8 +56,8 @@ class FunDiscord(
                                       "exceeded the rate limit with one of those?????")
             else:
                 embed.add_field(name="Is a GitHub Token Being Used?",
-                                value="No...\nUse a GitHub Token in your config.json5, or contact the bot owner to "
-                                      "get one put into config.json5!\n You will not get ratelimited as often!")
+                                value="No...\nUse a GitHub Token in your config.toml, or contact the bot owner to "
+                                      "get one put into config.toml!\n You will not get ratelimited as often!")
         else:
             embed = embedCreator("Error", f"Unknown Error, Status Code: {request.status_code}", 0xFF0000)
 
@@ -64,4 +65,5 @@ class FunDiscord(
 
 
 def setup(client):
-    client.add_cog(FunDiscord(client))
+    client.add_cog(GHRDiscord(client))
+    logger.debug("GHR Cog loaded.")

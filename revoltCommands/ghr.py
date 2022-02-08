@@ -1,5 +1,5 @@
 import defectio, requests
-import json5
+import tomli
 from defectio import ext
 from defectio.ext import commands
 from loguru import logger
@@ -59,8 +59,8 @@ class GHRRevolt(commands.Cog):
                                 "exceeded the rate limit with one of those?????")
             else:
                 await ctx.reply("# Is your GitHub Token currently being used? \n\n" +
-                                "Doesn't look like so. Use a GitHub Token in your config.json5, or contact the bot "
-                                "owner to get one put into config.json5!\n You will not get ratelimited as often!")
+                                "Doesn't look like so. Use a GitHub Token in your config.toml, or contact the bot "
+                                "owner to get one put into config.toml!\n You will not get ratelimited as often!")
         else:
             await ctx.reply(f"Unknown Error. [Here's a cat regarding your error.](https://http.cat/{request.status_code})")
 

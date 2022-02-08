@@ -1,7 +1,8 @@
 from discord.ext import commands
+from loguru import logger
 
 
-class Fun(commands.Cog):
+class IMSIsHorribleDiscord(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -12,4 +13,5 @@ class Fun(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Fun(client))
+    client.add_cog(IMSIsHorribleDiscord(client))
+    logger.debug("IMS Is Horrible Cog loaded.")

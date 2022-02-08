@@ -1,9 +1,9 @@
 from discord.ext import commands
-
+from loguru import logger
 from mainDiscord import embedCreator
 
 
-class FunDiscord(commands.Cog):
+class HelloDiscord(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -13,4 +13,5 @@ class FunDiscord(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(FunDiscord(client))
+    client.add_cog(HelloDiscord(client))
+    logger.debug("Hello Cog loaded.")
