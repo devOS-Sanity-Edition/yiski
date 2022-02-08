@@ -1,9 +1,10 @@
 import discord
 from discord.ext import commands
 from mainDiscord import botPrefix
+from loguru import logger
 
 
-class UtilDiscord(commands.Cog):
+class HelpDiscord(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -32,4 +33,5 @@ class UtilDiscord(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(UtilDiscord(client))
+    client.add_cog(HelpDiscord(client))
+    logger.debug("Help Cog loaded.")

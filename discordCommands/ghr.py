@@ -1,10 +1,11 @@
 from discord.ext import commands
+from loguru import logger
 import requests
 
 from mainDiscord import embedCreator, githubToken
 
 
-class FunDiscord(
+class GHRDiscord(
     commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -64,4 +65,5 @@ class FunDiscord(
 
 
 def setup(client):
-    client.add_cog(FunDiscord(client))
+    client.add_cog(GHRDiscord(client))
+    logger.debug("GHR Cog loaded.")

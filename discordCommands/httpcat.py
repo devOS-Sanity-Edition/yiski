@@ -1,9 +1,10 @@
 import requests
 from discord.ext import commands
 from mainDiscord import embedCreator
+from loguru import logger
 
 
-class FunDiscord(commands.Cog):
+class HTTPCatDiscord(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -21,4 +22,5 @@ class FunDiscord(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(FunDiscord(client))
+    client.add_cog(HTTPCatDiscord(client))
+    logger.debug("HTTP Cats Cog loaded.")

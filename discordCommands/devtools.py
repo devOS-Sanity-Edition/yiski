@@ -1,10 +1,10 @@
 # made this command because discord decided to take out devtools, and people in the server still use it so... hi?
 
 from discord.ext import commands
-
+from loguru import logger
 from mainDiscord import embedCreator
 
-class FunDiscord(commands.Cog):
+class DevToolsDiscord(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -22,4 +22,5 @@ class FunDiscord(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(FunDiscord(client))
+    client.add_cog(DevToolsDiscord(client))
+    logger.debug("Dev Tools Cog loaded.")
