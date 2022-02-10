@@ -1,4 +1,3 @@
-from xml.dom.minidom import Element
 import discord, tomli, tomli_w
 from discord.ext import commands
 from random import randint
