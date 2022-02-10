@@ -1,7 +1,9 @@
-import discord, json5
+from xml.dom.minidom import Element
+import discord, tomli, tomli_w
 from discord.ext import commands
 from random import randint
 from mainDiscord import embedCreator
+from loguru import logger
 
 
 class HeadcrabDiscord(commands.Cog):
@@ -9,63 +11,64 @@ class HeadcrabDiscord(commands.Cog):
         self.client = client
 
     @commands.command()
-    async def headcrab(self, ctx, member: discord.Member = None):
-
-        def WinOrLose(test):
-            with open('headcrabs.json5', 'r') as source_file:
-                oldData = json5.load(source_file)
-                with open('headcrabs.json5', 'w') as dest_file:
-                    for line in source_file:
-                        element = json5.loads(line.strip())
-                        if f'{ctx.message.author.id}' in element:
-                            del element[f'{ctx.message.author.id}']
-                    if test == True:
-                        newData = {f"{ctx.message.author.id}": [int(userHeadcrab[0]) + 1, int(userHeadcrab[1])]}
-                    elif test == False:
-                        newData = {f"{ctx.message.author.id}": [int(userHeadcrab[0]), int(userHeadcrab[1]) + 1]}
-                    else:
-                        embedCreator("Critical Error",
-                                     "Somehow Studio528#1225 messed this up *really badly* \nPlease contact them",
-                                     0xFF0000)
-                    oldData.update(newData)
-                    dest_file.seek(0)
-                    json5.dump(oldData, dest_file, indent=4)
-
-        if not member:
-            member = ctx.message.author
-        with open("headcrabs.json5", "r+") as headcrab:
-            headcrabJson = json5.load(headcrab)
-        # 11% chance to fail
+    async def headcrab(self, ctx, member: discord.Member):
+        
+        global userHeadcrab
         failRate = randint(1, 9)
-        # it complains it hasn't been defined, but also useful for showing format
-        userHeadcrab = headcrabJson["this is an example"]
+
+        if member.id == ctx.author.id:
+            await ctx.send(embed=embedCreator("Headcrab", "You can't headcrab yourself!", 0xFF0000))
+            return
 
         try:
-            # try to see if there is a userID already there
-            userHeadcrab = headcrabJson[str(ctx.message.author.id)]
-        except KeyError:
-            # if not make one
-            with open("headcrabs.json5", "r+") as headcrabWrite:
-                Data = json5.load(headcrabWrite)  # Load JSON
-                newData = {f"{ctx.message.author.id}": [0, 0]}  # New Data
-                Data.update(newData)  # Update old data to new data
-                headcrabWrite.seek(0)  # Go to start of file
-                json5.dump(Data, headcrabWrite, indent=4)  # write it to that file
-                userHeadcrab = [0, 0]  # just say their stuff is 0 to prevent it using the example values
+            with open("headcrabs.toml", "rb") as headcrabTOML:
+                headcrab = tomli.load(headcrabTOML)
+        except FileNotFoundError:
+            logger.debug("headcrabs.toml not found!")
+            with open("headcrabs.toml", "wb") as headcrabTOML:
+                example = {"Example": {"wins": 69, "losses": 420}}
+                tomli_w.dump(example, headcrabTOML)
+                logger.debug("headcrabs.toml created!")
+            with open("headcrabs.toml", "rb") as headcrabTOML:
+                headcrab = tomli.load(headcrabTOML)
+        
+        try:
+            userHeadcrab = headcrab[str(member.id)]
+        except:
+            with open("headcrabs.toml", "ab") as headcrabsUser:
+                newUser = {str(member.id): {"wins": 0, "losses": 0}}
+                tomli_w.dump(newUser, headcrabsUser)
+                userHeadcrab = newUser[str(member.id)]
+                logger.debug(f"New user {member.id} (AKA {member.display_name}) has been added to the headcrabs.toml file.")
 
-        embed = embedCreator("",
-                             f"{ctx.message.author.mention} threw a Headcrab at {member.mention}. (Headcrab #{int(userHeadcrab[0]) + 1})",
-                             0x8dd594)
+
+        def WinOrLose(WinOrLose):
+            with open("headcrabs.toml", "r+b") as headcrabsWOR:
+                headcrabs = tomli.load(headcrabsWOR)
+                with open("headcrabs.toml", "w+b") as headcrabsDEST:
+                    for line in headcrabsWOR:
+                        element = tomli.loads(line.strip())
+                        print(element)
+                        if str(member.id) in element:
+                            del element[str(member.id)]
+                    if WinOrLose == True:
+                        new = {str(member.id): {"wins": userHeadcrab["wins"] + 1, "losses": userHeadcrab["losses"]}}
+
+                    elif WinOrLose == False:
+                        new = {str(member.id): {"wins": userHeadcrab["wins"], "losses": userHeadcrab["losses"] + 1}}
+                    else:
+                        embedCreator("Critical Error", "Somehow Studio528#1225 messed this up *really badly* \nPlease contact them", 0x00FF00)
+                    headcrabs.update(new)
+                    headcrabsDEST.seek(0)
+                    tomli_w.dump(headcrabs, headcrabsDEST)
 
         if failRate == 1:
-            embed = embedCreator("",
-                                 f"{ctx.message.author.mention} tried to Headcrab {member.mention}, but failed. (Headcrab Fail #{int(userHeadcrab[1]) + 1})",
-                                 0x8dd594).set_image(
-                url="https://cdn.discordapp.com/attachments/834263755939512351/902748131429580892/headcrab_fail.gif")
+            fail = userHeadcrab["losses"]
+            embed = embedCreator("", f"{ctx.message.author.mention} tried to Headcrab {member.mention}, but failed. (Headcrab Fail #{fail + 1})", 0x8dd594).set_image(url="https://cdn.discordapp.com/attachments/834263755939512351/902748131429580892/headcrab_fail.gif")
             WinOrLose(False)
         else:
-            embed.set_image(
-                url="https://cdn.discordapp.com/attachments/834263755939512351/902748120100773959/headcrab_success.gif")
+            win = userHeadcrab["wins"]
+            embed = embedCreator("", f"{ctx.message.author.mention} threw a Headcrab {member.mention}. (Headcrab Win #{win + 1})", 0x8dd594).set_image(url="https://cdn.discordapp.com/attachments/834263755939512351/902748120100773959/headcrab_success.gif")
             WinOrLose(True)
 
         await ctx.send(embed=embed)

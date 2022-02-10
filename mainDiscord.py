@@ -32,12 +32,9 @@ def roleCheck(ctx, role_id):
     userRolesList = []
     for h in list(ctx.message.author.roles):
         userRolesList.append(h.id)
-        print(f"{userRolesList}" + f" {h} " + f"{role_id}")
     if role_id in userRolesList:
-        print("HHHHHHHHHHHhh")
         return True   
     else:
-        print("hhhhhhhhhhiiiiiiiii")
         return False
 
 @yD.event
