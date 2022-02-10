@@ -1,6 +1,7 @@
+import discord
 from discord.ext import commands
 from loguru import logger
-from mainDiscord import embedCreator
+from mainDiscord import embedCreator, yiskiConf
 
 class TokenDiscord(commands.Cog):
     def __init__(self, client):
@@ -8,9 +9,10 @@ class TokenDiscord(commands.Cog):
 
     @commands.command()
     async def token(self, ctx):
+        tokenJoke = discord.File(yiskiConf["images"]["static"]["token"])
         embed=embedCreator("be careful with your token in config.toml lol", "", 0x00ff00)
-        embed.set_image(url=f"https://cdn.discordapp.com/attachments/724142050429108245/919572878951862323/unknown.png")
-        await ctx.send(embed=embed)
+        embed.set_image(url="attachment://token.png")
+        await ctx.send(file=tokenJoke, embed=embed)
 
 
 def setup(client):
