@@ -1,6 +1,7 @@
+import discord
 from discord.ext import commands
 from loguru import logger
-
+from mainDiscord import yiskiConf, embedCreator
 
 class IMSIsHorribleDiscord(commands.Cog):
     def __init__(self, client):
@@ -8,9 +9,11 @@ class IMSIsHorribleDiscord(commands.Cog):
 
     @commands.command()
     async def ims(self, ctx):
-        await ctx.reply("<@366702774403989504> you're fucking horrible\n https://cdn.discordapp.com/attachments/670086223322284049/921252194395758622/unknown.png",
-                        mention_author=True)
 
+        imsImage = discord.File(yiskiConf["images"]["static"]["ims"])
+        embed = embedCreator("IMS is a horrible person", "", 0x00ff00)
+        embed.set_image(url="attachment://dreadfulims.png")
+        await ctx.send(file=imsImage, embed=embed)
 
 def setup(client):
     client.add_cog(IMSIsHorribleDiscord(client))

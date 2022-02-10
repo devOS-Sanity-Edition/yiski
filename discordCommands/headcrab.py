@@ -20,31 +20,31 @@ class HeadcrabDiscord(commands.Cog):
             return
 
         try:
-            with open("data\headcrabs.toml", "rb") as headcrabTOML:
+            with open("assets\headcrabs.toml", "rb") as headcrabTOML:
                 headcrab = tomli.load(headcrabTOML)
         except FileNotFoundError:
-            logger.debug("data\headcrabs.toml not found!")
-            with open("data\headcrabs.toml", "wb") as headcrabTOML:
+            logger.debug("assets\headcrabs.toml not found!")
+            with open("assets\headcrabs.toml", "wb") as headcrabTOML:
                 example = {"Example": {"wins": 69, "losses": 420}}
                 tomli_w.dump(example, headcrabTOML)
-                logger.debug("data\headcrabs.toml created!")
-            with open("data\headcrabs.toml", "rb") as headcrabTOML:
+                logger.debug("assets\headcrabs.toml created!")
+            with open("assets\headcrabs.toml", "rb") as headcrabTOML:
                 headcrab = tomli.load(headcrabTOML)
-        
+
         try:
             userHeadcrab = headcrab[str(member.id)]
         except:
-            with open("data\headcrabs.toml", "ab") as headcrabsUser:
+            with open("assets\headcrabs.toml", "ab") as headcrabsUser:
                 newUser = {str(member.id): {"wins": 0, "losses": 0}}
                 tomli_w.dump(newUser, headcrabsUser)
                 userHeadcrab = newUser[str(member.id)]
-                logger.debug(f"New user {member.id} (AKA {member.display_name}) has been added to the data\headcrabs.toml file.")
+                logger.debug(f"New user {member.id} (AKA {member.display_name}) has been added to the assets\headcrabs.toml file.")
 
 
         def WinOrLose(WinOrLose):
-            with open("data\headcrabs.toml", "r+b") as headcrabsWOR:
+            with open("assets\headcrabs.toml", "r+b") as headcrabsWOR:
                 headcrabs = tomli.load(headcrabsWOR)
-                with open("data\headcrabs.toml", "w+b") as headcrabsDEST:
+                with open("assets\headcrabs.toml", "w+b") as headcrabsDEST:
                     for line in headcrabsWOR:
                         element = tomli.loads(line.strip())
                         print(element)
