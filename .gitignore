@@ -219,9 +219,10 @@ fabric.properties
 # Yiski Bot
 config.json5
 config.toml
-headcrabs.json5
+headcrabs.toml
 logs/
 
 # FOR LEGACY REASONS
 config.json
 fucking hell.json5
+headcrabs.json5
