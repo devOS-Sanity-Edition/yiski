@@ -12,8 +12,8 @@ with open("config.toml", "rb") as yiskiConfig:
 # Variables so they can be used in other files
 githubToken = yiskiConf["universal"]["githubToken"]
 botPrefix = yiskiConf["universal"]["botPrefix"]
-discordVentChannel = yiskiConf["discord"]["ventChannelID"]
-discordOwnerRole = yiskiConf["discord"]["ownerRoleID"]
+discordVentChannel = int(yiskiConf["discord"]["ventChannelID"])
+discordOwnerRole = int(yiskiConf["discord"]["ownerRoleID"])
 
 intents = discord.Intents().all()
 
@@ -61,7 +61,7 @@ async def stop(ctx):
 # Reloads all commands
 @yD.command(aliases=["relaod"])  # this alias is here seriously just because i was tired of speed type misspelling it
 async def reload(ctx, extension = None):
-    if roleCheck(ctx, yiskiConf["discord"]["ownerRoleID"]):
+    if roleCheck(ctx, int(yiskiConf["discord"]["ownerRoleID"])):
         logger.debug("Attempt to reload cogs have started")
         if not extension:
             try:
@@ -88,7 +88,7 @@ async def reload(ctx, extension = None):
 
 @yD.command()
 async def load(ctx, extension):
-    if roleCheck(ctx, yiskiConf["discord"]["ownerRoleID"]):
+    if roleCheck(ctx, int(yiskiConf["discord"]["ownerRoleID"])):
         yD.load_extension(f'discordCommands.{extension}')
         await ctx.send(embed=embedCreator(f"Loaded", f"{extension} has been loaded.", 0x00ad10))
         logger.debug(f"Attempted load of {extension}")
@@ -97,7 +97,7 @@ async def load(ctx, extension):
 
 @yD.command()
 async def unload(ctx, extension):
-    if roleCheck(ctx, yiskiConf["discord"]["ownerRoleID"]):
+    if roleCheck(ctx, int(yiskiConf["discord"]["ownerRoleID"])):
         yD.unload_extension(f'discordCommands.{extension}')
         await ctx.send(embed=embedCreator(f"Unloaded", f"{extension} has been unloaded.", 0x00ad10))
         logger.debug(f"Attempted unload of {extension}")
