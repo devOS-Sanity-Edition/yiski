@@ -6,7 +6,7 @@ setuptools.setup(name='Yiski',
                  license="MIT",
                  packages=find_packages(),
                  description="A bot to replace the original idea of devOS Core for the devOS: Sanity Edition server.",
-                 author="HiItsDevin_",
-                 url="https://github.com/HiItsDevin/Yiski",
+                 author="asoji",
+                 url="https://github.com/asoji/Yiski",
                  python_requires=">=3.9"
 )
