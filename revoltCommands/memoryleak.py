@@ -2,7 +2,7 @@ import defectio
 from defectio import ext
 from defectio.ext import commands
 from loguru import logger
-
+from mainRevolt import yiskiConf
 
 class MemoryLeakRevolt(commands.Cog):
     def __init__(self, bot):
@@ -10,7 +10,7 @@ class MemoryLeakRevolt(commands.Cog):
 
     @commands.command()
     async def memoryleak(self, ctx):
-        await ctx.reply("[be fucking careful](https://youtu.be/QbFtogkOFLc)", mention=True)
+        await ctx.reply(file=defectio.File(yiskiConf["videos"]["memoryleak"]))
 
 
 def setup(bot):

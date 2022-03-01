@@ -1,5 +1,7 @@
+import discord
 from discord.ext import commands
 from loguru import logger
+from mainDiscord import yiskiConf
 
 class MemoryLeakDiscord(commands.Cog):
     def __init__(self, client):
@@ -7,7 +9,7 @@ class MemoryLeakDiscord(commands.Cog):
 
     @commands.command()
     async def memoryleak(self, ctx):
-        await ctx.send("https://youtu.be/QbFtogkOFLc")
+        await ctx.send(file=discord.File(yiskiConf["videos"]["memoryleak"]))
 
 
 def setup(client):

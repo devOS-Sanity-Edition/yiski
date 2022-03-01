@@ -2,7 +2,7 @@ import defectio
 from defectio import ext
 from defectio.ext import commands
 from loguru import logger
-
+from mainRevolt import yiskiConf
 
 class GaspRevolt(commands.Cog):
     def __init__(self, bot):
@@ -10,7 +10,7 @@ class GaspRevolt(commands.Cog):
 
     @commands.command()
     async def gasp(self, ctx):
-        await ctx.reply("[😮](https://youtu.be/GwIlt8pJdHg)", mention=True)
+        await ctx.reply(file=defectio.File(yiskiConf["videos"]["gasp"]))
 
 
 def setup(bot):

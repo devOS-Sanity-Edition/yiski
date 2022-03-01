@@ -1,5 +1,7 @@
+import discord
 from discord.ext import commands
 from loguru import logger
+from mainDiscord import yiskiConf
 
 class GaspDiscord(commands.Cog):
     def __init__(self, client):
@@ -7,8 +9,7 @@ class GaspDiscord(commands.Cog):
 
     @commands.command()
     async def gasp(self, ctx):
-        await ctx.reply("😮\n\n https://youtu.be/GwIlt8pJdHg",
-                        mention_author=True)
+        await ctx.send(file=discord.File(yiskiConf["videos"]["gasp"]))
 
 
 def setup(client):

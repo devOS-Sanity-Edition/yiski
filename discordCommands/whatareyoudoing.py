@@ -1,6 +1,7 @@
+import discord
 from discord.ext import commands
 from loguru import logger
-from mainDiscord import embedCreator
+from mainDiscord import embedCreator, yiskiConf
 
 class WhatAreYouDoingDiscord(commands.Cog):
     def __init__(self, client):
@@ -8,7 +9,7 @@ class WhatAreYouDoingDiscord(commands.Cog):
 
     @commands.command()
     async def whatareyoudoing(self, ctx):
-        await ctx.send("https://youtu.be/w0szBUI-PaU")
+        await ctx.send(file=discord.File(yiskiConf["videos"]["whatareyoudoing"]))
 
 def setup(client):
     client.add_cog(WhatAreYouDoingDiscord(client))
