@@ -21,4 +21,5 @@ ventChannelID = ""
 [videos]
     gasp = "assets/videos/gasp.mp4"
     memoryleak = "assets/videos/memoryleak.mp4"
+    rtx = "assets/videos/rtx.mp4"
     whatareyoudoing = "assets/videos/whatareyoudoing.mp4"
