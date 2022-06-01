@@ -9,8 +9,7 @@ class AntiHornyDiscord(commands.Cog):
 
     @commands.command()
     async def antihorny(self, ctx):
-        await ctx.send("go touch some grass lmao \n")
-        await ctx.send(file=discord.File(yiskiConf["videos"]["antihorny"]))
+        await ctx.send("go touch some grass lmao \n", file=discord.File(yiskiConf["videos"]["antihorny"]))
 
 
 def setup(client):
