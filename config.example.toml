@@ -2,11 +2,6 @@
 githubToken = ""
 botPrefix = "yk!"
 
-[revolt]
-botToken = ""
-ownerRoleName = ""
-ventChannelID = ""
-
 [discord]
 botToken = ""
 ownerRoleID = ""
