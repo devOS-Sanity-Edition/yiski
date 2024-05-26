@@ -1,11 +1,9 @@
 [universal]
 githubToken = ""
-botPrefix = "yk!"
 
 [discord]
 botToken = ""
-ownerRoleID = ""
-ventChannelID = ""
+adminIDs = [ "" ]
 
 [images]
     [images.static]

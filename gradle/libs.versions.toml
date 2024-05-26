@@ -1,0 +1,38 @@
+[versions]
+jda = "5.0.0-beta.24"
+jda-ktx = "0.11.0-beta.20"
+aviation = "1c462196"
+ktor = "2.3.11"
+ktoml = "0.5.1"
+kotlinx-coroutines = "1.8.1"
+kotlinx-json = "1.6.3"
+kotlin-logging = "5.1.0"
+logback = "1.5.6"
+reflection = "0.10.2"
+slf4j = "2.0.13"
+
+[libraries]
+jda = { module = "net.dv8tion:JDA", version.ref = "jda" }
+jda-ktx = { module = "club.minnced:jda-ktx", version.ref = "jda-ktx" }
+aviation = { module = "xyz.artrinix:aviation", version.ref = "aviation" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktoml-core = { module = "com.akuleshov7:ktoml-core", version.ref = "ktoml" }
+ktoml-file = { module = "com.akuleshov7:ktoml-file", version.ref = "ktoml" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-json" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+reflection = { module = "org.reflections:reflections", version.ref = "reflection" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+[bundles]
+jda = [ "jda", "jda-ktx", "aviation" ]
+kotlinx = [ "kotlinx-coroutines-core", "kotlinx-serialization-json" ]
+ktor = [ "ktor-client-core", "ktor-client-cio" ]
+ktoml = [ "ktoml-core", "ktoml-file" ]
+logback = [ "logback", "logback-core" ]
+
+[plugins]
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
