@@ -24,6 +24,7 @@ dependencies {
     implementation(libs.bundles.ktoml)
     implementation(libs.bundles.kotlinx)
     implementation(libs.bundles.logback)
+    implementation(libs.bundles.exposed)
     implementation(libs.kotlin.logging)
 }
 

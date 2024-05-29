@@ -1,4 +1,4 @@
-package one.devos.yiski.utils
+package one.devos.yiski.data
 
 enum class Colors(val r: Int, val g: Int, val b: Int) {
     SUCCESS(6, 214, 160),

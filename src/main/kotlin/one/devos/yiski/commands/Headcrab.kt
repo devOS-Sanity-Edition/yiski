@@ -2,21 +2,24 @@ package one.devos.yiski.commands
 
 import net.dv8tion.jda.api.entities.User
 import one.devos.yiski.Yiski
-import one.devos.yiski.data.YiskiBotConfig
 import one.devos.yiski.logger
-import one.devos.yiski.utils.Colors
-import one.devos.yiski.utils.HexToRGB
+import one.devos.yiski.data.Colors
+import org.jetbrains.exposed.sql.Database
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 import java.awt.Color
-import java.io.File
 import java.nio.file.Paths
 
+
 class Headcrab : Scaffold{
+
     @SlashCommand("headcrab", "CRAB YOUR FRIENDS 🦀🦀🦀🦀🦀")
     suspend fun headcrab(ctx: SlashContext, @Description("Who you wanna 🦀!") user: User) {
+        val authorID = ctx.author.id
+        
+
         if (user == ctx.author) {
             ctx.sendEmbed {
                 setTitle("No suicide in my christan discord server!")
@@ -25,7 +28,7 @@ class Headcrab : Scaffold{
         }
         val result = (1..100).random()
 
-        if (result < 101) {
+        if (result >= 91) {
             ctx.sendEmbed {
                 setTitle("Headcrab failed!")
                 setDescription("${user.asMention} has succsefully deflected the headcrab from ${ctx.author.asMention}!")

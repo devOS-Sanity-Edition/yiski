@@ -13,6 +13,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.events.session.ShutdownEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
+import org.jetbrains.exposed.sql.Database
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.AviationBuilder
 import xyz.artrinix.aviation.events.AviationExceptionEvent
@@ -28,6 +29,7 @@ object Yiski {
     lateinit var jda: JDA
     lateinit var aviation: Aviation
     val client = HttpClient(CIO) { install(DefaultRequest) }
+    val db by lazy { Database.connect("jdbc:sqlite:data.db", "org.sqlite.JDBC") }
 
     @JvmStatic
     fun main(args: Array<String>): Unit = runBlocking {
