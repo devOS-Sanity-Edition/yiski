@@ -24,7 +24,10 @@ data class YiskiBotConfig(
     @Serializable
     data class ImagesConfig(
         @SerialName("static")
-        val inlineImagesTables: ImageTables
+        val inlineStaticImagesTables: StaticImageTables,
+
+        @SerialName("gif")
+        val inlineGifImageTables: GifImageTables
     )
 
     @Serializable
@@ -38,10 +41,16 @@ data class YiskiBotConfig(
 }
 
 @Serializable
-data class ImageTables(
+data class StaticImageTables(
     val devtools: String,
     val ims: String,
     val token: String
+)
+
+@Serializable
+data class GifImageTables(
+    val headcrabsuccess: String,
+    val headcrabfail: String,
 )
 
 // Structure:

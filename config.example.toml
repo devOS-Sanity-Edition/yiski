@@ -11,6 +11,10 @@ adminIDs = [ "" ]
     ims = "assets/images/dreadfulims.png"
     token = "assets/images/token.png"
 
+    [images.gif]
+    headcrabsuccess = "assets/images/headcrab_fail.gif"
+    headcrabfail = "assets/images/headcrab_fail.gif"
+
 [videos]
     antihorny = "assets/videos/antihorny.mp4"
     gasp = "assets/videos/gasp.mp4"

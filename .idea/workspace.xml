@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="3bd5c3ce-3579-41a8-bc0a-e1a1a3a22104" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/kotlin/one/devos/yiski/commands/Help.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/kotlin/one/devos/yiski/utils/Zalgo.kt" afterDir="false" />
@@ -29,6 +30,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/one/devos/yiski/data/YiskiBotConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/one/devos/yiski/data/YiskiBotConfig.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="3bd5c3ce-3579-41a8-bc0a-e1a1a3a22104" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +51,16 @@
         </task>
         <projects_view>
           <tree_state>
+<<<<<<< Updated upstream
             <expand />
+=======
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Yiski" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+>>>>>>> Stashed changes
             <select />
           </tree_state>
         </projects_view>
@@ -59,6 +72,10 @@
       <list>
         <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
+<<<<<<< Updated upstream
+=======
+        <option value="Class" />
+>>>>>>> Stashed changes
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -78,10 +95,13 @@
     &quot;accountId&quot;: &quot;a1f3f15c-ba3d-4e04-8f44-65e8ad768d8f&quot;
   }
 }</component>
+<<<<<<< Updated upstream
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/5.0.0-beta.24/bc93355f6f04172415bcbfc4601a47a3cface45b/JDA-5.0.0-beta.24-sources.jar!/net/dv8tion/jda/api/events/session/GenericSessionEvent.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/5.0.0-beta.24/bc93355f6f04172415bcbfc4601a47a3cface45b/JDA-5.0.0-beta.24-sources.jar!/net/dv8tion/jda/api/events/session/ShutdownEvent.java" root0="SKIP_INSPECTION" />
   </component>
+=======
+>>>>>>> Stashed changes
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -105,19 +125,31 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;aviation&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+<<<<<<< Updated upstream
     &quot;last_opened_file_path&quot;: &quot;/run/media/asoji/Jadeded/Yiski&quot;,
+=======
+    &quot;last_opened_file_path&quot;: &quot;D:/Yiski&quot;,
+>>>>>>> Stashed changes
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+<<<<<<< Updated upstream
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+=======
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+>>>>>>> Stashed changes
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;kotlin-gradle-user-dirs&quot;: [
+<<<<<<< Updated upstream
       &quot;/home/asoji/.gradle&quot;
+=======
+      &quot;C:\\Users\\Aubrey Mason-Park\\.gradle&quot;
+>>>>>>> Stashed changes
     ]
   }
 }</component>
@@ -131,7 +163,11 @@
       <recent name="D:\Yiski\src\main\kotlin\one\devos\yiski" />
     </key>
   </component>
+<<<<<<< Updated upstream
   <component name="RunManager" selected="Kotlin.Yiski">
+=======
+  <component name="RunManager" selected="Gradle.Yiski [build]">
+>>>>>>> Stashed changes
     <configuration name="Yiski [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -214,11 +250,15 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< Updated upstream
+=======
+        <item itemvalue="Gradle.Yiski [build]" />
+        <item itemvalue="Gradle.Yiski [runShadow]" />
+>>>>>>> Stashed changes
         <item itemvalue="Kotlin.Yiski" />
         <item itemvalue="Gradle.Yiski [runShadow]" />
         <item itemvalue="Kotlin.Main" />
         <item itemvalue="Gradle.Yiski [run]" />
-        <item itemvalue="Gradle.Yiski [build]" />
       </list>
     </recent_temporary>
   </component>
