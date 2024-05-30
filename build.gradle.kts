@@ -15,17 +15,16 @@ repositories {
 
 dependencies {
     api(libs.slf4j.api)
-    implementation("io.ktor:ktor-client-cio-jvm:2.3.11")
-    testImplementation(kotlin("test"))
     implementation(kotlin("reflect"))
-    implementation(libs.reflection)
+    implementation(libs.bundles.exposed)
     implementation(libs.bundles.jda)
     implementation(libs.bundles.ktor)
     implementation(libs.bundles.ktoml)
     implementation(libs.bundles.kotlinx)
     implementation(libs.bundles.logback)
-    implementation(libs.bundles.exposed)
     implementation(libs.kotlin.logging)
+    implementation(libs.reflection)
+    testImplementation(kotlin("test"))
 }
 
 tasks.test {
