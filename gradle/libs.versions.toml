@@ -1,40 +1,71 @@
 [versions]
-aviation = "1c462196"
+# Aviation
+aviation = "7d1dcef7"
+# Exposed
 exposed = "0.50.0"
-jda = "5.0.0-beta.24"
-jda-ktx = "0.11.0-beta.20"
+# JDA
+jda = "5.0.1"
+jda-ktx = "0.12.0"
+# Ktor
 ktor = "2.3.11"
 ktoml = "0.5.1"
+# Kotlin
 kotlinx-coroutines = "1.8.1"
-kotlinx-json = "1.6.3"
+kotlinx-serialization = "1.6.3"
 kotlin-logging = "5.1.0"
+# Lavalink
+lavakord-jda = "7.0.3"
+lavalink-client = "3.0.0"
+# Logback
 logback = "1.5.6"
+# Reflection
 reflection = "0.10.2"
+# SLF4J
 slf4j = "2.0.13"
 
 [libraries]
+# Aviation
 aviation = { module = "xyz.artrinix:aviation", version.ref = "aviation" }
+# Exposed
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
-exposed-dao = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
-exposed-jdbc = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-crypt = { module = "org.jetbrains.exposed:exposed-crypt", version.ref = "exposed" }
+exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed" }
+exposed-json = { module = "org.jetbrains.exposed:exposed-json", version.ref = "exposed" }
+# JDA
 jda = { module = "net.dv8tion:JDA", version.ref = "jda" }
 jda-ktx = { module = "club.minnced:jda-ktx", version.ref = "jda-ktx" }
+# Ktor
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-cio-jvm = { module = "io.ktor:ktor-client-cio-jvm", version.ref = "ktor" }
+# Ktoml
 ktoml-core = { module = "com.akuleshov7:ktoml-core", version.ref = "ktoml" }
 ktoml-file = { module = "com.akuleshov7:ktoml-file", version.ref = "ktoml" }
+# Kotlin
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+kotlin-scripting-jsr223 = { module = "org.jetbrains.kotlin:kotlin-scripting-jsr223" }
+kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-json" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+# Kotlin Logging
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+# Lavakord
+lavakord-jda = { module = "dev.schlaubi.lavakord:jda", version.ref = "lavakord-jda" }
+lavalink-client = { module = "dev.arbjerg:lavalink-client", version.ref = "lavalink-client" }
+# Logback
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+# Reflection
 reflection = { module = "org.reflections:reflections", version.ref = "reflection" }
+# SLF4J
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 
 [bundles]
-exposed = [ "exposed-core", "exposed-dao", "exposed-jdbc" ]
+exposed = [ "exposed-core", "exposed-crypt", "exposed-dao", "exposed-jdbc", "exposed-kotlin-datetime", "exposed-json" ]
 jda = [ "jda", "jda-ktx", "aviation" ]
+kotlin = [ "kotlin-stdlib", "kotlin-scripting-jsr223", "kotlin-compiler-embeddable" ]
 kotlinx = [ "kotlinx-coroutines-core", "kotlinx-serialization-json" ]
 ktor = [ "ktor-client-core", "ktor-client-cio", "ktor-client-cio-jvm" ]
 ktoml = [ "ktoml-core", "ktoml-file" ]
