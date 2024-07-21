@@ -17,7 +17,7 @@ class About : Scaffold {
             addField("Yiski Version", "`${YiskiConstants.version}`", true)
             addField("Aviation Version", "`${YiskiConstants.aviationVersion}`", true)
             addField("JDA Version", "`${YiskiConstants.jdaVersion}`", true)
-            setFooter("Built by ${user?.asTag ?: "asojidev"}, assisted by Aviation's creator, ${user2?.asTag ?: "CephalonCosmic"}", user?.effectiveAvatarUrl)
+            addField("Built by ${user?.asMention ?: "asojidev"}, assisted by Aviation's creator, ${user2?.asMention ?: "CephalonCosmic"}", "", false)
         }
     }
 }
