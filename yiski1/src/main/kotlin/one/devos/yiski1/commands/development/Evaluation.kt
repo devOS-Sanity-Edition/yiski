@@ -33,31 +33,33 @@ class Evaluation : Scaffold {
 
         val stripped = code.replace("^```\\w+".toRegex(), "").removeSuffix("```")
 
+
+        val m = ctx.interaction.deferReply().await()
+
         @Suppress("TooGenericExceptionCaught")
         try {
+
             @Suppress("MaxLineLength")
             val result = engine.eval("@OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class, kotlinx.coroutines.DelicateCoroutinesApi::class)\nkotlinx.coroutines.runBlocking { $stripped }", engine.createBindings().apply { bindings.forEach(::put) })
 
             when (result) {
                 null -> {
-                    ctx.send("Script completed but did not return anything.")
+                    m.editOriginal("Script completed but did not return anything.").await()
                 }
                 is CompletableFuture<*> -> {
-                    val m = ctx.interaction
-                        .deferReply()
-                        .setContent("```\nCompletableFuture<Pending>```")
-                        .await()
+                    m.editOriginal("```\nCompletableFuture<Pending>```").await()
+
                     val post = result.CoroutineAwait()
-                    m.editOriginal("```kotlin\n$post\n```")
+                    m.editOriginal("```kotlin\n$post\n```").await()
                 }
                 else -> {
-                    ctx.send("```kotlin\n${result.toString().take(1950)}\n```")
+                    m.editOriginal("```kotlin\n${result.toString().take(1950)}\n```").await()
                 }
             }
         } catch (scriptException: ScriptException) {
-            ctx.sendPrivate("Invalid script provided!\n```kotlin\n${scriptException.localizedMessage}\n```")
+            m.setEphemeral(true).editOriginal("Invalid script provided!\n```kotlin\n${scriptException.localizedMessage}\n```").await()
         } catch (exception: Exception) {
-            ctx.sendPrivate("An exception occurred.\n```kotlin\n${exception.localizedMessage}\n```")
+            m.setEphemeral(true).editOriginal("An exception occurred.\n```kotlin\n${exception.localizedMessage}\n```").await()
         }
     }
 }
