@@ -1,6 +1,5 @@
 package one.devos.yiski.common
 
-import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDAInfo
 import xyz.artrinix.aviation.Aviation
 

@@ -1,16 +1,13 @@
 package one.devos.yiski1
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.ktor.client.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.*
 import net.dv8tion.jda.api.JDA
 import one.devos.yiski.common.YiskiModuleEntrypoint
 import one.devos.yiski1.data.Yiski1ConfigData
 import org.jetbrains.exposed.sql.Database
 import xyz.artrinix.aviation.Aviation
 
-val yiski1Logger = KotlinLogging.logger { }
+val logger = KotlinLogging.logger { }
 
 class Yiski1 : YiskiModuleEntrypoint {
     override val moduleName: String = "Yiski1"
@@ -23,7 +20,7 @@ class Yiski1 : YiskiModuleEntrypoint {
 
     init {
         instance = this
-        yiski1Logger.info { "Yiski1 module loaded." }
+        logger.info { "Yiski1 module loaded." }
     }
 
     lateinit var config: Yiski1ConfigData

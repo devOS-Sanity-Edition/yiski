@@ -1,4 +1,4 @@
-package one.devos.yiski
+package one.devos.yiski.runner
 
 import dev.minn.jda.ktx.events.listener
 import dev.minn.jda.ktx.jdabuilder.default
@@ -10,7 +10,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.events.session.ShutdownEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
-import one.devos.yiski.common.Config
 import one.devos.yiski.common.YiskiConstants
 import one.devos.yiski.common.YiskiModuleEntrypoint
 import one.devos.yiski.common.utils.ModulesDetection.detectModules
@@ -20,12 +19,10 @@ import xyz.artrinix.aviation.events.AviationExceptionEvent
 import xyz.artrinix.aviation.events.CommandFailedEvent
 import xyz.artrinix.aviation.internal.utils.on
 import xyz.artrinix.aviation.ratelimit.DefaultRateLimitStrategy
-import java.util.*
-import kotlin.system.exitProcess
 
 val logger = KotlinLogging.logger { }
 
-object Yiski {
+object YiskiRunner {
     lateinit var jda: JDA
     lateinit var aviation: Aviation
 
@@ -81,10 +78,13 @@ object Yiski {
         jda.addEventListener(aviation)
 
         jda.listener<ReadyEvent> {
-            aviation.syncCommands(jda)
-//            aviation.syncCommandsForTestGuilds(jda)
-//            aviation.syncCommands(jda, YiskiConstants.config.discord.homeGuildID, true)
-            logger.info { "Yiski started!" }
+            try {
+                logger.info { "Yiski started!" }
+                aviation.syncCommands(jda)
+                aviation.syncCommandsForTestGuilds(jda)
+            } catch (e: Exception) {
+                logger.error { "Something has gone very wrong with the Ready Event." }
+            }
         }
 
         jda.listener<MessageReceivedEvent> { event ->
@@ -101,8 +101,6 @@ object Yiski {
 
 
     }
-
-
 
     private fun listenAviationEvents() {
         aviation.on<AviationExceptionEvent> {

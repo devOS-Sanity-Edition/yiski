@@ -2,13 +2,12 @@ package one.devos.yiski1.commands.headcrab
 
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
-import dev.minn.jda.ktx.messages.EmbedBuilder
 import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.data.Colors
 import one.devos.yiski.common.data.Colors.FAIL
 import one.devos.yiski1.Yiski1
-import one.devos.yiski1.yiski1Logger
+import one.devos.yiski1.logger
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
@@ -16,7 +15,6 @@ import xyz.artrinix.aviation.entities.Scaffold
 import java.awt.Color
 import java.io.FileInputStream
 import java.nio.file.Path
-import java.nio.file.Paths
 
 
 class Headcrab : Scaffold {
@@ -35,7 +33,7 @@ class Headcrab : Scaffold {
         val result = (1..100).random()
 
         if (result >= 91) {
-            yiski1Logger.info { "HEADCRAB FAIL: CHANCE $result" }
+            logger.info { "HEADCRAB FAIL: CHANCE $result" }
 
             val inputStreamHeadcrabSuccess = FileInputStream(Path.of(Yiski1.instance.config.images.inlineGifImageTables.headcrabsuccess).toFile())
 
@@ -56,7 +54,7 @@ class Headcrab : Scaffold {
                 setDescription("${user.asMention} has been headcrabbed by ${ctx.author.asMention}!")
                 setColor(Color(Colors.SUCCESS.r, Colors.SUCCESS.g, Colors.SUCCESS.b))
                 build()
-                yiski1Logger.info { "HEADCRAB SUCCESS: CHANCE $result" }
+                logger.info { "HEADCRAB SUCCESS: CHANCE $result" }
             }
         }
     }

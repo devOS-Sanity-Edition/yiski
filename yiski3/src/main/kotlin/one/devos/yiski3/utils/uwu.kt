@@ -88,6 +88,17 @@ private val words = mapOf(
     Pair("stupid", "baka"),
     Pair("what", "nani"),
     Pair("meow", "nya~"),
+    Pair("storm", "stworm"), // i apologize for everything here and below for pairs
+    Pair("aubrey", "aubwee"),
+    Pair("carter", "cwartwer"),
+    Pair("jay", "redacted"),
+    Pair("owlie", "uwulie"),
+    Pair("stereo", "sterweo"),
+    Pair("studio", "stwudiwo"),
+    Pair("cylon", "pwossom mwan"),
+    Pair("dynamyc", "dwyn"),
+    Pair("dyn", "dwyn"),
+    Pair("hunter", "hwuntwer")
 )
 
 private val emojis = listOf(

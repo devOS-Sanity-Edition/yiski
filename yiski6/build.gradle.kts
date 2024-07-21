@@ -16,9 +16,9 @@ dependencies {
     implementation(rootProject.libs.lavakord.jda)
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
+//tasks.test {
+//    useJUnitPlatform()
+//}
 kotlin {
     jvmToolchain(21)
 }

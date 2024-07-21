@@ -10,10 +10,10 @@ object Yiski1Config {
 
     fun loadConfig(): Yiski1ConfigData {
         return try {
-            yiski1Logger.info { "Attemping to load config" }
+            logger.info { "Attemping to load config" }
             TomlFileReader.decodeFromFile(serializer(), configPath)
         } catch (e: Exception) {
-            yiski1Logger.error {
+            logger.error {
                 """
                     
                     
