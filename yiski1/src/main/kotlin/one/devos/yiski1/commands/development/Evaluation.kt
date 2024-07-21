@@ -1,6 +1,5 @@
 package one.devos.yiski1.commands.development
 
-import kotlinx.coroutines.future.await as CoroutineAwait
 import dev.minn.jda.ktx.coroutines.await
 import xyz.artrinix.aviation.command.message.annotations.Greedy
 import xyz.artrinix.aviation.command.slash.SlashContext
@@ -10,6 +9,7 @@ import xyz.artrinix.aviation.entities.Scaffold
 import java.util.concurrent.CompletableFuture
 import javax.script.ScriptEngineManager
 import javax.script.ScriptException
+import kotlinx.coroutines.future.await as CoroutineAwait
 
 class Evaluation : Scaffold {
     private val engine = ScriptEngineManager().getEngineByExtension("kts")

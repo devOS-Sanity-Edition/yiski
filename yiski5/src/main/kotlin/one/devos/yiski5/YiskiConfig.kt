@@ -10,9 +10,6 @@ data class YiskiConfig(
 ) {
     @Serializable
     data class BotConfig(
-        val token: String,
-        val activity: String = "LISTENING",
-        val status: String = "Screams of the innocent",
         val timezone: String = "America/Los_Angeles",
         val daysAhead: Long = 1,
         val resetInterval: Long = 24,

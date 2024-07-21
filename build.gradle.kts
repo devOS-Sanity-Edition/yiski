@@ -57,7 +57,7 @@ allprojects {
     }
 
     application {
-        mainClass.set("one.devos.yiski.Yiski")
+        mainClass.set("one.devos.yiski.runner.YiskiRunner")
     }
 
     ktor {

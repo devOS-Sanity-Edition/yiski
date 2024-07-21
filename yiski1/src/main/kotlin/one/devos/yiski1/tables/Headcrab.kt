@@ -1,10 +1,6 @@
 package one.devos.yiski1.tables
 
-import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.dao.id.LongIdTable
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.intParam
 
 object Headcrabs : LongIdTable("headcrabs") {
     val discordId = long("discordId")

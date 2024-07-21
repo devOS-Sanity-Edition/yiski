@@ -2,8 +2,8 @@ package one.devos.yiski5.commands
 
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.events.listener
-import dev.minn.jda.ktx.interactions.components.*
-import dev.minn.jda.ktx.messages.*
+import dev.minn.jda.ktx.interactions.components.Modal
+import dev.minn.jda.ktx.messages.editMessage
 import kotlinx.coroutines.withTimeoutOrNull
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent
@@ -12,8 +12,7 @@ import one.devos.yiski5.logger
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
-import java.time.*
-import java.util.*
+import java.time.Instant
 import java.util.concurrent.TimeUnit
 import kotlin.time.Duration.Companion.minutes
 

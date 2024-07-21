@@ -1,8 +1,8 @@
 package one.devos.yiski5
 
 import dev.minn.jda.ktx.events.listener
+import dev.minn.jda.ktx.messages.Embed
 import dev.minn.jda.ktx.messages.send
-import dev.minn.jda.ktx.messages.*
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.JDA
