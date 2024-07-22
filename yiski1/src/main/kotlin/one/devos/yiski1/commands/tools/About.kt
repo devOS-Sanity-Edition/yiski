@@ -10,6 +10,7 @@ class About : Scaffold {
     suspend fun about(ctx: SlashContext) {
         val user = ctx.jda.getUserById(942533628435501076)
         val user2 = ctx.jda.getUserById(299779734932291604)
+        val user3 = ctx.jda.getUserById(543542278967394322)
         ctx.sendEmbed {
             setThumbnail(ctx.jda.selfUser.effectiveAvatarUrl)
             setTitle("Yiski, an in-house devOS: Sanity Edition bot")
@@ -17,7 +18,17 @@ class About : Scaffold {
             addField("Yiski Version", "`${YiskiConstants.version}`", true)
             addField("Aviation Version", "`${YiskiConstants.aviationVersion}`", true)
             addField("JDA Version", "`${YiskiConstants.jdaVersion}`", true)
-            addField("Built by ${user?.asMention ?: "asojidev"}, assisted by Aviation's creator, ${user2?.asMention ?: "CephalonCosmic"}", "", false)
+            addField("Built by ${user?.asMention ?: "`asojidev`"}, assisted by Aviation's creator, ${user2?.asMention ?: "`CephalonCosmic`"}", "", false)
+            addField("Contributors", "List of people who have made a significant contribution, other than asojidev, to help improve or directly contributed to the project!", false)
+            addField("Yiski Modularization", """
+                ${user2?.asMention ?: "`CephalonCosmic`"}, `Deftu`
+            """.trimIndent(), true)
+            addField("Yiski4 Agent", """
+                ${user2?.asMention ?: "`CephalonCosmic`"}, `dynamyc`, ${user3?.asMention ?: "`lizzythewitch`"}
+            """.trimIndent(), true)
+            addField("Other", """
+                `bluebeargreen`, ${user2?.asMention ?: "`CephalonCosmic`"}, ${user3?.asMention ?: "`lizzythewitch`"}
+            """.trimIndent(), true)
         }
     }
 }
