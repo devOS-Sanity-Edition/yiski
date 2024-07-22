@@ -1,0 +1,12 @@
+services:
+  yiski:
+    container_name: Yiski
+    image: devos-se/yiski-dev:latest
+    volumes:
+      - ./config.toml:/app/config.toml
+      - ./yiski1_config.toml:/app/yiski1_config.toml
+#      - ./yiski2_config.toml:/app/yiski2_config.toml
+#      - ./yiski3_config.toml:/app/yiski3_config.toml
+#      - ./yiski4_config.toml:/app/yiski4_config.toml
+      - ./yiski5_config.toml:/app/yiski5_config.toml
+#      - ./yiski6_config.toml:/app/yiski6_config.toml

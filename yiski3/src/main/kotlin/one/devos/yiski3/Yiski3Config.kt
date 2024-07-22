@@ -1,14 +1,14 @@
-package one.devos.yiski1
+package one.devos.yiski3
 
 import com.akuleshov7.ktoml.file.TomlFileReader
 import kotlinx.serialization.serializer
-import one.devos.yiski1.data.Yiski1ConfigData
+import one.devos.yiski3.data.Yiski3ConfigData
 import kotlin.system.exitProcess
 
-object Yiski1Config {
+object Yiski3Config {
     private val configPath = System.getProperty("yiski1_config", "yiski1_config.toml")
 
-    fun loadConfig(): Yiski1ConfigData {
+    fun loadConfig(): Yiski3ConfigData {
         return try {
             logger.info { "Attemping to load config" }
             TomlFileReader.decodeFromFile(serializer(), configPath)

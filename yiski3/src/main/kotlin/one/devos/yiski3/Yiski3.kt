@@ -3,6 +3,7 @@ package one.devos.yiski3
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
 import one.devos.yiski.common.YiskiModuleEntrypoint
+import one.devos.yiski3.data.Yiski3ConfigData
 import xyz.artrinix.aviation.Aviation
 
 val logger = KotlinLogging.logger { }
@@ -21,7 +22,12 @@ class Yiski3 : YiskiModuleEntrypoint {
         logger.info { "Yiski3 module loaded." }
     }
 
-    override fun config() { }
+    lateinit var config: Yiski3ConfigData
+
+    override fun config() {
+        config = Yiski3Config.loadConfig()
+
+    }
 
     override fun aviation(aviation: Aviation) {
         aviation.slashCommands.register("one.devos.yiski3.commands")

@@ -19,10 +19,17 @@ class Status : Scaffold {
             setTitle("Agent Name: $unimpl")
             addField("$unimpl Hardware",
                 """
-                    Model: $unimpl
-                    Processor: $unimpl
-                    Revision: $unimpl
-                    Bootloader date: $unimpl
+                    Model: 
+                    $unimpl
+                    
+                    Processor: 
+                    $unimpl
+                    
+                    Revision: 
+                    $unimpl
+                    
+                    Bootloader date: 
+                    $unimpl
                 """.trimIndent(), false)
             addField("", "-# $funniFootersRandom", false)
         }

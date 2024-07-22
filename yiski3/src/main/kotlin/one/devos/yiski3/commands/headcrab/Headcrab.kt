@@ -1,4 +1,4 @@
-package one.devos.yiski1.commands.headcrab
+package one.devos.yiski3.commands.headcrab
 
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
@@ -6,8 +6,11 @@ import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.data.Colors
 import one.devos.yiski.common.data.Colors.FAIL
+import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski1.Yiski1
 import one.devos.yiski1.logger
+import one.devos.yiski3.Yiski3
+import one.devos.yiski3.logger
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
@@ -35,15 +38,15 @@ class Headcrab : Scaffold {
         if (result >= 91) {
             logger.info { "HEADCRAB FAIL: CHANCE $result" }
 
-            val inputStreamHeadcrabSuccess = FileInputStream(Path.of(Yiski1.instance.config.images.inlineGifImageTables.headcrabsuccess).toFile())
+            val inputStreamHeadcrabSuccess = EmbedHelpers.imagesPath(Yiski3.instance.config.images.inlineGifImageTables.headcrabsuccess)
 
             ctx.channel
-                .sendFiles(FileUpload.fromData(inputStreamHeadcrabSuccess, Yiski1.instance.config.images.inlineGifImageTables.headcrabfailfile))
+                .sendFiles(FileUpload.fromData(inputStreamHeadcrabSuccess, Yiski3.instance.config.images.inlineGifImageTables.headcrabfailfile))
                 .setEmbeds(Embed {
                     title = "Headcrab failed!"
                     description = "${user.asMention} has succsefully deflected the headcrab from ${ctx.author.asMention}!"
-                    image = "attachment://${Yiski1.instance.config.images.inlineGifImageTables.headcrabsuccessfile}" // Aubree is being a massive HIMBO
-                    color = Color(FAIL.r, FAIL.g, FAIL.b).rgb
+                    image = "attachment://${Yiski3.instance.config.images.inlineGifImageTables.headcrabsuccessfile}" // Aubree is being a massive HIMBO
+                    color = EmbedHelpers.infoColor()
                 })
                 .await()
 

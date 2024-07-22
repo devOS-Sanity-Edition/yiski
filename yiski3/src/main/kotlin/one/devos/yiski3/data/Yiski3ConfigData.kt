@@ -1,10 +1,10 @@
-package one.devos.yiski1.data
+package one.devos.yiski3.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Yiski1ConfigData(
+data class Yiski3ConfigData(
     val images: ImageConfig,
     val videos: VideosConfig
 ) {
