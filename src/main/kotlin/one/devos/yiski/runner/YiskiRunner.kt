@@ -11,8 +11,7 @@ import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.events.session.ShutdownEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
 import one.devos.yiski.common.YiskiConstants
-import one.devos.yiski.common.YiskiModuleEntrypoint
-import one.devos.yiski.common.database.DatabaseManager
+import one.devos.yiski.module.loader.api.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.utils.ModulesDetection.detectModules
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.AviationBuilder

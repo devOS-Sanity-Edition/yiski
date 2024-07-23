@@ -2,7 +2,7 @@ package one.devos.yiski2
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
-import one.devos.yiski.common.YiskiModuleEntrypoint
+import one.devos.yiski.module.loader.api.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.database.DatabaseManager
 import xyz.artrinix.aviation.Aviation
 

@@ -16,7 +16,6 @@ dependencies {
     testImplementation(kotlin("test"))
 
     implementation(project(":yiski-module-metadata"))
-    implementation(project(":yiski-module-loader"))
 
     (1..6).forEach { module ->
         implementation(project(":yiski$module"))
@@ -46,6 +45,10 @@ allprojects {
     dependencies {
         if (project.name != "yiski-common")
             implementation(project(":yiski-common"))
+
+        if (project.name != "yiski-module-loader")
+            implementation(project(":yiski-module-loader"))
+
         api(rootProject.libs.slf4j.api)
         implementation(kotlin("reflect"))
         implementation(rootProject.libs.bundles.exposed)

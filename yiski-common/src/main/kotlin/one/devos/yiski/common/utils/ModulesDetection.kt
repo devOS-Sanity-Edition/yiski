@@ -1,6 +1,6 @@
 package one.devos.yiski.common.utils
 
-import one.devos.yiski.common.YiskiModuleEntrypoint
+import one.devos.yiski.module.loader.api.entrypoints.YiskiModuleEntrypoint
 import java.util.*
 
 object ModulesDetection {
