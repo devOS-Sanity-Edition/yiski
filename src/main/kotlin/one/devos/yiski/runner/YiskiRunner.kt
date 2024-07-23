@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.events.session.ShutdownEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
 import one.devos.yiski.common.YiskiConstants
 import one.devos.yiski.common.YiskiModuleEntrypoint
+import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski.common.utils.ModulesDetection.detectModules
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.AviationBuilder
@@ -49,6 +50,9 @@ object YiskiRunner {
             }
         }
 
+        modules.forEach {
+            it.database(YiskiConstants.database)
+        }
 
         jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
             intents += listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT)

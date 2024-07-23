@@ -2,6 +2,7 @@ package one.devos.yiski3.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import org.jetbrains.exposed.sql.DatabaseConfig
 
 @Serializable
 data class Yiski3ConfigData(

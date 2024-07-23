@@ -2,7 +2,7 @@
 # Aviation
 aviation = "7d1dcef7"
 # Exposed
-exposed = "0.50.0"
+exposed = "0.52.0"
 # JDA
 jda = "5.0.1"
 jda-ktx = "0.12.0"
@@ -18,6 +18,8 @@ lavakord-jda = "7.0.3"
 lavalink-client = "3.0.0"
 # Logback
 logback = "1.5.6"
+# PostgresQL
+postgresql = "42.7.3"
 # Reflection
 reflection = "0.10.2"
 # SLF4J
@@ -51,25 +53,55 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 # Kotlin Logging
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
-# Lavakord
+# Lavalink
 lavakord-jda = { module = "dev.schlaubi.lavakord:jda", version.ref = "lavakord-jda" }
 lavalink-client = { module = "dev.arbjerg:lavalink-client", version.ref = "lavalink-client" }
 # Logback
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+# PostgresQL
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 # Reflection
 reflection = { module = "org.reflections:reflections", version.ref = "reflection" }
 # SLF4J
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 
 [bundles]
-exposed = [ "exposed-core", "exposed-crypt", "exposed-dao", "exposed-jdbc", "exposed-kotlin-datetime", "exposed-json" ]
-jda = [ "jda", "jda-ktx", "aviation" ]
-kotlin = [ "kotlin-stdlib", "kotlin-scripting-jsr223", "kotlin-compiler-embeddable" ]
-kotlinx = [ "kotlinx-coroutines-core", "kotlinx-serialization-json" ]
-ktor = [ "ktor-client-core", "ktor-client-cio", "ktor-client-cio-jvm" ]
-ktoml = [ "ktoml-core", "ktoml-file" ]
-logback = [ "logback", "logback-core" ]
+exposed = [
+    "exposed-core",
+    "exposed-crypt",
+    "exposed-dao",
+    "exposed-jdbc",
+    "exposed-kotlin-datetime",
+    "exposed-json"
+]
+jda = [
+    "jda",
+    "jda-ktx",
+    "aviation"
+]
+kotlin = [
+    "kotlin-stdlib",
+    "kotlin-scripting-jsr223",
+    "kotlin-compiler-embeddable"
+]
+kotlinx = [
+    "kotlinx-coroutines-core",
+    "kotlinx-serialization-json"
+]
+ktor = [
+    "ktor-client-core",
+    "ktor-client-cio",
+    "ktor-client-cio-jvm"
+]
+ktoml = [
+    "ktoml-core",
+    "ktoml-file"
+]
+logback = [
+    "logback",
+    "logback-core"
+]
 
 [plugins]
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }

@@ -3,6 +3,7 @@ package one.devos.yiski3
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
 import one.devos.yiski.common.YiskiModuleEntrypoint
+import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski3.data.Yiski3ConfigData
 import xyz.artrinix.aviation.Aviation
 
@@ -28,6 +29,8 @@ class Yiski3 : YiskiModuleEntrypoint {
         config = Yiski3Config.loadConfig()
 
     }
+
+    override fun database(database: DatabaseManager) { }
 
     override fun aviation(aviation: Aviation) {
         aviation.slashCommands.register("one.devos.yiski3.commands")

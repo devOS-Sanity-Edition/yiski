@@ -52,6 +52,7 @@ allprojects {
         implementation(rootProject.libs.bundles.kotlin)
         implementation(rootProject.libs.bundles.kotlinx)
         implementation(rootProject.libs.bundles.logback)
+        implementation(rootProject.libs.postgresql)
         implementation(rootProject.libs.kotlin.logging)
         implementation(rootProject.libs.reflection)
     }

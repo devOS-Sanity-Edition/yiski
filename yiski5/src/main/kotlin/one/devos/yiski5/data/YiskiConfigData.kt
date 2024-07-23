@@ -1,9 +1,9 @@
-package one.devos.yiski5
+package one.devos.yiski5.data
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class YiskiConfig(
+data class YiskiConfigData(
     val bot: BotConfig,
     val channels: ChannelConfig,
     val filters: FiltersConfig

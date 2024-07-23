@@ -1,4 +1,4 @@
-package one.devos.yiski5
+package one.devos.yiski5.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

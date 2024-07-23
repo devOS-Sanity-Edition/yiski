@@ -10,6 +10,9 @@ import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.YiskiModuleEntrypoint
+import one.devos.yiski.common.database.DatabaseManager
+import one.devos.yiski5.data.SerializedHistory
+import one.devos.yiski5.data.YiskiConfigData
 import xyz.artrinix.aviation.Aviation
 import java.text.SimpleDateFormat
 import java.time.*
@@ -27,7 +30,7 @@ class Yiski5 : YiskiModuleEntrypoint {
         lateinit var instance: Yiski5
             private set
 
-        lateinit var config: YiskiConfig
+        lateinit var config: YiskiConfigData
             private set
 
         lateinit var timezone: ZoneId
@@ -176,13 +179,16 @@ class Yiski5 : YiskiModuleEntrypoint {
 
     init {
         instance = this
-        config = Config.loadConfig()
+        config = Yiski5Config.loadConfig()
         timezone = ZoneId.of(config.bot.timezone)
         logger.info { "Yiski5 module loaded." }
     }
 
     override fun config() {
     }
+
+    override fun database(database: DatabaseManager) { }
+
 
     override fun aviation(aviation: Aviation) {
         aviation.slashCommands.register("one.devos.yiski5.commands")
