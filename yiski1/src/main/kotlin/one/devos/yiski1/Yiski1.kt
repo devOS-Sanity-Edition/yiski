@@ -10,9 +10,6 @@ import xyz.artrinix.aviation.Aviation
 val logger = KotlinLogging.logger { }
 
 class Yiski1 : YiskiModuleEntrypoint {
-    override val moduleName: String = "Yiski1"
-    override val moduleDescription: String = "Basic commands and moderation [kick/ban/timeout/logging/etc]"
-
     companion object {
         lateinit var instance: Yiski1
             private set
@@ -27,7 +24,7 @@ class Yiski1 : YiskiModuleEntrypoint {
     lateinit var config: Yiski1ConfigData
 
     override fun config() {
-        config = Yiski1Config.loadConfig()
+        config = Yiski1Config.load()
     }
 
     override fun database(database: DatabaseManager) {
@@ -35,7 +32,7 @@ class Yiski1 : YiskiModuleEntrypoint {
     }
 
     override fun aviation(aviation: Aviation) {
-        aviation.slashCommands.register("one.devos.yiski1.commands")
+
     }
 
     override fun jda(jda: JDA) {

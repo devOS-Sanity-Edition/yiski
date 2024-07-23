@@ -9,9 +9,6 @@ import xyz.artrinix.aviation.Aviation
 val logger = KotlinLogging.logger { }
 
 class Yiski6 : YiskiModuleEntrypoint {
-    override val moduleName: String = "Yiski6"
-    override val moduleDescription: String = ""
-
     companion object {
         lateinit var instance: Yiski6
             private set

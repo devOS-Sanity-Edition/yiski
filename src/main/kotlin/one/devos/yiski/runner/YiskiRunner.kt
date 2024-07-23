@@ -11,6 +11,7 @@ import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.events.session.ShutdownEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
 import one.devos.yiski.common.YiskiConstants
+import one.devos.yiski.common.YiskiConstants.database
 import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
 import one.devos.yiski.common.utils.getConfigSetupEntrypoint
 import one.devos.yiski.common.utils.getMainEntrypoint
@@ -53,6 +54,17 @@ object YiskiRunner {
 //            entrypoint.database(YiskiConstants.database)
         }
 
+
+        modules.forEach { module ->
+            module.module.packages?.let { packages ->
+                if (packages.databasePackage.isEmpty()) {
+                    return@forEach
+                }
+
+                database.registerTables(packages.databasePackage)
+            }
+        }
+
         jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
             intents += listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT)
         }
@@ -69,6 +81,16 @@ object YiskiRunner {
             .apply {
                 mainEntrypoints.forEach { entrypoint ->
                     entrypoint.aviation(this)
+                }
+
+                modules.forEach { module ->
+                    module.module.packages?.let { packages ->
+                        if (packages.slashCommandsPackage.isEmpty()) {
+                            return@forEach
+                        }
+
+                        aviation.slashCommands.register(packages.slashCommandsPackage)
+                    }
                 }
             }
 

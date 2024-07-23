@@ -23,9 +23,6 @@ import kotlin.time.Duration.Companion.minutes
 val logger = KotlinLogging.logger { }
 
 class Yiski5 : YiskiModuleEntrypoint {
-    override val moduleName: String = "Yiski5"
-    override val moduleDescription: String = ""
-
     companion object {
         lateinit var instance: Yiski5
             private set

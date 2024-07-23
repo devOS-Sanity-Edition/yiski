@@ -6,8 +6,6 @@ import one.devos.yiski.module.loader.api.entrypoints.Entrypoint
 import xyz.artrinix.aviation.Aviation
 
 interface YiskiModuleEntrypoint : Entrypoint {
-    val moduleName: String
-    val moduleDescription: String
     fun config()
     fun database(database: DatabaseManager)
     fun aviation(aviation: Aviation)
