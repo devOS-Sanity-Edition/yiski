@@ -18,7 +18,7 @@
 #         │       └───data
 #         │           └───BasicModuleConfigData.kt
 #         └───resources
-#             └───yiski_metadata.toml
+#             └───yiski.metadata.toml
 
 [metadata] # Any sort of information for the metadata
 version = 0 # Do not touch this under any circumstance unless you know what you're doing or else I'm personally going to
@@ -38,6 +38,7 @@ configClass = "" # Point directly to your config initializer class.
     slashCommandsPackage = "" # Optional, point directly to your Slash Commands package if you have slash commands.
 
 [information]
+id = "" # Named ID of your Yiski Module
 name = "" # Name of your Yiski Module.
 description = "" # What does your module do? describe that in short detail.
 version = "" # Optional, what version is your module? This will fallback to the Yiski project version if not supplied.

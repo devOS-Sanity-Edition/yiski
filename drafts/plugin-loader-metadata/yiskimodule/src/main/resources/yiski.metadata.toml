@@ -11,6 +11,7 @@ configClass = "one.devos.basicmodule.BasicModuleConfig"
     slashCommandsPackage = "one.devos.basicmodule.commands"
 
 [information]
+id = "basicmodule"
 name = "Basic Module"
 description = "A module that just basically exists like your mother"
 version = "0.1.0"

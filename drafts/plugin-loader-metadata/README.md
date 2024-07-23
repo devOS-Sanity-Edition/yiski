@@ -8,11 +8,11 @@ metadata file for the plugin loader to easily read and work off of. This file ju
 [Fabric Mod JSON] metadata file that all Fabric mods use.
 
 All example code can be seen in [here](yiskimodule), and just the TOML file itself can be seen 
-[here](yiski_metadata.toml).
+[here](yiski.metadata.toml).
 
 ## Proposed implementation
 
-Have it as a TOML file named `yiski_metadata.toml` under a module's `resources` folder, with the following config.
+Have it as a TOML file named `yiski.metadata.toml` under a module's `resources` folder, with the following config.
 
 ```toml
 [metadata]
@@ -28,6 +28,7 @@ configClass = ""
     slashCommandsPackage = ""
 
 [information]
+id = ""
 name = ""
 description = ""
 version = ""
@@ -61,7 +62,7 @@ Here's the breakdown of it all
 #         │       └───data
 #         │           └───BasicModuleConfigData.kt
 #         └───resources
-#             └───yiski_metadata.toml
+#             └───yiski.metadata.toml
 
 [metadata] # Any sort of information for the metadata
 version = 0 # Do not touch this under any circumstance unless you know what you're doing or else I'm personally going to
@@ -81,6 +82,7 @@ configClass = "" # Point directly to your config initializer class.
     slashCommandsPackage = "" # Optional, point directly to your Slash Commands package if you have slash commands.
 
 [information]
+id = "" # Named ID of your Yiski Module
 name = "" # Name of your Yiski Module.
 description = "" # What does your module do? describe that in short detail.
 version = "" # Optional, what version is your module? This will fallback to the Yiski project version if not supplied.
@@ -107,6 +109,7 @@ configClass = "one.devos.basicmodule.BasicModuleConfig"
     slashCommandsPackage = "one.devos.basicmodule.commands"
 
 [information]
+id = "basicmodule"
 name = "Basic Module"
 description = "A module that just basically exists like your mother"
 version = "0.1.0"
