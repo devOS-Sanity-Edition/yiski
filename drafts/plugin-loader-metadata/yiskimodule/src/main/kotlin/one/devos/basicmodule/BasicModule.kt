@@ -1,4 +1,4 @@
-package one.devos.yiski3
+package one.devos.basicmodule
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
