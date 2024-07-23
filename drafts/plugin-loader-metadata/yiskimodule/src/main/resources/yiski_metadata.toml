@@ -10,10 +10,12 @@ configClass = "one.devos.basicmodule.BasicModuleConfig"
     databasePackage = "one.devos.basicmodule.database"
     slashCommandsPackage = "one.devos.basicmodule.commands"
 
-[moduleInformation]
+[information]
 name = "Basic Module"
 description = "A module that just basically exists like your mother"
 version = "0.1.0"
+repo = "https://github.com/devOS-Sanity-Edition/yiski/tree/aviation/drafts/plugin-loader-metadata/"
+license = "MIT"
 authors = [
     "asojidev",
     "CephalonCosmic"
