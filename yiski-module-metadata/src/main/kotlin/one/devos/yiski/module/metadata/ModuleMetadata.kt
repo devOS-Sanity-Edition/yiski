@@ -39,6 +39,7 @@ data class ModuleMetadata(
 
     @Serializable
     data class InformationConfig(
+        val id: String,
         val name: String,
         val description: String,
         val version: String,

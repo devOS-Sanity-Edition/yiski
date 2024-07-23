@@ -2,9 +2,7 @@ package one.devos.yiski.module.loader.impl
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import one.devos.yiski.module.loader.api.discovery.ModuleDiscoverer
-import one.devos.yiski.module.loader.api.entrypoints.ConfigSetupEntrypoint
 import one.devos.yiski.module.loader.api.entrypoints.Entrypoint
-import one.devos.yiski.module.loader.api.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.module.metadata.ModuleMetadata
 import one.devos.yiski.module.metadata.ModuleMetadataReader
 import java.io.ByteArrayOutputStream
@@ -17,6 +15,8 @@ class ModuleLoader {
 
     private val discoverers = mutableSetOf<ModuleDiscoverer>()
     private val classLoader = ModuleClassLoader(emptyList(), this::class.java.classLoader)
+
+    private val modules = mutableSetOf<ModuleMetadata>()
 
     fun discover(): Set<ModuleMetadata> {
         val startTime = System.currentTimeMillis()
@@ -47,28 +47,14 @@ class ModuleLoader {
             }
         }
 
+        val output = metadataSources.map(ModuleMetadataReader::read).distinct().toSet()
+        this.modules.addAll(output)
         logger.info { "Discovered ${metadataSources.size} modules in ${System.currentTimeMillis() - startTime}ms" }
-        return metadataSources.map(ModuleMetadataReader::read).distinct().toSet()
+        return output
     }
 
-    fun getMainEntrypoint(metadata: ModuleMetadata): YiskiModuleEntrypoint {
-        val entrypointClass = Class.forName(metadata.runner.mainClass)
-        val entrypoint = loadEntrypoint(entrypointClass)
-        if (entrypoint !is YiskiModuleEntrypoint) {
-            throw IllegalArgumentException("${metadata.runner.mainClass} does not implement YiskiModuleEntrypoint interface!")
-        }
-
-        return entrypoint
-    }
-
-    fun getConfigSetupEntrypoint(metadata: ModuleMetadata): ConfigSetupEntrypoint {
-        val entrypointClass = Class.forName(metadata.module.configClass)
-        val entrypoint = loadEntrypoint(entrypointClass)
-        if (entrypoint !is ConfigSetupEntrypoint) {
-            throw IllegalArgumentException("${metadata.module.configClass} does not implement ConfigSetupEntrypoint interface!")
-        }
-
-        return entrypoint
+    fun getMetadataFor(id: String): ModuleMetadata? {
+        return modules.find { mod -> mod.information.id == id }
     }
 
     fun addDiscoverer(discoverer: ModuleDiscoverer) = apply {
@@ -80,7 +66,7 @@ class ModuleLoader {
      *
      * This function allows the given class to be a class or an object.
      */
-    private fun loadEntrypoint(clz: Class<*>): Entrypoint {
+    fun loadEntrypoint(clz: Class<*>): Entrypoint {
         val instance = (clz.kotlin.objectInstance ?: clz.declaredConstructors.first().newInstance())
         if (instance !is Entrypoint) {
             throw IllegalArgumentException("${clz.name} does not implement Entrypoint interface!")

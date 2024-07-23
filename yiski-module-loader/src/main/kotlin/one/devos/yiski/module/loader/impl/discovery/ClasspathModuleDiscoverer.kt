@@ -12,10 +12,10 @@ class ClasspathModuleDiscoverer : ModuleDiscoverer {
 
     override fun discover(): Set<Path> {
         val result = mutableSetOf<Path>()
-        val modEnumeration = ModuleLoader::class.java.classLoader.getResources(ModuleMetadata.FILE_NAME)
+        val fileEnumeration = ModuleLoader::class.java.classLoader.getResources(ModuleMetadata.FILE_NAME)
 
-        while (modEnumeration.hasMoreElements()) {
-            val url = modEnumeration.nextElement()
+        while (fileEnumeration.hasMoreElements()) {
+            val url = fileEnumeration.nextElement()
             try {
                 val path = fetchCodeSource(url, ModuleMetadata.FILE_NAME)
                 result.add(path)

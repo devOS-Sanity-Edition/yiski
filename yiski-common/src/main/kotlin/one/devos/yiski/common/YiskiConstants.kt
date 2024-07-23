@@ -2,6 +2,7 @@ package one.devos.yiski.common
 
 import net.dv8tion.jda.api.JDAInfo
 import one.devos.yiski.common.database.DatabaseManager
+import one.devos.yiski.module.loader.impl.ModuleLoader
 import xyz.artrinix.aviation.Aviation
 
 object YiskiConstants {
@@ -10,5 +11,6 @@ object YiskiConstants {
     val aviationVersion: String get() = Aviation::class.java.`package`.implementationVersion ?: "CANNOT GET AVIATION VERSION. IF YOU'RE SEEING THIS... *WELL FUCK*!"
     val jdaVersion: String get() = JDAInfo.VERSION
     val config = Config.loadConfig()
+    val moduleLoader = ModuleLoader()
     val database = DatabaseManager(config.database)
 }

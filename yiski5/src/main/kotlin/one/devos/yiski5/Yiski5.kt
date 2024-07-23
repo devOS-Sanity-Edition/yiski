@@ -9,7 +9,7 @@ import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.utils.FileUpload
-import one.devos.yiski.module.loader.api.entrypoints.YiskiModuleEntrypoint
+import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski5.data.SerializedHistory
 import one.devos.yiski5.data.YiskiConfigData
