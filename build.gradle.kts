@@ -15,6 +15,9 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
 
+    implementation(project(":yiski-module-metadata"))
+    implementation(project(":yiski-module-loader"))
+
     (1..6).forEach { module ->
         implementation(project(":yiski$module"))
     }
