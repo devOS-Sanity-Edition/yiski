@@ -1,0 +1,23 @@
+[metadata]
+version = 0
+
+[runner]
+mainClass = "one.devos.yiski1.Yiski1"
+
+[module]
+configClass = ""
+
+[module.packages] # Any sort of information about the module's packages.
+databasePackage = "" # Optional, point directly to your Database package if you have database tables.
+slashCommandsPackage = "" # Optional, point directly to your Slash Commands package if you have slash commands.
+
+[information]
+id = "yiski1"
+name = "Yiski1" # Name of your Yiski Module.
+description = ":3" # What does your module do? describe that in short detail.
+version = "0.1.0" # Optional, what version is your module? This will fallback to the Yiski project version if not supplied.
+repo = "i hate my life"
+license = "your mother's house"
+authors = [ # List of authors/people that have contributed to the module. At least 1 string is required.
+    "Asoji"
+]

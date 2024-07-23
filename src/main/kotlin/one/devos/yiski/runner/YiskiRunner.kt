@@ -11,15 +11,18 @@ import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.events.session.ShutdownEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
 import one.devos.yiski.common.YiskiConstants
-import one.devos.yiski.common.YiskiModuleEntrypoint
-import one.devos.yiski.common.database.DatabaseManager
-import one.devos.yiski.common.utils.ModulesDetection.detectModules
+import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
+import one.devos.yiski.common.utils.getConfigSetupEntrypoint
+import one.devos.yiski.common.utils.getMainEntrypoint
+import one.devos.yiski.module.loader.impl.discovery.ClasspathModuleDiscoverer
+import one.devos.yiski.module.loader.impl.discovery.JarModuleDiscoverer
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.AviationBuilder
 import xyz.artrinix.aviation.events.AviationExceptionEvent
 import xyz.artrinix.aviation.events.CommandFailedEvent
 import xyz.artrinix.aviation.internal.utils.on
 import xyz.artrinix.aviation.ratelimit.DefaultRateLimitStrategy
+import kotlin.io.path.Path
 
 val logger = KotlinLogging.logger { }
 
@@ -35,23 +38,19 @@ object YiskiRunner {
         logger.info { "JDA Version: ${YiskiConstants.jdaVersion}" }
 
         logger.info { "Detecting modules..."}
-
-        val modules = detectModules()
-        modules.forEach(YiskiModuleEntrypoint::config)
+        YiskiConstants.moduleLoader.addDiscoverer(ClasspathModuleDiscoverer())
+        YiskiConstants.moduleLoader.addDiscoverer(JarModuleDiscoverer(Path("modules")))
+        val modules = YiskiConstants.moduleLoader.discover()
+        modules.mapNotNull(YiskiConstants.moduleLoader::getConfigSetupEntrypoint).forEach(ConfigSetupEntrypoint::load)
 
         logger.info { "Found ${modules.count()} modules." }
-
-        modules.forEach {
-            try {
-                logger.info { "Starting ${it.moduleName} module." }
-                it.config()
-            } catch (e: Exception) {
-                logger.error(e) { "Failed to load ${it.moduleName} module." }
-            }
+        modules.forEach { metadata ->
+            logger.info { "Starting ${metadata.information.name} module." }
         }
 
-        modules.forEach {
-            it.database(YiskiConstants.database)
+        val mainEntrypoints = modules.mapNotNull(YiskiConstants.moduleLoader::getMainEntrypoint)
+        mainEntrypoints.forEach { entrypoint ->
+//            entrypoint.database(YiskiConstants.database)
         }
 
         jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
@@ -68,15 +67,15 @@ object YiskiRunner {
             }
             .build()
             .apply {
-                modules.forEach {
-                    it.aviation(this)
+                mainEntrypoints.forEach { entrypoint ->
+                    entrypoint.aviation(this)
                 }
             }
 
         listenAviationEvents()
 
-        modules.forEach {
-            it.jda(jda)
+        mainEntrypoints.forEach { entrypoint ->
+            entrypoint.jda(jda)
         }
 
         jda.addEventListener(aviation)

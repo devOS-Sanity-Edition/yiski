@@ -41,8 +41,14 @@ allprojects {
     }
 
     dependencies {
-        if (project.name != "yiski-common")
+        if (project.name != "yiski-common" && !project.name.startsWith("yiski-module"))
             implementation(project(":yiski-common"))
+
+        if (!project.name.startsWith("yiski-module")) {
+            implementation(project(":yiski-module-metadata"))
+            implementation(project(":yiski-module-loader"))
+        }
+
         api(rootProject.libs.slf4j.api)
         implementation(kotlin("reflect"))
         implementation(rootProject.libs.bundles.exposed)
