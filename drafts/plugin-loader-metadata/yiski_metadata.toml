@@ -1,0 +1,46 @@
+# Yiski Metadata TOML Draft
+# This draft TOML file is what's being thought up of, to put in every module for some basic information for the
+# initialization in the upcoming Yiski Plugin Loader, and other nice information, like module name and description.
+# All code for a module should be expected to be Kotlin code, and ideally only Kotlin code.
+# If you want to try Java, be my guest.
+#
+# This draft is developed by asojidev, and Deftu.
+
+# Place this file in your module's resource directory, like so
+#
+# ModuleName
+# └───src
+#     └───main
+#         ├───kotlin
+#         │   └───author.module
+#         │       ├───BasicModule.kt
+#         │       ├───BasicModuleConfig.kt
+#         │       └───data
+#         │           └───BasicModuleConfigData.kt
+#         └───resources
+#             └───yiski_metadata.toml
+
+[metadata] # Any sort of information for the metadata
+version = 0 # Do not touch this under any circumstance unless you know what you're doing or else I'm personally going to
+            # visit your home, steal your cat, and bite the fucking wall.
+            #
+            # 0 = DRAFT/UNIMPLEMENTED/WORK IN PROGRESS
+            # 1 = FIRST FINAL VERSION
+            # # = WHATEVER THE FUCK HAPPENS AFTER THIS I DON'T KNOW YET
+
+[runner] # Any sort of information for the Yiski Runner to load.
+mainClass = "" # Point directly to your class that uses YiskiModuleEntrypoint.
+
+[module] # Any sort of information about the module's code.
+configClass = "" # Point directly to your config initializer class.
+[module.packages] # Any sort of information about the module's packages.
+databasePackage = "" # Optional, point directly to your Database package if you have database tables.
+slashCommandsPackage = "" # Optional, point directly to your Slash Commands package if you have slash commands.
+
+[moduleInformation]
+name = "" # Name of your Yiski Module.
+description = "" # What does your module do? describe that in short detail.
+version = "" # Optional, what version is your module? This will fallback to the Yiski project version if not supplied.
+authors = [ # List of authors/people that have contributed to the module. At least 1 string is required.
+    ""
+ ]

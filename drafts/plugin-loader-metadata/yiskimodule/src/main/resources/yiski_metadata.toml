@@ -1,0 +1,20 @@
+[metadata]
+version = 0
+
+[runner]
+mainClass = "one.devos.basicmodule.BasicModule"
+
+[module]
+configClass = "one.devos.basicmodule.BasicModuleConfig"
+    [module.packages]
+    databasePackage = "one.devos.basicmodule.database"
+    slashCommandsPackage = "one.devos.basicmodule.commands"
+
+[moduleInformation]
+name = "Basic Module"
+description = "A module that just basically exists like your mother"
+version = "0.1.0"
+authors = [
+    "asojidev",
+    "CephalonCosmic"
+]
