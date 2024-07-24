@@ -10,6 +10,7 @@ class Help : Scaffold {
         ctx.sendEmbed {
             setTitle("Help")
             setDescription("Here's a list of commands")
+
             addField("todo", "add commands", true)
         }
     }

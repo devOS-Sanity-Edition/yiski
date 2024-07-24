@@ -57,6 +57,10 @@ class ModuleLoader {
         return modules.find { mod -> mod.information.id == id }
     }
 
+    fun getModules(): Set<ModuleMetadata> {
+        return modules.toSet()
+    }
+
     fun addDiscoverer(discoverer: ModuleDiscoverer) = apply {
         discoverers += discoverer
     }

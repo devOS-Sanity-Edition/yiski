@@ -15,7 +15,6 @@ import xyz.artrinix.aviation.entities.Scaffold
 
 class RTX : Scaffold {
 
-    @OptIn(YiskiModule::class)
     @SlashCommand(name = "rtx", description = "Its just like real life!")
     suspend fun rtx(ctx: SlashContext) {
         val rtxVideo = EmbedHelpers.imagesPath(Yiski3.config.videos.rtx)

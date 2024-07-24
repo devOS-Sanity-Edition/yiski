@@ -47,15 +47,15 @@ object YiskiRunner {
         }
 
         logger.info { "Found ${modules.count()} modules." }
-//        modules.forEach { module ->
-//            module.module.packages?.let { packages ->
-//                if (packages.databasePackage.isEmpty()) {
-//                    return@forEach
-//                }
-//
-//                database.registerTables(packages.databasePackage)
-//            }
-//        }
+        modules.forEach { module ->
+            module.module.packages?.let { packages ->
+                if (packages.databasePackage.isEmpty()) {
+                    return@forEach
+                }
+
+                database.registerTables(packages.databasePackage)
+            }
+        }
 
         jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
             intents += listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT)
