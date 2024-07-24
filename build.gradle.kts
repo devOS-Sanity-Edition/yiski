@@ -2,11 +2,12 @@ plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
     alias(libs.plugins.ktor)
+//    alias(libs.plugins.shadow)
     java
 }
 
 group = "one.devos"
-version = "1.0-SNAPSHOT"
+version = "0.1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -52,7 +53,9 @@ allprojects {
         api(rootProject.libs.slf4j.api)
         implementation(kotlin("reflect"))
         implementation(rootProject.libs.bundles.exposed)
-        implementation(rootProject.libs.bundles.jda)
+        implementation(rootProject.libs.bundles.jda) {
+            exclude(module = "open-java")
+        }
         implementation(rootProject.libs.bundles.ktor)
         implementation(rootProject.libs.bundles.ktoml)
         implementation(rootProject.libs.bundles.kotlin)
@@ -61,6 +64,15 @@ allprojects {
         implementation(rootProject.libs.postgresql)
         implementation(rootProject.libs.kotlin.logging)
         implementation(rootProject.libs.reflection)
+    }
+
+    // Write the version to the fabric.mod.json
+    tasks.processResources {
+        inputs.property("version", project.version)
+
+        filesMatching("yiski.metadata.toml") {
+            expand(mutableMapOf("version" to project.version))
+        }
     }
 
     application {

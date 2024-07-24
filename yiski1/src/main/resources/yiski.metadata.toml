@@ -7,18 +7,18 @@ mainClass = "one.devos.yiski1.Yiski1"
 [module]
 configClass = "one.devos.yiski1.Yiski1Config"
 
-[module.packages] # Any sort of information about the module's packages.
-databasePackage = "one.devos.yiski1.tables" # Optional, point directly to your Database package if you have database tables.
-slashCommandsPackage = "one.devos.yiski1.commands" # Optional, point directly to your Slash Commands package if you have slash commands.
+[module.packages]
+databasePackage = "one.devos.yiski1.tables"
+slashCommandsPackage = "one.devos.yiski1.commands"
 
 [information]
 id = "yiski1"
-name = "Yiski1" # Name of your Yiski Module.
-description = "Basic commands and moderation [kick/ban/timeout/logging/etc]" # What does your module do? describe that in short detail.
-version = "0.1.0" # Optional, what version is your module? This will fallback to the Yiski project version if not supplied.
+name = "Yiski1"
+description = "Basic commands and moderation [kick/ban/timeout/logging/etc]"
+version = "${version}"
 repo = "https://github.com/devOS-Sanity-Edition/yiski/"
 license = "MIT"
-authors = [ # List of authors/people that have contributed to the module. At least 1 string is required.
+authors = [
     "asojidev",
     "CephalonCosmic"
 ]

@@ -1,7 +1,13 @@
 package one.devos.yiski1
 
+import dev.minn.jda.ktx.coroutines.await
+import dev.minn.jda.ktx.events.listener
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
+import net.dv8tion.jda.api.events.interaction.command.MessageContextInteractionEvent
+import net.dv8tion.jda.api.events.session.ReadyEvent
+import net.dv8tion.jda.api.interactions.commands.Command
+import net.dv8tion.jda.api.interactions.commands.build.Commands
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.database.DatabaseManager
@@ -15,7 +21,7 @@ class Yiski1(
     // Change these to vals if they're needed!
     database: DatabaseManager,
     aviation: Aviation,
-    jda: JDA,
+    private val jda: JDA,
     config: Yiski1ConfigData
 ) : YiskiModuleEntrypoint(
     database,
@@ -37,6 +43,37 @@ class Yiski1(
 
     override fun setup() {
         logger.info { "Yiski1 module set up." }
+
+        jda.listener<ReadyEvent> {
+            jda.updateCommands().addCommands(
+                Commands.message("Pin Message"),
+                Commands.message("Unpin Message")
+            ).queue()
+        }
+
+        jda.listener<MessageContextInteractionEvent> { event ->
+            if (event.name == "Pin Message") {
+                if (event.channel?.asThreadChannel()?.ownerId == event.member?.id) {
+                    event.target.pin().await()  // IM GOING TO FUCKING BITE THE FUCKIN CURB FUCKIN HELL
+                                                // I SPENT TOO LONG BEFORE DEFTU SWOOPED IN ON SOMETHING I ALREADY FUCKING TRIED
+                                                // AAAAAAAAAAAAAAAAAAAAAAAAAA
+                    event.reply("Pinned!").setEphemeral(true).queue()
+                } else {
+                    event.reply("You are not the thread owner.").setEphemeral(true).queue()
+                }
+            }
+
+            if (event.name == "Unpin Message") {
+                if (event.channel?.asThreadChannel()?.ownerId == event.member?.id) {
+                    event.target.unpin().await()
+                    event.reply("Unpinned! [your father's prostate]").setEphemeral(true).queue()
+                } else {
+                    event.reply("You are not the thread owner.").setEphemeral(true).queue()
+//                    logger.debug { event.channel?.asThreadChannel()?.isOwner }
+                }
+            }
+        }
+
         // TODO!
     }
 
