@@ -1,11 +1,10 @@
 package one.devos.yiski1.tables.moderation
 
-import one.devos.yiski.common.database.DatabaseEntry
+import one.devos.yiski.common.annotations.DatabaseEntry
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.UUIDTable
-import org.jetbrains.exposed.sql.ArrayColumnType
 import org.jetbrains.exposed.sql.LongColumnType
 import org.jetbrains.exposed.sql.TextColumnType
 import java.util.*

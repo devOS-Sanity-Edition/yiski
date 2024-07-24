@@ -9,10 +9,11 @@ import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.utils.FileUpload
+import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski5.data.SerializedHistory
-import one.devos.yiski5.data.YiskiConfigData
+import one.devos.yiski5.data.Yiski5ConfigData
 import xyz.artrinix.aviation.Aviation
 import java.text.SimpleDateFormat
 import java.time.*
@@ -22,12 +23,14 @@ import kotlin.time.Duration.Companion.minutes
 
 val logger = KotlinLogging.logger { }
 
+// all of this needs to be decoupled and not entirely thrown into the companion object to make this actually work with the new module loader
+@OptIn(YiskiModule::class)
 class Yiski5 : YiskiModuleEntrypoint {
     companion object {
         lateinit var instance: Yiski5
             private set
 
-        lateinit var config: YiskiConfigData
+        lateinit var config: Yiski5ConfigData
             private set
 
         lateinit var timezone: ZoneId
@@ -176,7 +179,6 @@ class Yiski5 : YiskiModuleEntrypoint {
 
     init {
         instance = this
-        config = Yiski5Config.loadConfig()
         timezone = ZoneId.of(config.bot.timezone)
         logger.info { "Yiski5 module loaded." }
     }

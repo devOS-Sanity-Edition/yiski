@@ -1,9 +1,9 @@
 package one.devos.yiski.common.database
 
 import io.github.oshai.kotlinlogging.KotlinLogging
+import one.devos.yiski.common.annotations.DatabaseEntry
 import one.devos.yiski.common.data.YiskiBotConfig
 import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.reflections.Reflections
 import org.reflections.scanners.Scanners

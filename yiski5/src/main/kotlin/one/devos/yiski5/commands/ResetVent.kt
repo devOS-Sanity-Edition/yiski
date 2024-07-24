@@ -8,6 +8,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent
 import one.devos.yiski5.Yiski5
+import one.devos.yiski5.data.Yiski5ConfigData
 import one.devos.yiski5.logger
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand

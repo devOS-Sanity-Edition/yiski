@@ -2,6 +2,7 @@ package one.devos.yiski.common.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import org.jetbrains.annotations.Nullable
 
 @Serializable
 data class YiskiBotConfig(
@@ -12,11 +13,11 @@ data class YiskiBotConfig(
     ) {
     @Serializable
     data class PostgresConfig(
-        val host: String = "",
-        val port: Int = 5432,
-        val username: String = "",
-        val password: String = "",
-        val db: String = ""
+        val host: String,
+        val port: Int,
+        val username: String,
+        val password: String,
+        val db: String
     )
 
     @Serializable

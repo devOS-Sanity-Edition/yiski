@@ -1,10 +1,12 @@
 package one.devos.yiski.common.utils
 
+import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.module.loader.impl.ModuleLoader
 import one.devos.yiski.module.metadata.ModuleMetadata
 
+@OptIn(YiskiModule::class)
 fun ModuleLoader.getMainEntrypoint(metadata: ModuleMetadata): YiskiModuleEntrypoint? {
     val name = metadata.runner.mainClass
     if (name.isEmpty()) {
@@ -20,6 +22,7 @@ fun ModuleLoader.getMainEntrypoint(metadata: ModuleMetadata): YiskiModuleEntrypo
     return entrypoint
 }
 
+@OptIn(YiskiModule::class)
 fun ModuleLoader.getConfigSetupEntrypoint(metadata: ModuleMetadata): ConfigSetupEntrypoint? {
     val name = metadata.module.configClass
     if (name.isEmpty()) {

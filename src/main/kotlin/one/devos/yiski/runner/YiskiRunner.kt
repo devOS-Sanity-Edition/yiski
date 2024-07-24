@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.events.session.ShutdownEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
 import one.devos.yiski.common.YiskiConstants
 import one.devos.yiski.common.YiskiConstants.database
+import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
 import one.devos.yiski.common.utils.getConfigSetupEntrypoint
 import one.devos.yiski.common.utils.getMainEntrypoint
@@ -27,6 +28,7 @@ import kotlin.io.path.Path
 
 val logger = KotlinLogging.logger { }
 
+@OptIn(YiskiModule::class)
 object YiskiRunner {
     lateinit var jda: JDA
     lateinit var aviation: Aviation
@@ -49,9 +51,11 @@ object YiskiRunner {
             logger.info { "Starting ${metadata.information.name} module." }
         }
 
+
+
         val mainEntrypoints = modules.mapNotNull(YiskiConstants.moduleLoader::getMainEntrypoint)
         mainEntrypoints.forEach { entrypoint ->
-//            entrypoint.database(YiskiConstants.database)
+            entrypoint.database(YiskiConstants.database)
         }
 
 
@@ -74,7 +78,7 @@ object YiskiRunner {
                 ratelimitProvider = DefaultRateLimitStrategy()
                 doTyping = true
                 developers.addAll(YiskiConstants.config.discord.adminIDs.toTypedArray())
-                testGuilds = mutableSetOf(YiskiConstants.config.discord.homeGuildID)
+//                testGuilds = mutableSetOf(YiskiConstants.config.discord.homeGuildID)
                 registerDefaultParsers()
             }
             .build()
@@ -89,7 +93,7 @@ object YiskiRunner {
                             return@forEach
                         }
 
-                        aviation.slashCommands.register(packages.slashCommandsPackage)
+                        this@apply.slashCommands.register(packages.slashCommandsPackage)
                     }
                 }
             }

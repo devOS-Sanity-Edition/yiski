@@ -1,6 +1,6 @@
 package one.devos.yiski3.data.headcrab
 
-import one.devos.yiski.common.database.DatabaseEntry
+import one.devos.yiski.common.annotations.DatabaseEntry
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID

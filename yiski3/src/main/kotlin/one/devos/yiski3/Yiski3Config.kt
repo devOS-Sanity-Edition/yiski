@@ -2,19 +2,23 @@ package one.devos.yiski3
 
 import com.akuleshov7.ktoml.file.TomlFileReader
 import kotlinx.serialization.serializer
+import one.devos.yiski.common.annotations.YiskiModule
+import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
 import one.devos.yiski3.data.Yiski3ConfigData
 import kotlin.system.exitProcess
 
-object Yiski3Config {
+@OptIn(YiskiModule::class)
+object Yiski3Config : ConfigSetupEntrypoint {
     private val configPath = System.getProperty("yiski3_config", "yiski3_config.toml")
 
-    fun loadConfig(): Yiski3ConfigData {
-        return try {
-            logger.info { "Attemping to load config" }
-            TomlFileReader.decodeFromFile(serializer(), configPath)
-        } catch (e: Exception) {
-            logger.error {
-                """
+    override fun load() {
+        fun loadConfig(): Yiski3ConfigData {
+            return try {
+                logger.info { "Attemping to load config" }
+                TomlFileReader.decodeFromFile(serializer(), configPath)
+            } catch (e: Exception) {
+                logger.error {
+                    """
                     
                     
                     #######################################################
@@ -24,9 +28,10 @@ object Yiski3Config {
                     #######################################################
                     
                 """.trimIndent()
-                e
+                    e
+                }
+                exitProcess(1)
             }
-            exitProcess(1)
         }
     }
 }
