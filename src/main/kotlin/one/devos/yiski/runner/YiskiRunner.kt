@@ -55,19 +55,19 @@ object YiskiRunner {
 
         val mainEntrypoints = modules.mapNotNull(YiskiConstants.moduleLoader::getMainEntrypoint)
         mainEntrypoints.forEach { entrypoint ->
-            entrypoint.database(YiskiConstants.database)
+//            entrypoint.database(YiskiConstants.database)
         }
 
 
-        modules.forEach { module ->
-            module.module.packages?.let { packages ->
-                if (packages.databasePackage.isEmpty()) {
-                    return@forEach
-                }
-
-                database.registerTables(packages.databasePackage)
-            }
-        }
+//        modules.forEach { module ->
+//            module.module.packages?.let { packages ->
+//                if (packages.databasePackage.isEmpty()) {
+//                    return@forEach
+//                }
+//
+//                database.registerTables(packages.databasePackage)
+//            }
+//        }
 
         jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
             intents += listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT)
@@ -83,6 +83,7 @@ object YiskiRunner {
             }
             .build()
             .apply {
+                AviationEventHandler.setupEvents(this)
                 mainEntrypoints.forEach { entrypoint ->
                     entrypoint.aviation(this)
                 }

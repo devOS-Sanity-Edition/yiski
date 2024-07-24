@@ -9,17 +9,16 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
-class IMS : Scaffold {
-    @SlashCommand(name = "ims", description = "yes")
-    suspend fun ims(ctx: SlashContext) {
-        val imsImage = EmbedHelpers.imagesPath(Yiski3.instance.config.images.inlineStaticImagesTables.ims)
+class RTX : Scaffold {
+    @SlashCommand(name = "rtx", description = "Its just like real life!")
+    suspend fun rtx(ctx: SlashContext) {
+        val rtxVideo = EmbedHelpers.imagesPath(Yiski3.instance.config.videos.rtx)
 
         ctx.interaction.deferReply()
-            .setFiles(FileUpload.fromData(imsImage, Yiski3.instance.config.images.inlineStaticImagesTables.imsfile))
+            .setFiles(FileUpload.fromData(rtxVideo, Yiski3.instance.config.videos.rtxfile))
             .setEmbeds(Embed {
-                title = "IMS"
-                description = "Go fuck yourself"
-                image = "attachment://${Yiski3.instance.config.images.inlineStaticImagesTables.imsfile}"
+                title = "RTX"
+                image ="attachment://${Yiski3.instance.config.videos.rtxfile}"
                 color = EmbedHelpers.infoColor()
             })
             .await()

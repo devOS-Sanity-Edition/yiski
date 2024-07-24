@@ -12,14 +12,13 @@ import kotlin.system.exitProcess
 object Yiski1Config : ConfigSetupEntrypoint {
     private val configPath = System.getProperty("yiski1_config", "yiski1_config.toml")
 
-    override fun load() {
-        fun loadConfig(): Yiski1ConfigData {
-            return try {
-                logger.info { "Attemping to load config" }
-                TomlFileReader.decodeFromFile(serializer(), configPath)
-            } catch (e: Exception) {
-                logger.error {
-                    """
+    override fun load(): Yiski1ConfigData {
+        return try {
+            logger.info { "Attemping to load config" }
+            TomlFileReader.decodeFromFile(serializer(), configPath)
+        } catch (e: Exception) {
+            logger.error {
+                """
                     
                     
                     #######################################################
@@ -29,10 +28,9 @@ object Yiski1Config : ConfigSetupEntrypoint {
                     #######################################################
                     
                 """.trimIndent()
-                    e
-                }
-                exitProcess(1)
+                e
             }
+            exitProcess(1)
         }
     }
 }

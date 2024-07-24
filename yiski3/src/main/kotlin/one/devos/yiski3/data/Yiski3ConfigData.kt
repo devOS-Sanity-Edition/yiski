@@ -2,13 +2,14 @@ package one.devos.yiski3.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import one.devos.yiski.common.AbstractYiskiConfig
 import org.jetbrains.exposed.sql.DatabaseConfig
 
 @Serializable
 data class Yiski3ConfigData(
     val images: ImageConfig,
     val videos: VideosConfig
-) {
+) : AbstractYiskiConfig {
     @Serializable
     data class ImageConfig(
         @SerialName("static")

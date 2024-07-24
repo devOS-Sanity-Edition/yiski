@@ -35,8 +35,8 @@ class Headcrab : Scaffold {
 
             val inputStreamHeadcrabSuccess = EmbedHelpers.imagesPath(Yiski3.instance.config.images.inlineGifImageTables.headcrabsuccess)
 
-            ctx.channel
-                .sendFiles(FileUpload.fromData(inputStreamHeadcrabSuccess, Yiski3.instance.config.images.inlineGifImageTables.headcrabfailfile))
+            ctx.interaction.deferReply()
+                .setFiles(FileUpload.fromData(inputStreamHeadcrabSuccess, Yiski3.instance.config.images.inlineGifImageTables.headcrabfailfile))
                 .setEmbeds(Embed {
                     title = "Headcrab failed!"
                     description = "${user.asMention} has succsefully deflected the headcrab from ${ctx.author.asMention}!"

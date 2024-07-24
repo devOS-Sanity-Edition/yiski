@@ -19,12 +19,14 @@ class Yiski3 : YiskiModuleEntrypoint {
 
     init {
         instance = this
+        config()
         logger.info { "Yiski3 module loaded." }
     }
 
     lateinit var config: Yiski3ConfigData
 
     override fun config() {
+        config = Yiski3Config.load()
     }
 
     override fun database(database: DatabaseManager) { }

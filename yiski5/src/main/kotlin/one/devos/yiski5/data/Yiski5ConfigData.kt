@@ -1,13 +1,14 @@
 package one.devos.yiski5.data
 
 import kotlinx.serialization.Serializable
+import one.devos.yiski.common.AbstractYiskiConfig
 
 @Serializable
 data class Yiski5ConfigData(
     val bot: BotConfig,
     val channels: ChannelConfig,
     val filters: FiltersConfig
-) {
+) : AbstractYiskiConfig {
     @Serializable
     data class BotConfig(
         val timezone: String = "America/Los_Angeles",
