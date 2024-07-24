@@ -5,7 +5,7 @@ import kotlinx.serialization.serializer
 import kotlin.system.exitProcess
 
 object BasicModuleConfig {
-    private val configPath: String = System.getProperty("basicmodule_config", "basicmodule_config.toml")
+    private val configPath: String = System.getProperty("basicmodule_config", "basicmodule.config.toml")
 
     fun loadConfig(): BasicModuleConfigData {
         logger.info{ "Loading config from $configPath..." }

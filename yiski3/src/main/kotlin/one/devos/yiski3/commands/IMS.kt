@@ -12,14 +12,14 @@ import xyz.artrinix.aviation.entities.Scaffold
 class IMS : Scaffold {
     @SlashCommand(name = "ims", description = "yes")
     suspend fun ims(ctx: SlashContext) {
-        val imsImage = EmbedHelpers.imagesPath(Yiski3.instance.config.images.inlineStaticImagesTables.ims)
+        val imsImage = EmbedHelpers.imagesPath(Yiski3.config.images.inlineStaticImagesTables.ims)
 
         ctx.interaction.deferReply()
-            .setFiles(FileUpload.fromData(imsImage, Yiski3.instance.config.images.inlineStaticImagesTables.imsfile))
+            .setFiles(FileUpload.fromData(imsImage, Yiski3.config.images.inlineStaticImagesTables.imsfile))
             .setEmbeds(Embed {
                 title = "IMS"
                 description = "Go fuck yourself"
-                image = "attachment://${Yiski3.instance.config.images.inlineStaticImagesTables.imsfile}"
+                image = "attachment://${Yiski3.config.images.inlineStaticImagesTables.imsfile}"
                 color = EmbedHelpers.infoColor()
             })
             .await()

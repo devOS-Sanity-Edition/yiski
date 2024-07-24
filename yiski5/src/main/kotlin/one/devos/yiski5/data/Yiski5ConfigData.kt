@@ -9,6 +9,7 @@ data class Yiski5ConfigData(
     val channels: ChannelConfig,
     val filters: FiltersConfig
 ) : AbstractYiskiConfig {
+
     @Serializable
     data class BotConfig(
         val timezone: String = "America/Los_Angeles",
@@ -34,4 +35,5 @@ data class Yiski5ConfigData(
         val messages: List<Long>,
         val authors: List<Long>
     )
+
 }

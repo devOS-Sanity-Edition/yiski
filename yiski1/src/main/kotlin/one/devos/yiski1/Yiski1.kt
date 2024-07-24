@@ -11,7 +11,19 @@ import xyz.artrinix.aviation.Aviation
 val logger = KotlinLogging.logger { }
 
 @OptIn(YiskiModule::class)
-class Yiski1 : YiskiModuleEntrypoint {
+class Yiski1(
+    // Change these to vals if they're needed!
+    database: DatabaseManager,
+    aviation: Aviation,
+    jda: JDA,
+    config: Yiski1ConfigData
+) : YiskiModuleEntrypoint(
+    database,
+    aviation,
+    jda,
+    config
+) {
+
     companion object {
         lateinit var instance: Yiski1
             private set
@@ -19,24 +31,13 @@ class Yiski1 : YiskiModuleEntrypoint {
 
     init {
         instance = this
-        logger.info { "Yiski1 module loaded." }
     }
 
 //    val db by lazy { Database.connect("jdbc:sqlite:data.db", "org.sqlite.JDBC") }
-    lateinit var config: Yiski1ConfigData
 
-    override fun config() {
-        config = config
+    override fun setup() {
+        logger.info { "Yiski1 module set up." }
+        // TODO!
     }
 
-    override fun database(database: DatabaseManager) {
-    }
-
-    override fun aviation(aviation: Aviation) {
-
-    }
-
-    override fun jda(jda: JDA) {
-
-    }
 }

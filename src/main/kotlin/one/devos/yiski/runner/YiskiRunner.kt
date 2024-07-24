@@ -13,16 +13,13 @@ import net.dv8tion.jda.api.requests.GatewayIntent
 import one.devos.yiski.common.YiskiConstants
 import one.devos.yiski.common.YiskiConstants.database
 import one.devos.yiski.common.annotations.YiskiModule
-import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
+import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.utils.getConfigSetupEntrypoint
 import one.devos.yiski.common.utils.getMainEntrypoint
 import one.devos.yiski.module.loader.impl.discovery.ClasspathModuleDiscoverer
 import one.devos.yiski.module.loader.impl.discovery.JarModuleDiscoverer
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.AviationBuilder
-import xyz.artrinix.aviation.events.AviationExceptionEvent
-import xyz.artrinix.aviation.events.CommandFailedEvent
-import xyz.artrinix.aviation.internal.utils.on
 import xyz.artrinix.aviation.ratelimit.DefaultRateLimitStrategy
 import kotlin.io.path.Path
 
@@ -44,21 +41,12 @@ object YiskiRunner {
         YiskiConstants.moduleLoader.addDiscoverer(ClasspathModuleDiscoverer())
         YiskiConstants.moduleLoader.addDiscoverer(JarModuleDiscoverer(Path("modules")))
         val modules = YiskiConstants.moduleLoader.discover()
-        modules.mapNotNull(YiskiConstants.moduleLoader::getConfigSetupEntrypoint).forEach(ConfigSetupEntrypoint::load)
+        val configEntrypoints = modules.associateWith(YiskiConstants.moduleLoader::getConfigSetupEntrypoint)
+        configEntrypoints.forEach { (metadata, entrypoint) ->
+            entrypoint?.read() ?: logger.warn { "No config setup entrypoint found for module ${metadata.information.id} (${metadata.information.name})." }
+        }
 
         logger.info { "Found ${modules.count()} modules." }
-        modules.forEach { metadata ->
-            logger.info { "Starting ${metadata.information.name} module." }
-        }
-
-
-
-        val mainEntrypoints = modules.mapNotNull(YiskiConstants.moduleLoader::getMainEntrypoint)
-        mainEntrypoints.forEach { entrypoint ->
-//            entrypoint.database(YiskiConstants.database)
-        }
-
-
 //        modules.forEach { module ->
 //            module.module.packages?.let { packages ->
 //                if (packages.databasePackage.isEmpty()) {
@@ -84,26 +72,17 @@ object YiskiRunner {
             .build()
             .apply {
                 AviationEventHandler.setupEvents(this)
-                mainEntrypoints.forEach { entrypoint ->
-                    entrypoint.aviation(this)
-                }
-
                 modules.forEach { module ->
                     module.module.packages?.let { packages ->
-                        if (packages.slashCommandsPackage.isEmpty()) {
+                        val slashCommandsPackage = packages.slashCommandsPackage
+                        if (slashCommandsPackage.isEmpty()) {
                             return@forEach
                         }
 
-                        this@apply.slashCommands.register(packages.slashCommandsPackage)
+                        this@apply.slashCommands.register(slashCommandsPackage)
                     }
                 }
             }
-
-        listenAviationEvents()
-
-        mainEntrypoints.forEach { entrypoint ->
-            entrypoint.jda(jda)
-        }
 
         jda.addEventListener(aviation)
 
@@ -129,16 +108,12 @@ object YiskiRunner {
             logger.info { "Shutting down Yiski..." }
         }
 
-
+        modules.mapNotNull { metadata ->
+            val config = configEntrypoints.firstNotNullOf { (configMetadata, configModule) ->
+                if (configMetadata.information.id == metadata.information.id) configModule else null
+            }.config
+            YiskiConstants.moduleLoader.getMainEntrypoint(metadata, database, aviation, jda, config)
+        }.forEach(YiskiModuleEntrypoint::setup)
     }
 
-    private fun listenAviationEvents() {
-        aviation.on<AviationExceptionEvent> {
-            logger.error { "Oopsies. Aviation threw an error: ${this.error}" }
-        }
-
-        aviation.on<CommandFailedEvent> {
-            logger.error { "[Command Execution] A command has failed: ${this.error}" }
-        }
-    }
 }

@@ -66,8 +66,20 @@ class ModuleLoader {
      *
      * This function allows the given class to be a class or an object.
      */
-    fun loadEntrypoint(clz: Class<*>): Entrypoint {
-        val instance = (clz.kotlin.objectInstance ?: clz.declaredConstructors.first().newInstance())
+    fun loadEntrypoint(
+        clz: Class<*>,
+        vararg args: Any
+    ): Entrypoint {
+        if (clz.kotlin.objectInstance != null || clz.kotlin.isCompanion) {
+            throw IllegalArgumentException("Cannot load entrypoint from object or companion object!")
+        }
+
+        val constructor = clz.declaredConstructors.first()
+        if (constructor.parameterCount != args.size) {
+            throw IllegalArgumentException("Invalid number of arguments for entrypoint constructor! (expected ${args.size} - ${args.map { it::class.java.simpleName }.joinToString(", ")})")
+        }
+
+        val instance = constructor.newInstance(*args)
         if (instance !is Entrypoint) {
             throw IllegalArgumentException("${clz.name} does not implement Entrypoint interface!")
         }

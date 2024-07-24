@@ -33,14 +33,14 @@ class Headcrab : Scaffold {
         if (result >= 91) {
             logger.info { "HEADCRAB FAIL: CHANCE $result" }
 
-            val inputStreamHeadcrabSuccess = EmbedHelpers.imagesPath(Yiski3.instance.config.images.inlineGifImageTables.headcrabsuccess)
+            val inputStreamHeadcrabSuccess = EmbedHelpers.imagesPath(Yiski3.config.images.inlineGifImageTables.headcrabsuccess)
 
             ctx.interaction.deferReply()
-                .setFiles(FileUpload.fromData(inputStreamHeadcrabSuccess, Yiski3.instance.config.images.inlineGifImageTables.headcrabfailfile))
+                .setFiles(FileUpload.fromData(inputStreamHeadcrabSuccess, Yiski3.config.images.inlineGifImageTables.headcrabfailfile))
                 .setEmbeds(Embed {
                     title = "Headcrab failed!"
                     description = "${user.asMention} has succsefully deflected the headcrab from ${ctx.author.asMention}!"
-                    image = "attachment://${Yiski3.instance.config.images.inlineGifImageTables.headcrabsuccessfile}" // Aubree is being a massive HIMBO
+                    image = "attachment://${Yiski3.config.images.inlineGifImageTables.headcrabsuccessfile}" // Aubree is being a massive HIMBO
                     color = EmbedHelpers.infoColor()
                 })
                 .await()
@@ -56,4 +56,5 @@ class Headcrab : Scaffold {
             }
         }
     }
+
 }

@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.utils.FileUpload
+import one.devos.yiski.common.AbstractYiskiConfig
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.database.DatabaseManager
@@ -25,16 +26,28 @@ val logger = KotlinLogging.logger { }
 
 // all of this needs to be decoupled and not entirely thrown into the companion object to make this actually work with the new module loader
 @OptIn(YiskiModule::class)
-class Yiski5 : YiskiModuleEntrypoint {
+class Yiski5(
+    // Change these to vals if they're needed!
+    database: DatabaseManager,
+    private val aviation: Aviation,
+    private val jda: JDA,
+    private val config: Yiski5ConfigData
+) : YiskiModuleEntrypoint(
+    database,
+    aviation,
+    jda,
+    config
+) {
+
     companion object {
         lateinit var instance: Yiski5
             private set
 
-        lateinit var config: Yiski5ConfigData
-            private set
-
         lateinit var timezone: ZoneId
             private set
+
+        val config: Yiski5ConfigData
+            get() = instance.config
 
         val json = Json { this.prettyPrint = true }
 
@@ -180,25 +193,18 @@ class Yiski5 : YiskiModuleEntrypoint {
     init {
         instance = this
         timezone = ZoneId.of(config.bot.timezone)
+    }
+
+    override fun setup() {
         logger.info { "Yiski5 module loaded." }
-    }
 
-    override fun config() {
-    }
-
-    override fun database(database: DatabaseManager) { }
-
-
-    override fun aviation(aviation: Aviation) {
         aviation.slashCommands.register("one.devos.yiski5.commands")
-    }
 
-    override fun jda(jda: JDA) {
-        // Ready Event
         jda.listener<ReadyEvent> {
             // Mayhem starts here
             // Let the Dragons sleep else there will be a fire in the server closet (in this case, an RPI 4)
             setTimer(jda)
         }
     }
+
 }

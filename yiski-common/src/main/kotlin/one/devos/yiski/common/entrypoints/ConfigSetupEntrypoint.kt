@@ -7,6 +7,8 @@ import one.devos.yiski.module.loader.api.entrypoints.Entrypoint
 @YiskiModule
 interface ConfigSetupEntrypoint : Entrypoint {
 
-    fun load(): AbstractYiskiConfig
+    val config: AbstractYiskiConfig
+
+    fun read()
 
 }
