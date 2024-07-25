@@ -3,6 +3,8 @@
 aviation = "7d1dcef7"
 # Exposed
 exposed = "0.52.0"
+# GitHub API
+github-api = "1.323"
 # JDA
 jda = "5.0.1"
 jda-ktx = "0.12.0"
@@ -36,6 +38,8 @@ exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exp
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
 exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed" }
 exposed-json = { module = "org.jetbrains.exposed:exposed-json", version.ref = "exposed" }
+# GitHub API
+github-api = { module = "org.kohsuke:github-api", version.ref = "github-api" }
 # JDA
 jda = { module = "net.dv8tion:JDA", version.ref = "jda" }
 jda-ktx = { module = "club.minnced:jda-ktx", version.ref = "jda-ktx" }

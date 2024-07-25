@@ -1,4 +1,4 @@
-package one.devos.yiski3.commands
+package one.devos.yiski3.commands.silly
 
 import one.devos.yiski3.utils.uwuify
 import xyz.artrinix.aviation.command.message.annotations.Greedy

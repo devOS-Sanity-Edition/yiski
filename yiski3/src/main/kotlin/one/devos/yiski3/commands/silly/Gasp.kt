@@ -1,4 +1,4 @@
-package one.devos.yiski3.commands
+package one.devos.yiski3.commands.silly
 
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
@@ -9,17 +9,17 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
-class MemoryLeak : Scaffold {
-    @SlashCommand(name = "memoryleak", description = "signal 11 (SIGSEGV), code 1 (SEGV_MAPERR)")
-    suspend fun memoryleak(ctx: SlashContext) {
-        val memoryLeak = EmbedHelpers.imagesPath(Yiski3.config.videos.memoryleak)
+class Gasp : Scaffold {
+    @SlashCommand(name = "rtx", description = "Its just like real life!")
+    suspend fun gasp(ctx: SlashContext) {
+        val gasp = EmbedHelpers.imagesPath(Yiski3.config.videos.gasp)
 
         ctx.interaction.deferReply()
             .setEmbeds(Embed {
-                title = "`signal 11 (SIGSEGV), code 1 (SEGV_MAPERR)`"
-                description = "Buffer overflow"
+                title = "Gasp!"
+                description = "warning: loud"
                 color = EmbedHelpers.infoColor()
             }).await()
-        ctx.channel.sendFiles(FileUpload.fromData(memoryLeak, Yiski3.config.videos.memoryleakfile)).await()
+        ctx.channel.sendFiles(FileUpload.fromData(gasp, Yiski3.config.videos.gaspfile)).await()
     }
 }

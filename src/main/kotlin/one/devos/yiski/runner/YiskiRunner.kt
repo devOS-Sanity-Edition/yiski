@@ -89,7 +89,7 @@ object YiskiRunner {
         jda.listener<ReadyEvent> {
             try {
                 logger.info { "Yiski started!" }
-                aviation.syncCommands(jda)
+//                aviation.syncCommands(jda)
                 aviation.syncCommandsForTestGuilds(jda)
             } catch (e: Exception) {
                 logger.error { "Something has gone very wrong with the Ready Event." }

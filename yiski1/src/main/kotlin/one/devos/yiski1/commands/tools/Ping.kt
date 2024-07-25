@@ -9,6 +9,8 @@ class Ping : Scaffold {
     suspend fun ping(ctx: SlashContext) {
         ctx.sendEmbed {
             setTitle("Pong!")
+            addField("Gateway", ctx.jda.gatewayPing.toString(), true)
+            addField("REST API", ctx.jda.restPing.complete().toString(), true)
         }
     }
 }

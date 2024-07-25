@@ -8,6 +8,8 @@ import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski.common.utils.getConfigSetupEntrypoint
 import one.devos.yiski3.data.Yiski3ConfigData
+import org.kohsuke.github.GitHub
+import org.kohsuke.github.GitHubBuilder
 import xyz.artrinix.aviation.Aviation
 
 val logger = KotlinLogging.logger { }
@@ -32,6 +34,8 @@ class Yiski3(
 
         val config: Yiski3ConfigData
             get() = instance.config
+
+        val gitHub = GitHubBuilder().withOAuthToken(YiskiConstants.config.universal.githubToken).build()
     }
 
     init {

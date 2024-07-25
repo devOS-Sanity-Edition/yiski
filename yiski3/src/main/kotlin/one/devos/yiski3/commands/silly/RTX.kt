@@ -1,4 +1,4 @@
-package one.devos.yiski3.commands
+package one.devos.yiski3.commands.silly
 
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
