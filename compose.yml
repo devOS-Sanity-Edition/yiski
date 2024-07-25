@@ -1,13 +1,13 @@
 services:
   postgres:
     container_name: postgres_container
-    image: postgres
+    image: postgres:16-alpine
     environment:
+      POSTGRES_DB: yiski
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      PGDATA: /data/postgres
     volumes:
-      - postgres:/data/postgres
+      - postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
@@ -19,9 +19,9 @@ services:
     image: devos-se/yiski-dev:latest
     volumes:
       - ./config.toml:/app/config.toml
-      - ./yiski1_config.toml:/app/yiski1_config.toml
-#      - ./yiski2_config.toml:/app/yiski2_config.toml
-#      - ./yiski3_config.toml:/app/yiski3_config.toml
-#      - ./yiski4_config.toml:/app/yiski4_config.toml
-      - ./yiski5_config.toml:/app/yiski5_config.toml
-#      - ./yiski6_config.toml:/app/yiski6_config.toml
+      - ./yiski1.config.toml:/app/yiski1.config.toml
+#      - ./yiski2.config.toml:/app/yiski2.config.toml
+#      - ./yiski3.config.toml:/app/yiski3.config.toml
+#      - ./yiski4.config.toml:/app/yiski4.config.toml
+      - ./yiski5.config.toml:/app/yiski5.config.toml
+#      - ./yiski6.config.toml:/app/yiski6.config.toml
