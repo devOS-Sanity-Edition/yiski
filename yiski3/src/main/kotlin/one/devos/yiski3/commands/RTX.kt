@@ -14,6 +14,8 @@ import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
 class RTX : Scaffold {
+    // We need to make it so that it can be sent as a video, i.e. figure out a way
+    // to send it as a link (local webserver?)
 
     @SlashCommand(name = "rtx", description = "Its just like real life!")
     suspend fun rtx(ctx: SlashContext) {

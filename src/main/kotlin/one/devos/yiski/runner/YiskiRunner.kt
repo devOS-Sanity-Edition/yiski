@@ -66,7 +66,7 @@ object YiskiRunner {
                 ratelimitProvider = DefaultRateLimitStrategy()
                 doTyping = true
                 developers.addAll(YiskiConstants.config.discord.adminIDs.toTypedArray())
-//                testGuilds = mutableSetOf(YiskiConstants.config.discord.homeGuildID)
+                testGuilds = mutableSetOf(YiskiConstants.config.discord.homeGuildID)
                 registerDefaultParsers()
             }
             .build()
