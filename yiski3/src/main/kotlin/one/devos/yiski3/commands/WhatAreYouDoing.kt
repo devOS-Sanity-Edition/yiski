@@ -9,17 +9,17 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
-class Memoryleak : Scaffold {
-    @SlashCommand(name = "memoryleak", description = "signal 11 (SIGSEGV), code 1 (SEGV_MAPERR)")
-    suspend fun memoryleak(ctx: SlashContext) {
-        val memoryLeak = EmbedHelpers.imagesPath(Yiski3.config.videos.memoryleak)
+class WhatAreYouDoing : Scaffold {
+    @SlashCommand(name = "whatareyoudoing", description = "STOP PLEASE STOP FOR THE LO-")
+    suspend fun whatareyoudoing(ctx: SlashContext) {
+        val whatAreYouDoing = EmbedHelpers.imagesPath(Yiski3.config.videos.whatareyoudoing)
 
         ctx.interaction.deferReply()
             .setEmbeds(Embed {
-                title = "`signal 11 (SIGSEGV), code 1 (SEGV_MAPERR)`"
-                description = "Buffer overflow"
+                title = "NOT AGAIN"
+                description = "STOP PLEASE STOP FOR THE LO-"
                 color = EmbedHelpers.infoColor()
             }).await()
-        ctx.channel.sendFiles(FileUpload.fromData(memoryLeak, Yiski3.config.videos.memoryleakfile)).await()
+        ctx.channel.sendFiles(FileUpload.fromData(whatAreYouDoing, Yiski3.config.videos.whatareyoudoingfile)).await()
     }
 }

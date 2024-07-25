@@ -66,7 +66,7 @@ allprojects {
         implementation(rootProject.libs.reflection)
     }
 
-    // Write the version to the fabric.mod.json
+    // Write the version to the yiski.metadata.toml
     tasks.processResources {
         inputs.property("version", project.version)
 
