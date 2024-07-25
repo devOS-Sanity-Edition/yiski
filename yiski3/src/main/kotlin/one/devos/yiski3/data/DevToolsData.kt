@@ -7,7 +7,7 @@ import one.devos.yiski.common.AbstractYiskiConfig
 data class DevToolsData(
     val title: TitlePortion,
     val text: TextPortion
-) : AbstractYiskiConfig {
+) {
     @Serializable
     data class TitlePortion(
         val embed: String,

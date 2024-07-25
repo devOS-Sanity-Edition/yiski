@@ -12,4 +12,4 @@ windows = "- Go to `%appdata%\\discord` and open up your `settings.json` file.\n
 linux = "- Go to `~/.config/discord/` and open up your `settings.json` file. \n- Add ```\"DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING\": true,``` to the top of your JSON, and then save it.\n- **Fully** restart Discord [NOT JUST RELOADING IT. **RESTART**].\n- If You hit CTRL + SHIFT + I, and it works, well... it works."
 macOS = "beats me lol, tell me where it's located and i'll add it -devin"
 result = "ignore everything else, only the `DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING` part is important."
-source = "[Hi. Click here.](https://www.reddit.com/r/discordapp/comments/sc61n3/comment/hu4fw5x/"
+source = "[Hi. Click here.](https://www.reddit.com/r/discordapp/comments/sc61n3/comment/hu4fw5x/)"
