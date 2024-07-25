@@ -25,7 +25,7 @@ class RTX : Scaffold {
             .setFiles(FileUpload.fromData(rtxVideo, Yiski3.config.videos.rtxfile))
             .setEmbeds(Embed {
                 title = "RTX"
-                image ="attachment://${Yiski3.config.videos.rtxfile}"
+                description = "warning: loud"
                 color = EmbedHelpers.infoColor()
             })
             .await()
