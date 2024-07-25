@@ -25,3 +25,6 @@ services:
 #      - ./yiski4.config.toml:/app/yiski4.config.toml
       - ./yiski5.config.toml:/app/yiski5.config.toml
 #      - ./yiski6.config.toml:/app/yiski6.config.toml
+
+volumes:
+  postgres:
