@@ -1,23 +1,15 @@
-[embed]
-title = "So... Discord took out inspect element/devtools on Stable branch. How do I re-enable it?"
-text = ""
+[title]
+embed = "So... Discord took out inspect element/devtools on Stable branch. How do I re-enable it?"
+windows = "For Windows"
+linux = "For Linux"
+macOS = "For macOS"
+result = "End Result"
+source = "Original Source"
 
-[windows]
-title = "For Windows"
-text = "- Go to `%appdata%\\discord` and open up your `settings.json` file.\n- Add ```\"DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING\": true,``` to the top of your JSON, and then save it.\n- **Fully** restart Discord [NOT JUST RELOADING IT. **RESTART**].\n- hit CTRL + SHIFT + I, and it works, well... it works."
-
-[linux]
-title = "For Linux"
-text = "- Go to `~/.config/discord/` and open up your `settings.json` file. \n- Add ```\"DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING\": true,``` to the top of your JSON, and then save it.\n- **Fully** restart Discord [NOT JUST RELOADING IT. **RESTART**].\n- If You hit CTRL + SHIFT + I, and it works, well... it works."
-
-[macos]
-title = "for macOS"
-text = "beats me lol, tell me where it's located and i'll add it -devin"
-
-[result]
-title = "End Result"
-text = "ignore everything else, only the `DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING` part is important."
-
-[source]
-title = "Original Source"
-text = "[Hi. Click here.](https://www.reddit.com/r/discordapp/comments/sc61n3/comment/hu4fw5x/?utm_source=share&utm_medium=web2x&context=3)"
+[text]
+embed = ""
+windows = "- Go to `%appdata%\\discord` and open up your `settings.json` file.\n- Add ```\"DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING\": true,``` to the top of your JSON, and then save it.\n- **Fully** restart Discord [NOT JUST RELOADING IT. **RESTART**].\n- hit CTRL + SHIFT + I, and it works, well... it works."
+linux = "- Go to `~/.config/discord/` and open up your `settings.json` file. \n- Add ```\"DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING\": true,``` to the top of your JSON, and then save it.\n- **Fully** restart Discord [NOT JUST RELOADING IT. **RESTART**].\n- If You hit CTRL + SHIFT + I, and it works, well... it works."
+macOS = "beats me lol, tell me where it's located and i'll add it -devin"
+result = "ignore everything else, only the `DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING` part is important."
+source = "[Hi. Click here.](https://www.reddit.com/r/discordapp/comments/sc61n3/comment/hu4fw5x/"
