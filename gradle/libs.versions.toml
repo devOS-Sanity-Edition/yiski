@@ -16,8 +16,8 @@ kotlinx-coroutines = "1.8.1"
 kotlinx-serialization = "1.6.3"
 kotlin-logging = "5.1.0"
 # Lavalink
-lavakord-jda = "7.0.3"
 lavalink-client = "3.0.0"
+pcm-audio-utils = "0.1.0"
 # Logback
 logback = "1.5.6"
 # PostgresQL
@@ -60,8 +60,8 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 # Kotlin Logging
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 # Lavalink
-lavakord-jda = { module = "dev.schlaubi.lavakord:jda", version.ref = "lavakord-jda" }
 lavalink-client = { module = "dev.arbjerg:lavalink-client", version.ref = "lavalink-client" }
+pcm-audio-utils = { module = "dev.deftu:pcm-audio-utils", version.ref = "pcm-audio-utils" }
 # Logback
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
@@ -104,6 +104,10 @@ ktoml = [
     "ktoml-core",
     "ktoml-file",
     "ktoml-source"
+]
+lavalink = [
+    "lavalink-client",
+    "pcm-audio-utils"
 ]
 logback = [
     "logback",

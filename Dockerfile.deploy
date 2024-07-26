@@ -1,5 +1,4 @@
-# there wasnt an Temurin alpine build and i'd rather keep it somewhat light instead of full on ubuntu 22.04, and distroless hasnt updated yet
-FROM azul/zulu-openjdk-alpine:21-latest
+FROM gcr.io/distroless/java21-debian12:latest
 
 ENV APP_HOME=/app
 COPY ./Yiski.jar $APP_HOME/

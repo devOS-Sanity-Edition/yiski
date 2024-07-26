@@ -10,7 +10,7 @@ import one.devos.yiski.module.loader.impl.ModuleLoader
 import one.devos.yiski.module.metadata.ModuleMetadata
 import xyz.artrinix.aviation.Aviation
 
-@OptIn(YiskiModule::class)
+@YiskiModule
 fun ModuleLoader.getMainEntrypoint(
     metadata: ModuleMetadata,
     database: DatabaseManager,
@@ -32,7 +32,7 @@ fun ModuleLoader.getMainEntrypoint(
     return entrypoint
 }
 
-@OptIn(YiskiModule::class)
+@YiskiModule
 fun ModuleLoader.getConfigSetupEntrypoint(metadata: ModuleMetadata): ConfigSetupEntrypoint? {
     val name = metadata.module.configClass
     if (name.isEmpty()) {

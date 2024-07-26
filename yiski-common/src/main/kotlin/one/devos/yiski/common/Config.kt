@@ -1,6 +1,5 @@
 package one.devos.yiski.common
 
-import com.akuleshov7.ktoml.Toml
 import com.akuleshov7.ktoml.TomlInputConfig
 import com.akuleshov7.ktoml.file.TomlFileReader
 import io.github.oshai.kotlinlogging.KotlinLogging

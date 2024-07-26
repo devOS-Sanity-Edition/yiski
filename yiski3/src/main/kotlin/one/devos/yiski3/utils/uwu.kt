@@ -1,6 +1,6 @@
 package one.devos.yiski3.utils
 
-import java.util.Locale
+import java.util.*
 import kotlin.random.Random
 
 /*

@@ -3,11 +3,9 @@ package one.devos.yiski3.commands
 import com.akuleshov7.ktoml.file.TomlFileReader
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.serializer
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.annotations.YiskiModule
-import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
 import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski3.Yiski3
 import one.devos.yiski3.data.DevToolsData
@@ -16,10 +14,9 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 import java.nio.charset.StandardCharsets
-import kotlin.system.exitProcess
 
+@YiskiModule
 class DevTools : Scaffold {
-    @OptIn(YiskiModule::class)
     @SlashCommand(name = "devtools", description = "How to turn on Discord Dev Tools on stable branch")
     suspend fun devtools(ctx: SlashContext) {
         val devToolsToml = DevToolsToml.read()

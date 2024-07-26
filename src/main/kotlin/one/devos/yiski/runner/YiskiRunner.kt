@@ -25,7 +25,7 @@ import kotlin.io.path.Path
 
 val logger = KotlinLogging.logger { }
 
-@OptIn(YiskiModule::class)
+@YiskiModule
 object YiskiRunner {
     lateinit var jda: JDA
     lateinit var aviation: Aviation
@@ -85,6 +85,10 @@ object YiskiRunner {
             }
 
         jda.addEventListener(aviation)
+
+        fun test() {
+
+        }
 
         jda.listener<ReadyEvent> {
             try {

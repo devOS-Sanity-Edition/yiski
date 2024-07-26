@@ -4,13 +4,13 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
 import one.devos.yiski.common.AbstractYiskiConfig
 import one.devos.yiski.common.annotations.YiskiModule
-import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.database.DatabaseManager
+import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import xyz.artrinix.aviation.Aviation
 
 val logger = KotlinLogging.logger { }
 
-@OptIn(YiskiModule::class)
+@YiskiModule
 class Yiski4(
     // Change these to vals if they're needed!
     database: DatabaseManager,

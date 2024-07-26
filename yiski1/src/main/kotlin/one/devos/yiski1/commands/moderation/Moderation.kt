@@ -8,7 +8,6 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Member
-import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import one.devos.yiski1.tables.guild.Guild
 import one.devos.yiski1.tables.moderation.Infraction
@@ -21,6 +20,7 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.command.slash.annotations.SlashSubCommand
+import xyz.artrinix.aviation.entities.Scaffold
 import java.awt.Color
 import java.time.Duration
 import java.util.*
@@ -28,7 +28,7 @@ import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
 @SlashCommand("mod", "Moderation commands", defaultUserPermissions = [Permission.MODERATE_MEMBERS, Permission.BAN_MEMBERS, Permission.KICK_MEMBERS, Permission.MESSAGE_MANAGE])
-class Moderation {
+class Moderation : Scaffold {
     private companion object {
         suspend fun TextChannel._getMessagesAsInfractions(count: Int, authorId: Long, remove: Boolean): Array<String> {
             val messageHistory = this.getHistoryBefore(this.latestMessageIdLong, count).await().retrievedHistory

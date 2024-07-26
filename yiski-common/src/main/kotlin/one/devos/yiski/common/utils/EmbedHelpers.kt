@@ -1,16 +1,16 @@
 package one.devos.yiski.common.utils
 
 import one.devos.yiski.common.data.Colors
-import xyz.artrinix.aviation.internal.arguments.types.Snowflake
 import java.awt.Color
 import java.io.FileInputStream
-import java.nio.file.Path
+import java.io.InputStream
 import kotlin.io.path.toPath
 
 object EmbedHelpers {
-    fun imagesPath(pathToImage: String): FileInputStream {
+    fun imagesPath(pathToImage: String): InputStream {
 //        return FileInputStream(Path.of(pathToImage).toFile())
-        return this::class.java.classLoader.getResource(pathToImage)?.toURI()?.toPath()?.toFile()!!.inputStream() // this feels dangerous but thanks naz
+//        return this::class.java.classLoader.getResource(pathToImage)?.toURI()?.toPath()?.toFile()!!.inputStream() // this feels dangerous but thanks naz
+        return this::class.java.classLoader.getResourceAsStream(pathToImage) ?: error("Could not get image from given path")
     }
 
     fun successColor(successRed: Int = Colors.SUCCESS.r, successGreen: Int = Colors.SUCCESS.g, successBlue: Int = Colors.SUCCESS.b): Int {

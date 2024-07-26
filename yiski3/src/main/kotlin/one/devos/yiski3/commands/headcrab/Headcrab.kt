@@ -4,6 +4,7 @@ import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
 import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.utils.FileUpload
+import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.data.Colors
 import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski3.Yiski3
@@ -14,9 +15,8 @@ import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 import java.awt.Color
 
-
+@YiskiModule
 class Headcrab : Scaffold {
-
     @SlashCommand("headcrab", "CRAB YOUR FRIENDS 🦀🦀🦀🦀🦀")
     suspend fun headcrab(ctx: SlashContext, @Description("Who you wanna 🦀!") user: User) {
         val authorID = ctx.author.id

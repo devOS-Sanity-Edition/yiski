@@ -39,6 +39,8 @@ allprojects {
         mavenCentral()
         maven("https://oss.sonatype.org/content/repositories/snapshots")
         maven("https://gitlab.com/api/v4/projects/26794598/packages/maven") // Aviation GitLab
+        maven("https://maven.lavalink.dev/snapshots")
+        maven("https://maven.deftu.dev/releases")
     }
 
     dependencies {
@@ -60,6 +62,7 @@ allprojects {
         implementation(rootProject.libs.bundles.ktoml)
         implementation(rootProject.libs.bundles.kotlin)
         implementation(rootProject.libs.bundles.kotlinx)
+        implementation(rootProject.libs.bundles.lavalink)
         implementation(rootProject.libs.bundles.logback)
         implementation(rootProject.libs.postgresql)
         implementation(rootProject.libs.kotlin.logging)

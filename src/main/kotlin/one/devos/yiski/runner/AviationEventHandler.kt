@@ -4,7 +4,6 @@ import one.devos.yiski.common.utils.EmbedHelpers
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.events.*
 import xyz.artrinix.aviation.internal.utils.on
-import kotlin.math.log
 
 object AviationEventHandler {
 

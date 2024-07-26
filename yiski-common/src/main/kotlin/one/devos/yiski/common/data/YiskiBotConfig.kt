@@ -1,8 +1,6 @@
 package one.devos.yiski.common.data
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.jetbrains.annotations.Nullable
 
 @Serializable
 data class YiskiBotConfig(

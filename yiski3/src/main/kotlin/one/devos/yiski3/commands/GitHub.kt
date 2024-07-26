@@ -1,15 +1,15 @@
 package one.devos.yiski3.commands
 
 import dev.minn.jda.ktx.messages.Embed
-import one.devos.yiski.common.YiskiConstants
+import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski3.Yiski3
-import org.kohsuke.github.GitHubBuilder
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.command.slash.annotations.SlashSubCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
+@YiskiModule
 @SlashCommand(name = "gh", description = "GitHub related commands")
 class GitHub : Scaffold {
     @SlashSubCommand("Lists information about a supplied repo")
@@ -24,6 +24,8 @@ class GitHub : Scaffold {
                 "Cannot get license."
             }
         }
+
+
 
         ctx.interaction.deferReply()
             .setEmbeds(Embed {

@@ -1,7 +1,6 @@
 package one.devos.yiski3.data
 
 import kotlinx.serialization.Serializable
-import one.devos.yiski.common.AbstractYiskiConfig
 
 @Serializable
 data class DevToolsData(

@@ -5,7 +5,6 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 import java.awt.Color
-import kotlin.random.Random
 
 class Status : Scaffold {
     @SlashCommand("status", description = "Displays the system status of an agent")
