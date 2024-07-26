@@ -86,10 +86,6 @@ object YiskiRunner {
 
         jda.addEventListener(aviation)
 
-        fun test() {
-
-        }
-
         jda.listener<ReadyEvent> {
             try {
                 logger.info { "Yiski started!" }
