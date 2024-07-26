@@ -1,5 +1,6 @@
 package one.devos.yiski.runner
 
+import one.devos.yiski.common.utils.EmbedHelpers
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.events.*
 import xyz.artrinix.aviation.internal.utils.on
@@ -14,11 +15,18 @@ object AviationEventHandler {
 
         aviation.on<BadArgumentEvent> {
             logger.error(this.error) { "[Command Execution] Bad Argument Event" }
-            this.ctx.send("An unexpected error has occurred, please report this to the Artrinix Discord")
+            this.ctx.sendEmbed {
+                setTitle("An unexpected error has occurred, please go fuck yourself.")
+                setColor(EmbedHelpers.failColor())
+            }
         }
 
         aviation.on<BadEnvironmentEvent> {
-            this.ctx.send("An unexpected error has occurred, please report this to the Artrinix Discord")
+            this.ctx.sendEmbed {
+                setTitle("An unexpected error has occurred, please go fuck yourself.")
+                addField("Error Type:", "Bad Environment Event", false)
+                setColor(EmbedHelpers.failColor())
+            }
         }
 
         aviation.on<CommandExecutedEvent> {
@@ -27,7 +35,11 @@ object AviationEventHandler {
 
         aviation.on<CommandFailedEvent> {
             logger.error(this.error) { "[Command Execution] Command Failed Event" }
-            this.ctx.send("An unexpected error has occurred, please report this to the Artrinix Discord")
+            this.ctx.sendEmbed {
+                setTitle("An unexpected error has occurred, please go fuck yourself.")
+                addField("Error Type:", "Command Failed Event under Command Execution", false)
+                setColor(EmbedHelpers.failColor())
+            }
         }
 
         aviation.on<CommandInvokedEvent> {
@@ -39,12 +51,20 @@ object AviationEventHandler {
         }
 
         aviation.on<MissingPermissionsEvent> {
-            this.ctx.send("You don't have permission to do that.")
+            this.ctx.sendEmbed {
+                setTitle("Skill issue.")
+                addField("Error Type:", "Missing Permissions", false)
+                setColor(EmbedHelpers.warnColor())
+            }
         }
 
         aviation.on<ParsingErrorEvent> {
             logger.error(this.error) { "[Command Execution] Parsing Error Event" }
-            this.ctx.send("An unexpected error has occurred, please report this to the Artrinix Discord")
+            this.ctx.sendEmbed {
+                setTitle("An unexpected error has occurred, please go fuck yourself.")
+                addField("Error Type:", "Parsing Error Event under Command Execution", false)
+                setColor(EmbedHelpers.failColor())
+            }
         }
 
         aviation.on<UnknownCommandEvent> {

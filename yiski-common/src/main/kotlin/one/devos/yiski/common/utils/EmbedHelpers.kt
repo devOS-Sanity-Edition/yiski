@@ -5,10 +5,12 @@ import xyz.artrinix.aviation.internal.arguments.types.Snowflake
 import java.awt.Color
 import java.io.FileInputStream
 import java.nio.file.Path
+import kotlin.io.path.toPath
 
 object EmbedHelpers {
     fun imagesPath(pathToImage: String): FileInputStream {
-        return FileInputStream(Path.of(pathToImage).toFile())
+//        return FileInputStream(Path.of(pathToImage).toFile())
+        return this::class.java.classLoader.getResource(pathToImage)?.toURI()?.toPath()?.toFile()!!.inputStream() // this feels dangerous but thanks naz
     }
 
     fun successColor(successRed: Int = Colors.SUCCESS.r, successGreen: Int = Colors.SUCCESS.g, successBlue: Int = Colors.SUCCESS.b): Int {

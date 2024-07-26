@@ -3,6 +3,7 @@ package one.devos.yiski3.commands
 import com.akuleshov7.ktoml.file.TomlFileReader
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.serializer
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.annotations.YiskiModule
@@ -14,6 +15,7 @@ import one.devos.yiski3.logger
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
+import java.nio.charset.StandardCharsets
 import kotlin.system.exitProcess
 
 class DevTools : Scaffold {
@@ -43,12 +45,12 @@ class DevTools : Scaffold {
 
 @YiskiModule
 object DevToolsToml {
-    private val devToolsTomlPath = System.getProperty("devtools", "assets/devtools.toml")
+    private val devToolsTomlPath = Yiski3::class.java.getResourceAsStream("/assets/devtools.toml")?.bufferedReader(StandardCharsets.UTF_8)!!.readText()
 
     fun read() : DevToolsData {
         return try {
             logger.info { "Attempting to load the Devtools TOML..." }
-            TomlFileReader.decodeFromFile(serializer(), devToolsTomlPath)
+            TomlFileReader.decodeFromString(serializer(), devToolsTomlPath)
         } catch (e: Exception) {
             logger.error {
                 "Failed to load the Devtools TOML. Uh oh."
