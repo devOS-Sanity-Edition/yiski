@@ -92,7 +92,9 @@ object YiskiRunner {
 //                aviation.syncCommands(jda)
                 aviation.syncCommandsForTestGuilds(jda)
             } catch (e: Exception) {
-                logger.error { "Something has gone very wrong with the Ready Event." }
+                logger.error(e) {
+                    "Something has gone very wrong with the Ready Event."
+                }
             }
         }
 
