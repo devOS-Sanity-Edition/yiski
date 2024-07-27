@@ -28,4 +28,8 @@ object EmbedHelpers {
     fun infoColor(infoRed: Int = Colors.INFO.r, infoGreen: Int = Colors.INFO.g, infoBlue: Int = Colors.INFO.b): Int {
         return Color(infoRed, infoGreen, infoBlue).rgb
     }
+
+    fun moderationColor(modRed: Int = Colors.MODERATION.r, modGreen: Int = Colors.MODERATION.g, modBlue: Int = Colors.MODERATION.b): Int {
+        return Color(modRed, modGreen, modBlue).rgb
+    }
 }

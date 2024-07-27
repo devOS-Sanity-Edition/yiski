@@ -1,5 +1,6 @@
 package one.devos.yiski1.tables.moderation
 
+import dev.minn.jda.ktx.jdabuilder.default
 import one.devos.yiski.common.annotations.DatabaseEntry
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
@@ -19,8 +20,8 @@ object InfractionsTable : UUIDTable("infractions") {
     val messages = array("messages", TextColumnType()).default(listOf())
     val roles = array("roles", LongColumnType()).default(listOf())
     val createdAt = long("created_at")
-    val duration = long("duration")
-    val endTime = long("end_time")
+    val duration = long("duration").default(0)
+    val endTime = long("end_time").default(0)
 }
 
 class Infraction(uuid: EntityID<UUID>) : UUIDEntity(uuid) {

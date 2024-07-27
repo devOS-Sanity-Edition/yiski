@@ -1,6 +1,7 @@
 package one.devos.yiski1.commands.development
 
 import dev.minn.jda.ktx.coroutines.await
+import net.dv8tion.jda.api.Permission
 import xyz.artrinix.aviation.command.message.annotations.Greedy
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
@@ -19,7 +20,8 @@ class Evaluation : Scaffold {
         "Evaluate code in an ephemeral runtime environment",
         guildOnly = true,
         guildId = 942513671723180034,
-        developerOnly = true
+        developerOnly = true,
+        defaultUserPermissions = [Permission.ADMINISTRATOR]
     )
     suspend fun eval(ctx: SlashContext, @Greedy @Description("Script to execute") code: String) {
         val bindings = mutableMapOf(
