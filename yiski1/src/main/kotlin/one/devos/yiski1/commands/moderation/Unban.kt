@@ -41,14 +41,12 @@ class Unban : Scaffold {
 
     @SlashCommand(name = "unban", description = "Unban a user", defaultUserPermissions = [Permission.BAN_MEMBERS, Permission.KICK_MEMBERS, Permission.MODERATE_MEMBERS], guildOnly = true)
     suspend fun unban(ctx: SlashContext, @Description("User ID of user to be unbanned") id: String, @Description("Optional. Why is this person being unbanned?") reason: String?) {
-        val response = ctx.interaction.deferReply().await()
-
-        val messages = ctx.textChannel!!._getMessagesAsInfractions(0, ctx.author.idLong)
+//        val messages = ctx.textChannel!!._getMessagesAsInfractions(1, ctx.author.idLong)
 
         newSuspendedTransaction {
             Infraction.new {
                 this.guildId = ctx.guild!!.idLong
-                this.userId = userId
+                this.userId = id.toLong()
                 this.type = InfractionType.KICK
                 if (reason != null) { // this feels jank but oh well
                     this.reason = reason
@@ -56,20 +54,21 @@ class Unban : Scaffold {
                     this.reason = "No reason given"
                 }
                 this.moderator = ctx.author.idLong
-                this.messages = messages
+                this.messages = emptyList()
                 this.roles = emptyList()
                 this.createdAt = System.currentTimeMillis()
                 this.duration = 0
             }
         }
 
-        ctx.guild!!.unban(UserSnowflake.fromId(id)).reason(reason).await()
+        ctx.guild!!.unban(UserSnowflake.fromId(id)).reason(reason).queue()
 
-        response.editOriginalEmbeds(Embed {
-            title = "The Ban Hammer has been revoked!"
-            color = EmbedHelpers.moderationColor()
-            field("Unbanned user ${id}", UserSnowflake.fromId(id).asMention, true)
-            field("Reason", reason ?: "No reason given", true)
-        }).await()
+        ctx.interaction.deferReply()
+            .setEmbeds(Embed {
+                title = "The Ban Hammer has been revoked!"
+                color = EmbedHelpers.moderationColor()
+                field("Unbanned user ${id}", UserSnowflake.fromId(id).asMention, true)
+                field("Reason", reason ?: "No reason given", true)
+            }).queue()
     }
 }
