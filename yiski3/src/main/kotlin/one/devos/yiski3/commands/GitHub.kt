@@ -25,8 +25,6 @@ class GitHub : Scaffold {
             }
         }
 
-
-
         ctx.interaction.deferReply()
             .setEmbeds(Embed {
                 title = getRepo.name
