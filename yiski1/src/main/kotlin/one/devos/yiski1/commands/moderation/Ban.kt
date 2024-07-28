@@ -56,7 +56,6 @@ class Ban : Scaffold {
                     @Description("Which user?") member: Member,
                     @Description("What's the reasoning?") reason: String,
                     @Description("Enter the amount of time you want to wipe a person's messages. [ex: 7d, 5h, 1m, or 0m]") timeframe: String?) {
-//        val bannedUserID = member.user.id
         val response = ctx.interaction.deferReply().await()
 
         fun InlineEmbed.errorEmbedRegexFailure() {

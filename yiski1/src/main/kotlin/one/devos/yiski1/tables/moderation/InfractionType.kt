@@ -6,5 +6,6 @@ enum class InfractionType {
     TIMEOUT,
     MUTE,
     KICK,
-    BAN
+    BAN,
+    UNBAN
 }
