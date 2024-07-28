@@ -4,14 +4,21 @@ import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.events.listener
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
+import net.dv8tion.jda.api.events.guild.GuildJoinEvent
+import net.dv8tion.jda.api.events.guild.GuildReadyEvent
 import net.dv8tion.jda.api.events.interaction.command.MessageContextInteractionEvent
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.interactions.commands.build.Commands
+import one.devos.yiski.common.YiskiConstants
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski1.data.Yiski1ConfigData
+import one.devos.yiski1.tables.guild.Guild
+import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
+import org.jetbrains.exposed.sql.transactions.transaction
 import xyz.artrinix.aviation.Aviation
+import kotlin.math.log
 
 val logger = KotlinLogging.logger { }
 
@@ -21,7 +28,7 @@ class Yiski1(
     database: DatabaseManager,
     aviation: Aviation,
     private val jda: JDA,
-    config: Yiski1ConfigData
+    private val config: Yiski1ConfigData
 ) : YiskiModuleEntrypoint(
     database,
     aviation,
@@ -38,16 +45,27 @@ class Yiski1(
         instance = this
     }
 
-//    val db by lazy { Database.connect("jdbc:sqlite:data.db", "org.sqlite.JDBC") }
-
     override fun setup() {
         logger.info { "Yiski1 module set up." }
 
         jda.listener<ReadyEvent> {
+//            for (guild in it.jda.guilds) { // initial attempts failed
+//                try {
+//                    Guild.createMuteRole(guild.idLong, config.moderation.muteRoleID)
+//                } catch (e: Exception) {
+//                    logger.error(e) { "Table is failing to be populated..." }
+//                }
+//            }
             jda.updateCommands().addCommands(
                 Commands.message("Pin Message"),
                 Commands.message("Unpin Message")
             ).queue()
+
+            transaction {
+                Guild.findById(YiskiConstants.config.discord.homeGuildID) ?: Guild.new(YiskiConstants.config.discord.homeGuildID) {
+                    muteRole = config.moderation.muteRoleID
+                }
+            }
         }
 
         jda.listener<MessageContextInteractionEvent> { event ->

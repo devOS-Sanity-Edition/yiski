@@ -5,5 +5,10 @@ import one.devos.yiski.common.AbstractYiskiConfig
 
 @Serializable
 data class Yiski1ConfigData(
-    val nothingYet: String
-) : AbstractYiskiConfig
+    val moderation: Moderation
+) : AbstractYiskiConfig {
+    @Serializable
+    data class Moderation(
+        val muteRoleID: Long
+    )
+}

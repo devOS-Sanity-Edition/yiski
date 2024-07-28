@@ -63,7 +63,7 @@ class Kick : Scaffold {
                 title = "The Boot has kicked someone!"
                 color = EmbedHelpers.moderationColor()
                 field("User", member.user.name, false)
-                field("User ID", "`${UserSnowflake.fromId(member.id)}`")
+                field("User ID", "`${UserSnowflake.fromId(member.id).id}`")
                 field("Reason", reason, false)
             }).queue()
     }
