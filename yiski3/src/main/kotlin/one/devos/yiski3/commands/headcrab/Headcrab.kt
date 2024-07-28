@@ -8,30 +8,67 @@ import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.data.Colors
 import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski3.Yiski3
+import one.devos.yiski3.tables.Headcrab
+import one.devos.yiski3.data.HeadcrabSuccess
 import one.devos.yiski3.logger
+import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 import java.awt.Color
+import java.util.*
 
 @YiskiModule
 class Headcrab : Scaffold {
     @SlashCommand("headcrab", "CRAB YOUR FRIENDS 🦀🦀🦀🦀🦀")
-    suspend fun headcrab(ctx: SlashContext, @Description("Who you wanna 🦀!") user: User) {
+    suspend fun headcrab(ctx: SlashContext, @Description("Who you wanna 🦀!") user: User, @Description("Why are you murdering them?") reason: String?) {
         val authorID = ctx.author.id
-
+        fun reasonAsNull(): String {
+            if (reason == null) {
+                return ""
+            } else {
+                return reason
+            }
+        }
 
         if (user == ctx.author) {
-            ctx.sendEmbed {
-                setTitle("No suicide in my christan discord server!")
+            newSuspendedTransaction {
+                Headcrab.new {
+                    this.discordId = user.idLong
+                    this.incident = System.currentTimeMillis()
+                    this.selfAttempted = true
+                    this.successType = HeadcrabSuccess.FUCKING_WHAT
+                    if (reason != null) {
+                        this.reason = reason
+                    } else {
+                        this.reason = "Self attempted pain."
+                    }
+                }
             }
-            // Add 1 to the suicide counter
+
+            ctx.sendEmbed {
+                setTitle("Self headcrabbing yourself is not allowed here... or anywhere... ever!")
+            }
         }
         val result = (1..100).random()
 
         if (result >= 91) {
             logger.info { "HEADCRAB FAIL: CHANCE $result" }
+
+            newSuspendedTransaction {
+                Headcrab.new {
+                    this.discordId = user.idLong
+                    this.incident = System.currentTimeMillis()
+                    this.selfAttempted = false
+                    this.successType = HeadcrabSuccess.FAIL
+                    if (reason != null) {
+                        this.reason = reason
+                    } else {
+                        this.reason = ""
+                    }
+                }
+            }
 
             val inputStreamHeadcrabSuccess = EmbedHelpers.imagesPath(Yiski3.config.images.inlineGifImageTables.headcrabsuccess)
 
@@ -42,16 +79,29 @@ class Headcrab : Scaffold {
                     description = "${user.asMention} has succsefully deflected the headcrab from ${ctx.author.asMention}!"
                     image = "attachment://${Yiski3.config.images.inlineGifImageTables.headcrabsuccessfile}" // Aubree is being a massive HIMBO
                     color = EmbedHelpers.infoColor()
+                    field("", reasonAsNull(), false)
                 })
                 .await()
-
-            // TODO: Postgres tables
         } else {
+            newSuspendedTransaction {
+                Headcrab.new {
+                    this.discordId = user.idLong
+                    this.incident = System.currentTimeMillis()
+                    this.selfAttempted = false
+                    this.successType = HeadcrabSuccess.SUCCESS
+                    if (reason != null) {
+                        this.reason = reason
+                    } else {
+                        this.reason = ""
+                    }
+                }
+            }
+
             ctx.sendEmbed {
                 setTitle("Headcrab succeeded!")
                 setDescription("${user.asMention} has been headcrabbed by ${ctx.author.asMention}!")
                 setColor(Color(Colors.SUCCESS.r, Colors.SUCCESS.g, Colors.SUCCESS.b))
-                build()
+                addField("", reasonAsNull(), false)
                 logger.info { "HEADCRAB SUCCESS: CHANCE $result" }
             }
         }

@@ -8,7 +8,7 @@ mainClass = "one.devos.yiski3.Yiski3"
 configClass = "one.devos.yiski3.Yiski3Config"
 
 [module.packages]
-databasePackage = ""
+databasePackage = "one.devos.yiski3.tables"
 slashCommandsPackage = "one.devos.yiski3.commands"
 
 [information]
