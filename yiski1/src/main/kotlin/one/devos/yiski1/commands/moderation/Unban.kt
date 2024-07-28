@@ -63,7 +63,7 @@ class Unban : Scaffold {
             }
         }
 
-        ctx.guild!!.unban(UserSnowflake.fromId(id)).await()
+        ctx.guild!!.unban(UserSnowflake.fromId(id)).reason(reason).await()
 
         response.editOriginalEmbeds(Embed {
             title = "The Ban Hammer has been revoked!"
