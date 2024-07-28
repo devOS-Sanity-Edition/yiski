@@ -10,15 +10,16 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
+import java.util.concurrent.TimeUnit
 
 class Hackban : Scaffold {
     @SlashCommand(name = "hackban", description = "Ban someone using ID, either as a precaution or they have left before you can ban")
-    suspend fun hackban(ctx: SlashContext, @Description("User ID of the user to be banned") id: String, @Description("Optional. Why is this user being banned?") reason: String) {
+    suspend fun hackban(ctx: SlashContext, @Description("User ID of the user to be banned") id: String, @Description("Optional. Why is this user being banned?") reason: String?) {
         newSuspendedTransaction {
             Infraction.new {
                 this.guildId = ctx.guild!!.idLong
                 this.userId = id.toLong()
-                this.type = InfractionType.KICK
+                this.type = InfractionType.BAN
                 if (reason != null) { // this feels jank but oh well
                     this.reason = reason
                 } else {
@@ -32,14 +33,15 @@ class Hackban : Scaffold {
             }
         }
 
-        ctx.guild!!.unban(UserSnowflake.fromId(id)).reason(reason).queue()
+        ctx.guild!!.ban(UserSnowflake.fromId(id), 0 , TimeUnit.SECONDS).reason(reason).queue()
 
         ctx.interaction.deferReply()
             .setEmbeds(Embed {
-                title = "The Ban Hammer has been revoked!"
+                title = "The Ban Hammer has been swung!"
                 color = EmbedHelpers.moderationColor()
-                field("Unbanned user ${id}", UserSnowflake.fromId(id).asMention, true)
-                field("Reason", reason ?: "No reason given", true)
+                field("User", UserSnowflake.fromId(id).asMention, true)
+                field("User ID", "`${UserSnowflake.fromId(id).id}`", true )
+                field("Reason", reason ?: "No reason provided.", true)
             }).queue()
     }
 }

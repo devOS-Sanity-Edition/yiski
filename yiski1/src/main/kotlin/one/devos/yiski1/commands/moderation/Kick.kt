@@ -6,6 +6,7 @@ import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.entities.User
+import net.dv8tion.jda.api.entities.UserSnowflake
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski1.tables.moderation.Infraction
@@ -62,6 +63,7 @@ class Kick : Scaffold {
                 title = "The Boot has kicked someone!"
                 color = EmbedHelpers.moderationColor()
                 field("User", member.user.name, false)
+                field("User ID", "`${UserSnowflake.fromId(member.id)}`")
                 field("Reason", reason, false)
             }).queue()
     }
