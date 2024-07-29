@@ -2,12 +2,15 @@ package one.devos.yiski3
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
+import okhttp3.Cache
+import okhttp3.OkHttpClient
 import one.devos.yiski.common.YiskiConstants
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski3.data.Yiski3ConfigData
 import org.kohsuke.github.GitHubBuilder
+import org.kohsuke.github.extras.okhttp3.OkHttpGitHubConnector
 import xyz.artrinix.aviation.Aviation
 
 val logger = KotlinLogging.logger { }
@@ -33,7 +36,7 @@ class Yiski3(
         val config: Yiski3ConfigData
             get() = instance.config
 
-        val gitHub = GitHubBuilder().withOAuthToken(YiskiConstants.config.universal.githubToken).build()
+        val gitHub = GitHubBuilder().withOAuthToken(YiskiConstants.config.universal.githubToken).withConnector(OkHttpGitHubConnector(OkHttpClient())).build()
     }
 
     init {
@@ -42,6 +45,8 @@ class Yiski3(
 
     override fun setup() {
         logger.info { "Yiski3 module loaded." }
+
+
     }
 
 }

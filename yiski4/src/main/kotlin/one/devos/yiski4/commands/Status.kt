@@ -10,7 +10,7 @@ import java.awt.Color
 class Status : Scaffold {
     @SlashCommand("status", description = "Displays the system status of an agent")
     suspend fun status(ctx: SlashContext) {
-        val unimpl = "-# [EXTREMELY LOUD INCORRECT BUZZER SOUND]"
+        val unimpl = "[EXTREMELY LOUD INCORRECT BUZZER SOUND]"
 
         ctx.sendEmbed {
             setColor(Color(Colors.INFO.r, Colors.INFO.g, Colors.INFO.b))

@@ -49,6 +49,7 @@ class Headcrab : Scaffold {
 
             ctx.sendEmbed {
                 setTitle("Self headcrabbing yourself is not allowed here... or anywhere... ever!")
+                setColor(EmbedHelpers.failColor())
             }
         }
         val result = (1..100).random()
@@ -79,7 +80,9 @@ class Headcrab : Scaffold {
                     description = "${user.asMention} has succsefully deflected the headcrab from ${ctx.author.asMention}!"
                     image = "attachment://${Yiski3.config.images.inlineGifImageTables.headcrabsuccessfile}" // Aubree is being a massive HIMBO
                     color = EmbedHelpers.infoColor()
-                    field("", reasonAsNull(), false)
+                    if (reason != null) {
+                        field("", reasonAsNull(), false)
+                    }
                 })
                 .await()
         } else {
@@ -100,8 +103,10 @@ class Headcrab : Scaffold {
             ctx.sendEmbed {
                 setTitle("Headcrab succeeded!")
                 setDescription("${user.asMention} has been headcrabbed by ${ctx.author.asMention}!")
-                setColor(Color(Colors.SUCCESS.r, Colors.SUCCESS.g, Colors.SUCCESS.b))
-                addField("", reasonAsNull(), false)
+                setColor(EmbedHelpers.successColor())
+                if (reason != null) {
+                    addField("", reasonAsNull(), false)
+                }
                 logger.info { "HEADCRAB SUCCESS: CHANCE $result" }
             }
         }
