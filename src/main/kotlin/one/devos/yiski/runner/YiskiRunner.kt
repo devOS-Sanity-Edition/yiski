@@ -6,6 +6,7 @@ import dev.minn.jda.ktx.jdabuilder.intents
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.runBlocking
 import net.dv8tion.jda.api.JDA
+import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.events.session.ShutdownEvent
@@ -58,6 +59,7 @@ object YiskiRunner {
         }
 
         jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
+            setActivity(Activity.of(Activity.ActivityType.valueOf(YiskiConstants.config.discord.activityType.uppercase()), YiskiConstants.config.discord.activityStatus))
             intents += listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT)
         }
 

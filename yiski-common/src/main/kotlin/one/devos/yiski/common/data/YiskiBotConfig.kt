@@ -27,6 +27,8 @@ data class YiskiBotConfig(
     data class DiscordConfig(
         val botToken: String,
         val adminIDs: Set<Long>,
-        val homeGuildID: Long
+        val homeGuildID: Long,
+        val activityType: String,
+        val activityStatus: String
     )
 }
