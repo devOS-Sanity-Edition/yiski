@@ -4,8 +4,6 @@ import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.events.listener
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
-import net.dv8tion.jda.api.events.guild.GuildJoinEvent
-import net.dv8tion.jda.api.events.guild.GuildReadyEvent
 import net.dv8tion.jda.api.events.interaction.command.MessageContextInteractionEvent
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.interactions.commands.build.Commands
@@ -15,10 +13,8 @@ import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski1.data.Yiski1ConfigData
 import one.devos.yiski1.tables.guild.Guild
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 import xyz.artrinix.aviation.Aviation
-import kotlin.math.log
 
 val logger = KotlinLogging.logger { }
 

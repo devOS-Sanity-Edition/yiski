@@ -1,17 +1,10 @@
 package one.devos.yiski1.commands.moderation
 
-import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
-import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.entities.Member
-import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.entities.UserSnowflake
-import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import one.devos.yiski.common.utils.EmbedHelpers
-import one.devos.yiski1.logger
 import one.devos.yiski1.tables.moderation.Infraction
-import one.devos.yiski1.tables.moderation.InfractionMessage
 import one.devos.yiski1.tables.moderation.InfractionType
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import xyz.artrinix.aviation.command.slash.SlashContext

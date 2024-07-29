@@ -2,7 +2,6 @@ package one.devos.yiski3
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import net.dv8tion.jda.api.JDA
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import one.devos.yiski.common.YiskiConstants
 import one.devos.yiski.common.annotations.YiskiModule

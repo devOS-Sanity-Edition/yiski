@@ -5,7 +5,6 @@ import dev.minn.jda.ktx.messages.Embed
 import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Member
-import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.entities.UserSnowflake
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import one.devos.yiski.common.utils.EmbedHelpers

@@ -8,7 +8,6 @@ import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
-import java.util.UUID
 
 @DatabaseEntry
 object GuildToInfractionTable : Table("guild_to_infraction") {

@@ -2,7 +2,6 @@ package one.devos.yiski3.commands.silly
 
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
-import dev.minn.jda.ktx.messages.MessageEdit
 import net.dv8tion.jda.api.entities.User
 import one.devos.yiski.common.utils.RandomTextList
 import xyz.artrinix.aviation.command.slash.SlashContext

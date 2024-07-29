@@ -6,7 +6,6 @@ import dev.minn.jda.ktx.messages.InlineEmbed
 import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Member
-import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski1.logger
@@ -18,7 +17,6 @@ import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
 import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 class Ban : Scaffold {

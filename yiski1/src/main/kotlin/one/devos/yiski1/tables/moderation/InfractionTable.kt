@@ -1,6 +1,5 @@
 package one.devos.yiski1.tables.moderation
 
-import dev.minn.jda.ktx.jdabuilder.default
 import one.devos.yiski.common.annotations.DatabaseEntry
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
