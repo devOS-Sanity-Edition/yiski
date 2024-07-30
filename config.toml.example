@@ -5,7 +5,7 @@ githubToken = ""
 botToken = ""
 adminIDs = [ 000000000000000000, 000000000000000000, 000000000000000000 ] # replace this with whoever you want to be able to use administrative commands w/ the bot
 homeGuildID = 000000000000000000 # replace this with your discord server's ID
-activityType = "LISTENING" # valid types are PLAYING, STREAMING, LISTENING, WATCHING, and COMPETING
+activityType = "LISTENING" # valid types are PLAYING, STREAMING, LISTENING, WATCHING, CUSTOM_STATUS and COMPETING
 activityStatus = "" # status text after the type
 
 [database]
