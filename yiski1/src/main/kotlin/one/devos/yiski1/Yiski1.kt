@@ -79,7 +79,7 @@ class Yiski1(
             if (event.name == "Unpin Message") {
                 if (event.channel?.asThreadChannel()?.ownerId == event.member?.id) {
                     event.target.unpin().await()
-                    event.reply("Unpinned! [your father's prostate]").setEphemeral(true).queue()
+                    event.reply("Unpinned!").setEphemeral(true).queue()
                 } else {
                     event.reply("You are not the thread owner.").setEphemeral(true).queue()
 //                    logger.debug { event.channel?.asThreadChannel()?.isOwner }

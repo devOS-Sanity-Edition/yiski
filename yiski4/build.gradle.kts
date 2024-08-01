@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
 //    testImplementation(kotlin("test"))
-    implementation(libs.yiski.shared.data)
+    implementation(rootProject.libs.yiski.shared.data)
 }
 //
 //tasks.test {
