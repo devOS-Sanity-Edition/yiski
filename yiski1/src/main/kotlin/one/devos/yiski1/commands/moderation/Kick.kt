@@ -1,15 +1,12 @@
 package one.devos.yiski1.commands.moderation
 
-import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
-import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.entities.UserSnowflake
-import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import one.devos.yiski.common.utils.EmbedHelpers
+import one.devos.yiski1.messagesAsInfractions
 import one.devos.yiski1.tables.moderation.Infraction
-import one.devos.yiski1.tables.moderation.InfractionMessage
 import one.devos.yiski1.tables.moderation.InfractionType
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import xyz.artrinix.aviation.command.slash.SlashContext
@@ -18,28 +15,9 @@ import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
 class Kick : Scaffold {
-    private companion object {
-        suspend fun TextChannel._getMessagesAsInfractions(count: Int, authorId: Long): List<String> {
-            val messageHistory = this.getHistoryBefore(this.latestMessageIdLong, count).await().retrievedHistory.filter { it.author.idLong == authorId }
-
-            return messageHistory.map {
-                Json.encodeToString(
-                    InfractionMessage.serializer(),
-                    InfractionMessage(
-                        it.author.idLong,
-                        it.author.asTag,
-                        it.idLong,
-                        it.contentRaw,
-                        it.timeCreated.toEpochSecond()
-                    )
-                )
-            }
-        }
-    }
-
     @SlashCommand(name = "kick", description = "Kicks a user", defaultUserPermissions = [Permission.BAN_MEMBERS, Permission.KICK_MEMBERS, Permission.MODERATE_MEMBERS])
     suspend fun kick(ctx: SlashContext, @Description("Which user?") member: Member, @Description("What's the reason?") reason: String) {
-        val messages = ctx.textChannel!!._getMessagesAsInfractions(30, ctx.author.idLong)
+        val messages = ctx.textChannel!!.messagesAsInfractions(30, ctx.author.idLong)
 
         newSuspendedTransaction {
             Infraction.new {

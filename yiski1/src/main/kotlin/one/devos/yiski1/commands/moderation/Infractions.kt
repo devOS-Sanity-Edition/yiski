@@ -21,25 +21,6 @@ import kotlin.time.toDuration
 
 @SlashCommand(name = "infractions")
 class Infractions : Scaffold {
-    private companion object {
-        suspend fun TextChannel._getMessagesAsInfractions(count: Int, authorId: Long): List<String> {
-            val messageHistory = this.getHistoryBefore(this.latestMessageIdLong, count).await().retrievedHistory.filter { it.author.idLong == authorId }
-
-            return messageHistory.map {
-                Json.encodeToString(
-                    InfractionMessage.serializer(),
-                    InfractionMessage(
-                        it.author.idLong,
-                        it.author.asTag,
-                        it.idLong,
-                        it.contentRaw,
-                        it.timeCreated.toEpochSecond()
-                    )
-                )
-            }
-        }
-    }
-
     @SlashSubCommand("List infractions for a user")
     suspend fun list(ctx: SlashContext, @Description("Which user?") member: Member, @Description("The optional entry to get more info on") infractionid: String?) {
         val guildConfig = newSuspendedTransaction { Guild.findById(ctx.guild!!.idLong)  } ?: return ctx.sendPrivate("Moderation commands are not enabled in this guild")

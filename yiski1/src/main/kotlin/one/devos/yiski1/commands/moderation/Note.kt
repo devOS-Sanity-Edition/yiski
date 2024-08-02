@@ -17,25 +17,6 @@ import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
 class Note : Scaffold {
-    private companion object {
-        suspend fun TextChannel._getMessagesAsInfractions(count: Int, authorId: Long): List<String> {
-            val messageHistory = this.getHistoryBefore(this.latestMessageIdLong, count).await().retrievedHistory.filter { it.author.idLong == authorId }
-
-            return messageHistory.map {
-                Json.encodeToString(
-                    InfractionMessage.serializer(),
-                    InfractionMessage(
-                        it.author.idLong,
-                        it.author.asTag,
-                        it.idLong,
-                        it.contentRaw,
-                        it.timeCreated.toEpochSecond()
-                    )
-                )
-            }
-        }
-    }
-
     @SlashCommand(name = "note", description = "Adds an Infraction Note on a user")
     suspend fun note(ctx: SlashContext, @Description("Which user?") member: Member, @Description("What's the note?") note: String ) {
         newSuspendedTransaction {
