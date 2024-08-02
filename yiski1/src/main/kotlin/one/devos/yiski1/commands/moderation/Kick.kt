@@ -17,7 +17,7 @@ import xyz.artrinix.aviation.entities.Scaffold
 class Kick : Scaffold {
     @SlashCommand(name = "kick", description = "Kicks a user", defaultUserPermissions = [Permission.BAN_MEMBERS, Permission.KICK_MEMBERS, Permission.MODERATE_MEMBERS])
     suspend fun kick(ctx: SlashContext, @Description("Which user?") member: Member, @Description("What's the reason?") reason: String) {
-        val messages = ctx.textChannel!!.messagesAsInfractions(30, ctx.author.idLong)
+        val messages = ctx.textChannel!!.messagesAsInfractions(30, member.idLong)
 
         newSuspendedTransaction {
             Infraction.new {

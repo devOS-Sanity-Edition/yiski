@@ -94,7 +94,7 @@ class Ban : Scaffold {
             }
         }
 
-        val messages = ctx.textChannel!!.messagesAsInfractions(30, ctx.author.idLong)
+        val messages = ctx.textChannel!!.messagesAsInfractions(30, member.idLong)
 
         newSuspendedTransaction {
             Infraction.new {
