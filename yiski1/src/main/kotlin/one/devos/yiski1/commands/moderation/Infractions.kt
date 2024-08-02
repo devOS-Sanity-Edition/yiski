@@ -39,7 +39,7 @@ class Infractions : Scaffold {
         interaction.editOriginalEmbeds(Embed {
             author {
                 name = "Infraction #${infraction.id} of @${user.name}"
-                iconUrl = ctx.guild?.retrieveMemberById(infraction.userId)?.await()?.effectiveAvatarUrl ?: user.effectiveAvatarUrl
+                iconUrl = user.effectiveAvatarUrl
             }
             color = EmbedHelpers.infoColor()
 
