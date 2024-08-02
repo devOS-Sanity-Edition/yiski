@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "one.devos"
-version = "0.1.0-SNAPSHOT"
+version = System.getenv("GITHUB_SHA") ?: "Development"
 
 repositories {
     mavenCentral()
@@ -24,6 +24,7 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(21)
 }
@@ -41,6 +42,7 @@ allprojects {
         maven("https://gitlab.com/api/v4/projects/26794598/packages/maven") // Aviation GitLab
         maven("https://maven.lavalink.dev/snapshots")
         maven("https://maven.deftu.dev/releases")
+        maven("https://mvn.devos.one/snapshots")
     }
 
     dependencies {
@@ -84,7 +86,7 @@ allprojects {
 
     ktor {
         fatJar {
-            archiveFileName.set("Yiski.jar")
+            archiveFileName.set("Yiski-${project.version}.jar")
         }
     }
 }
