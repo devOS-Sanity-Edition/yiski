@@ -5,7 +5,7 @@ import dev.minn.jda.ktx.interactions.components.sendPaginator
 import dev.minn.jda.ktx.messages.Embed
 import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
-import net.dv8tion.jda.api.entities.Member
+import net.dv8tion.jda.api.entities.User
 import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski1.tables.moderation.Infraction
 import one.devos.yiski1.tables.moderation.InfractionMessage
@@ -68,12 +68,12 @@ class Infractions : Scaffold {
     }
 
     @SlashSubCommand("List infractions for a user")
-    suspend fun list(ctx: SlashContext, @Description("Which user?") member: Member) {
+    suspend fun list(ctx: SlashContext, @Description("Which user?") user: User) {
         val interaction = ctx.interaction.deferReply(true).await()
 
         val infractions = newSuspendedTransaction {
             Infraction
-                .find { (InfractionsTable.guildId eq ctx.guild!!.idLong) and (InfractionsTable.userId eq member.user.idLong) }
+                .find { (InfractionsTable.guildId eq ctx.guild!!.idLong) and (InfractionsTable.userId eq user.idLong) }
                 .map { infraction ->
                     val moderator = ctx.jda.retrieveUserById(infraction.moderator).complete()
                     "- **${infraction.id}** - **${infraction.type.name.lowercase().replaceFirstChar { it.titlecase(Locale.getDefault()) }}** - @${moderator.name} - ${infraction.reason.ifEmpty { "No reason provided." }.take(30)}"
@@ -82,7 +82,7 @@ class Infractions : Scaffold {
 
         val pages = infractions.chunked(10).map { chunk ->
             Embed {
-                author("Infractions for @${member.user.name} in ${ctx.guild!!.name}", null, member.user.effectiveAvatarUrl) {}
+                author("Infractions for @${user.name} in ${ctx.guild!!.name}", null, user.effectiveAvatarUrl) {}
                 description = if (chunk.isEmpty()) "No infractions found." else {
                     "ID - Type - Moderator - Reason\n"+chunk.joinToString("\n")
                 }
