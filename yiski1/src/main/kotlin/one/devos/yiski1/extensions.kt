@@ -4,6 +4,7 @@ import dev.minn.jda.ktx.coroutines.await
 import kotlinx.serialization.json.Json
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import one.devos.yiski1.tables.moderation.InfractionMessage
+import java.util.UUID
 
 suspend fun TextChannel.messagesAsInfractions(count: Int, authorId: Long): List<String> {
     val messageHistory = this.getHistoryBefore(this.latestMessageIdLong, count).await().retrievedHistory.filter { it.author.idLong == authorId }
@@ -21,3 +22,5 @@ suspend fun TextChannel.messagesAsInfractions(count: Int, authorId: Long): List<
         )
     }
 }
+
+fun String.toUUID(): UUID = UUID.fromString(this)
