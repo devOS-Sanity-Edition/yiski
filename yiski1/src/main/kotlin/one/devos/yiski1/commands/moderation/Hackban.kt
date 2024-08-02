@@ -20,11 +20,7 @@ class Hackban : Scaffold {
                 this.guildId = ctx.guild!!.idLong
                 this.userId = id.toLong()
                 this.type = InfractionType.BAN
-                if (reason != null) { // this feels jank but oh well
-                    this.reason = reason
-                } else {
-                    this.reason = "No reason given"
-                }
+                this.reason = reason ?: "No reason given"
                 this.moderator = ctx.author.idLong
                 this.messages = emptyList()
                 this.roles = emptyList()
