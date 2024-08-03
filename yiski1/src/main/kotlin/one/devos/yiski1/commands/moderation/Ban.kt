@@ -18,7 +18,7 @@ import xyz.artrinix.aviation.entities.Scaffold
 import java.util.concurrent.TimeUnit
 
 class Ban : Scaffold {
-    private val banTimeFrameConversion: Map<Char, TimeUnit> = mapOf(
+    private val timeFrameConversion: Map<Char, TimeUnit> = mapOf(
         's' to TimeUnit.SECONDS,
         'm' to TimeUnit.MINUTES,
         'h' to TimeUnit.HOURS,
@@ -73,7 +73,7 @@ class Ban : Scaffold {
                 return logger.error { "Doesn't match regex. Input was $timeframe" }
             }
 
-            val conversion = banTimeFrameConversion[timeframeUnit[0]]
+            val conversion = timeFrameConversion[timeframeUnit[0]]
             if (conversion == null) {
                 response.editOriginalEmbeds(Embed {
                     errorEmbedConversionFailure()

@@ -30,7 +30,7 @@ import kotlin.time.toKotlinDuration
 class Infractions : Scaffold {
     @SlashSubCommand("Get a specific infraction")
     suspend fun get(ctx: SlashContext, @Name("infraction_id") @Description("ID of the infraction") infractionId: String) {
-        val interaction = ctx.interaction.deferReply(true).await()
+        val interaction = ctx.interaction.deferReply().await()
 
         val infraction = newSuspendedTransaction { Infraction.findById(infractionId.toUUID()) } ?: return interaction.editOriginal("No infraction found for ID **$infractionId**").queue()
 
@@ -69,7 +69,7 @@ class Infractions : Scaffold {
 
     @SlashSubCommand("List infractions for a user")
     suspend fun list(ctx: SlashContext, @Description("Which user?") user: User) {
-        val interaction = ctx.interaction.deferReply(true).await()
+        val interaction = ctx.interaction.deferReply().await()
 
         val infractions = newSuspendedTransaction {
             Infraction
@@ -95,7 +95,7 @@ class Infractions : Scaffold {
 
     @SlashSubCommand("Remove infraction")
     suspend fun remove(ctx: SlashContext, @Name("infraction_id") @Description("The optional entry to remove") infractionId: String) {
-        val interaction = ctx.interaction.deferReply(true).await()
+        val interaction = ctx.interaction.deferReply().await()
         val infraction = newSuspendedTransaction { Infraction.find { (InfractionsTable.guildId eq ctx.guild!!.idLong) and (InfractionsTable.id eq infractionId.toUUID()) }.firstOrNull() }
 
         if (infraction == null) {

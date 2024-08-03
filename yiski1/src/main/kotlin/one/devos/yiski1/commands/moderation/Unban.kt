@@ -25,7 +25,7 @@ import xyz.artrinix.aviation.internal.arguments.types.Snowflake
 class Unban : Scaffold {
     @SlashSubCommand("Unban a user with their ID")
     suspend fun id(ctx: SlashContext, @Description("User to unban?") id: Snowflake, @Description("Optional. Why is this user being unbanned?") reason: String? = "No reason provided.") {
-        val interaction = ctx.interaction.deferReply(true).await()
+        val interaction = ctx.interaction.deferReply().await()
 
         newSuspendedTransaction {
             Infraction.new {

@@ -15,7 +15,7 @@ import xyz.artrinix.aviation.entities.Scaffold
 class Note : Scaffold {
     @SlashCommand(name = "note", description = "Adds an Infraction Note on a user")
     suspend fun note(ctx: SlashContext, @Description("Which user?") member: Member, @Description("What's the note?") note: String) {
-        val interaction = ctx.interaction.deferReply(true).await()
+        val interaction = ctx.interaction.deferReply().await()
 
         val infraction = newSuspendedTransaction {
             Infraction.new {
