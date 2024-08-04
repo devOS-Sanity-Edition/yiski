@@ -7,8 +7,8 @@
     <build-profile instance="docs">
         <variables>
             <header-logo>logo.svg</header-logo>
-            <primary-color>#00a86b</primary-color>
-            <link-color>#00a86b</link-color>
+            <primary-color>#F75D62</primary-color>
+            <link-color>#F75D62</link-color>
             <noindex-content>false</noindex-content>
             <custom-favicons>icon16.png,icon32.png,icon96.png,icon300.png,icon500.png</custom-favicons>
         </variables>

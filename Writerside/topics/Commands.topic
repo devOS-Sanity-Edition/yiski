@@ -13,8 +13,8 @@
 
         <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
         <spotlight>
-            <a href="Yiski1-Commands.md" type="account" summary="Basic commands and Moderation">Yiski1</a>
-            <a href="Yiski3-Commands.md" type="search" summary="Fun">Yiski3</a>
+            <a href="Yiski1-Commands.md" type="tools" summary="Basic commands and Moderation">Yiski1</a>
+            <a href="Yiski3-Commands.md" type="creative" summary="Fun">Yiski3</a>
         </spotlight>
 
         <!--    Add several topics that are most important for this section.    -->
