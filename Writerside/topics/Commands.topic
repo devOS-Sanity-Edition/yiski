@@ -13,22 +13,22 @@
 
         <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
         <spotlight>
-            <a href="" type="account" summary="Basic commands and Moderation">Yiski1</a>
-            <a href="" type="search" summary="Fun">Yiski3</a>
+            <a href="Yiski1-Commands.md" type="account" summary="Basic commands and Moderation">Yiski1</a>
+            <a href="Yiski3-Commands.md" type="search" summary="Fun">Yiski3</a>
         </spotlight>
 
         <!--    Add several topics that are most important for this section.    -->
         <primary>
             <title>Voice Powered Modules</title>
-            <a href="" summary="Music">Yiski2</a>
-            <a href="" summary="TTS Dictation">Yiski6</a>
+            <a href="Yiski2-Commands.md" summary="Music">Yiski2</a>
+            <a href="Yiski6-Commands.md" summary="TTS Dictation">Yiski6</a>
         </primary>
 
         <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
         <secondary>
             <title>Other Modules</title>
-            <a href="" summary="Hardware Status">Yiski4</a>
-            <a href="" summary="Vent Wiper">Yiski5</a>
+            <a href="Yiski4-Commands.md" summary="Hardware Status">Yiski4</a>
+            <a href="Yiski5-Commands.md" summary="Vent Wiper">Yiski5</a>
         </secondary>
     </section-starting-page>
 
