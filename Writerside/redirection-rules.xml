@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="7c0e0e95">
+        <description>Created after removal of "Section Starting Page" from Yiski</description>
+        <accepts>Section-Starting-Page.html</accepts>
+    </rule>
+    <rule id="2111a8d">
+        <description>Created after removal of "How to" from Yiski</description>
+        <accepts>How-to.html</accepts>
+    </rule>
+    <rule id="207e4837">
+        <description>Created after removal of "Reference" from Yiski</description>
+        <accepts>Reference.html</accepts>
+    </rule>
+</rules>

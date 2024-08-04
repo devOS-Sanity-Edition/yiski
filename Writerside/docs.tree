@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="docs"
+                 name="Yiski"
+                 start-page="Welcome.topic">
+
+    <toc-element topic="Welcome.topic"/>
+    <toc-element topic="Yiski.md"/>
+    <toc-element topic="Yiski-Bot-Setup.md"/>
+    <toc-element topic="Configs.topic">
+        <toc-element topic="About-Configs.md"/>
+        <toc-element topic="Runner-Config.md"/>
+        <toc-element topic="Modules-Configs.topic">
+            <toc-element topic="Yiski1-Config.md"/>
+            <toc-element topic="Yiski2-Config.md"/>
+            <toc-element topic="Yiski3-Config.md"/>
+            <toc-element topic="Yiski4-Config.md"/>
+            <toc-element topic="Yiski5-Config.md"/>
+            <toc-element topic="Yiski6-Config.md"/>
+        </toc-element>
+    </toc-element>
+    <toc-element topic="Commands.topic">
+        <toc-element topic="Yiski1-Commands.md"/>
+        <toc-element topic="Yiski2-Commands.md"/>
+        <toc-element topic="Yiski3-Commands.md"/>
+        <toc-element topic="Yiski4-Commands.md"/>
+        <toc-element topic="Yiski5-Commands.md"/>
+        <toc-element topic="Yiski6-Commands.md"/>
+    </toc-element>
+    <toc-element topic="Runner.topic" toc-title="Runner"></toc-element>
+    <toc-element topic="Modules.topic" toc-title="Modules"></toc-element>
+    <toc-element topic="Modules-Loader.topic" toc-title="Modules Loader"></toc-element>
+    <toc-element toc-title="GitHub Repo" href="https://github.com/devOS-Sanity-Edition/Yiski"></toc-element>
+</instance-profile>

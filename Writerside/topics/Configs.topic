@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Configs" id="Configs">
+
+    <section-starting-page>
+        <title>Configuration</title>
+        <description>
+            Here is all the configuration files you need to run Yiski. Most are pretty simple to fill and some are just a copy n' paste.
+        </description>
+
+        <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
+        <spotlight>
+            <a href="About-Configs.md" type="search" summary="What are all of these configurations? Why are they needed?">About</a>
+            <a href="Runner-Config.md" type="documents" summary="The most important configuration you need to fill out">Runner</a>
+        </spotlight>
+
+        <!--    Add several topics that are most important for this section.    -->
+        <primary>
+            <title>Modules Configurations</title>
+            <a href="Yiski1-Config.md" summary="Configuration for Yiski1">Yiski1</a>
+            <a href="Yiski2-Config.md" summary="Configuration for Yiski2">Yiski2</a>
+            <a href="Yiski4-Config.md" summary="Configuration for Yiski4">Yiski4</a>
+            <a href="Yiski5-Config.md" summary="Configuration for Yiski5">Yiski5</a>
+            <a href="Yiski6-Config.md" summary="Configuration for Yiski6">Yiski6</a>
+        </primary>
+
+        <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
+        <secondary>
+            <title>Copy n' Paste Module Configurations</title>
+            <a href="Yiski3-Config.md" summary="Configuration for Yiski3">Yiski3</a>
+        </secondary>
+    </section-starting-page>
+
+</topic>

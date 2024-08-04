@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Welcome" id="Welcome">
+
+    <section-starting-page>
+        <title>Welcome to the Yiski Documentation!</title>
+        <description>
+            Yiski is an in-house developed Discord bot by devOS: Sanity Edition, with its development being lead by asojidev.
+        </description>
+
+        <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
+        <spotlight>
+            <a href="Yiski.md" type="container" summary="What is Yiski?">Info</a>
+            <a href="Commands.topic" type="check-list" summary="The list of commands that Yiski has to offer.">Commands</a>
+        </spotlight>
+
+        <!--    Add several topics that are most important for this section.    -->
+        <primary>
+            <title>Get started</title>
+            <a href="Yiski-Bot-Setup.md" summary="Instructions for hosting Yiski for yourself.">Self-hosting Yiski [NOT READY]</a>
+            <a href="Configs.topic" summary="All the configs required to run the bot">Configs</a>
+        </primary>
+
+        <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
+        <secondary>
+            <title>Want to create a Yiski module or contribute to Yiski's development?</title>
+            <a href="" summary="How does the Runner operate? and more.">Runner</a>
+            <a href="" summary="Everything you need to know about Modules.">Modules</a>
+            <a href="" summary="What does the Modules Loader... load?">Modules Loader</a>
+            <a href="https://github.com/devOS-Sanity-Edition/Yiski" type="open-source" summary="To the source code we go!">GitHub Repository</a>
+        </secondary>
+    </section-starting-page>
+</topic>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Modules Configs" id="Modules-Configs">
+
+    <section-starting-page>
+        <title>Module Configs</title>
+        <description>
+            Modules with their respective configurations
+        </description>
+
+        <spotlight>
+            <title>Mandatory Configs</title>
+                <a href="Yiski1-Config.md" summary="Moderation" type="tools">Yiski1</a>
+                <a href="Yiski5-Config.md" summary="Vent Wiper" type="filtering">Yiski5</a>
+        </spotlight>
+
+        <!--    Add several topics that are most important for this section.    -->
+        <primary>
+            <title>Configs</title>
+            <a href="" summary="Music">Yiski2</a>
+            <a href="" summary="Hardware Status">Yiski4</a>
+            <a href="" summary="TTS">Yiski6</a>
+        </primary>
+
+        <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
+        <secondary>
+            <title>Copy n' Paste</title>
+            <a href="Yiski3-Config.md" summary="Fun">Yiski3</a>
+        </secondary>
+    </section-starting-page>
+
+</topic>

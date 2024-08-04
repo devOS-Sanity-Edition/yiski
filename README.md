@@ -1,12 +1,11 @@
 # Yiski
 
-<p align="center"><img title="Yiski" width="960" alt="YiskiBanner" src="https://user-images.githubusercontent.com/30705254/145800210-a36286c0-ba38-45b6-b3ae-34e6481f9ff5.png"></p>
+<p align="center"><img title="Yiski" width="960" alt="YiskiBanner" src="https://github.com/user-attachments/assets/eff9d5f4-3736-43a5-a436-b96e5a71e36c"></p>
 
 # What is Yiski
-A bot to replace the original idea of devOS Core for the devOS: Sanity Edition server. Also used to try to learn ~~Python~~ Kotlin for fun.
-- ~~Uses Python 3.10, but 3.9+ should work.~~ Now using Kotlin!
+Yiski is an in-house developed Discord bot by devOS: Sanity Edition, with its development being lead by [asojidev](https://github.com/asoji).
 
-**This is something I'm doing just for fun and to learn ~~Python~~ Kotlin, excuse anything shitty going on.**
+Powered by [JDA](https://github.com/discord-jda/JDA), [JDA-KTX](https://github.com/minndevelopment/jda-ktx), and [CephalonCosmic](https://twitter.com/CephalonCosmic)'s [Aviation](https://gitlab.com/artrinix/discord/aviation) Framework. Kotlin too, of course.
 
 ## License
 This project is licensed under the [MIT License](LICENSE)
