@@ -11,6 +11,7 @@
             <link-color>#F75D62</link-color>
             <noindex-content>false</noindex-content>
             <custom-favicons>icon16.png,icon32.png,icon96.png,icon300.png,icon500.png</custom-favicons>
+            <custom-css>custom.css</custom-css>
         </variables>
         <footer>
             <copyright>2024 devOS: Sanity Edition, asojidev</copyright>
