@@ -132,31 +132,30 @@
 .starting-page-card {
     border-radius: 0.5em;
     border: 1px solid var(--primary-color-25);
-    /*animation: cardpulse 2s infinite !important; !* WHY IS THIS NOT WORKING *!*/
-    /*animation-play-state: paused;*/
 }
 
 .starting-page-card:hover, .starting-page-title__card:hover {
     border: 1px solid var(--wh-color-primary);
-    /*animation-play-state: running !important;*/
+    animation: cardpulse 2s infinite !important; /* WHY IS THIS NOT WORKING */
+    mask-image: none;
 }
 
-/*@keyframes cardpulse {*/
-/*    0% {*/
-/*        transform: scale(1);*/
-/*        box-shadow: 0 0 0 0 var(--wh-color-primary);*/
-/*    }*/
+@keyframes cardpulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 var(--wh-color-primary);
+    }
 
-/*    70% {*/
-/*        transform: scale(1);*/
-/*        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);*/
-/*    }*/
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
 
-/*    100% {*/
-/*        transform: scale(1);*/
-/*        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);*/
-/*    }*/
-/*}*/
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
 
 /* Search and Theme Switcher */
 ._modeClear_joawza_434._dark_joawza_62 {
