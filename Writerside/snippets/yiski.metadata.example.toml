@@ -1,0 +1,23 @@
+[metadata]
+version = 0
+
+[runner]
+mainClass = ""
+
+[module]
+configClass = ""
+
+[module.packages]
+databasePackage = ""
+slashCommandsPackage = ""
+
+[information]
+id = ""
+name = ""
+description = ""
+version = "${version}"
+repo = ""
+license = ""
+authors = [
+    ""
+]

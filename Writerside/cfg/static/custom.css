@@ -120,12 +120,40 @@
 :root {
     --app-header: var(--wh-color-bg-main);
     --app-footer: var(--wh-color-bg-main);
-    --section-background-color-alpha: 0.10;
-    --primary-color-75: rgba(247, 93, 98, 0.75);
-    --primary-color-50: rgba(247, 93, 98, 0.5);
-    --primary-color-25: rgba(247, 93, 98, 0.25);
-    --primary-color-10: rgba(247, 93, 98, 0.1);
-    --primary-color-5: rgba(247, 93, 98, 0.05);
+    --actual-primary-color: 247, 93, 98;
+    --75-alpha: 0.75;
+    --50-alpha: 0.5;
+    --25-alpha: 0.25;
+    --10-alpha: 0.1;
+    --5-alpha: 0.05;
+
+    --primary-color-75: rgba(var(--actual-primary-color), var(--75-alpha));
+    --primary-color-50: rgba(var(--actual-primary-color), var(--50-alpha));
+    --primary-color-25: rgba(var(--actual-primary-color), var(--25-alpha));
+    --primary-color-10: rgba(var(--actual-primary-color), var(--10-alpha));
+    --primary-color-5: rgba(var(--actual-primary-color), var(--5-alpha));
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: var(--actual-primary-color) #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--actual-primary-color));
+    border-radius: 0.5em;
+    border: 1px transparent;
 }
 
 /* starting page card */
@@ -177,7 +205,12 @@
 }
 
 /* selected/hovered in ToC */
-.toc-item--selected, .toc-item--highlighted {
+.toc-item--selected {
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.toc-item--highlighted:first-child:last-child {
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
 }

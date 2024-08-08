@@ -1,0 +1,24 @@
+[metadata]
+version = 0
+
+[runner]
+mainClass = "one.devos.yiski1.Yiski1"
+
+[module]
+configClass = "one.devos.yiski1.Yiski1Config"
+
+[module.packages]
+databasePackage = "one.devos.yiski1.tables"
+slashCommandsPackage = "one.devos.yiski1.commands"
+
+[information]
+id = "yiski1"
+name = "Yiski1"
+description = "Basic commands and moderation [kick/ban/timeout/logging/etc]"
+version = "${version}"
+repo = "https://github.com/devOS-Sanity-Edition/yiski/"
+license = "MIT"
+authors = [
+    "asojidev",
+    "CephalonCosmic"
+]
