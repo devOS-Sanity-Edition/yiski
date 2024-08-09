@@ -22,32 +22,23 @@ data class Yiski3ConfigData(
     @Serializable
     data class VideosConfig(
         val antihorny: String,
-        val antihornyfile: String,
         val gasp: String,
-        val gaspfile: String,
         val memoryleak: String,
-        val memoryleakfile: String,
         val rtx: String,
-        val rtxfile: String,
         val whatareyoudoing: String,
-        val whatareyoudoingfile: String
     )
 }
 
 @Serializable
 data class StaticImageTables(
     val devtools: String,
-    val devtoolsfile: String,
     val ims: String,
-    val imsfile: String,
     val token: String,
-    val tokenfile: String
+    val teehee: String,
 )
 
 @Serializable
 data class GifImageTables(
     val headcrabsuccess: String,
-    val headcrabsuccessfile: String,
     val headcrabfail: String,
-    val headcrabfailfile: String,
 )

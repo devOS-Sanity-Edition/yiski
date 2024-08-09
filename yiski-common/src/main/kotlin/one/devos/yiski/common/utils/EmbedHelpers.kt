@@ -1,18 +1,12 @@
 package one.devos.yiski.common.utils
 
+import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.data.Colors
 import java.awt.Color
-import java.io.FileInputStream
+import java.io.File
 import java.io.InputStream
-import kotlin.io.path.toPath
 
 object EmbedHelpers {
-    fun imagesPath(pathToImage: String): InputStream {
-//        return FileInputStream(Path.of(pathToImage).toFile())
-//        return this::class.java.classLoader.getResource(pathToImage)?.toURI()?.toPath()?.toFile()!!.inputStream() // this feels dangerous but thanks naz
-        return this::class.java.classLoader.getResourceAsStream(pathToImage) ?: error("Could not get image from given path")
-    }
-
     fun successColor(successRed: Int = Colors.SUCCESS.r, successGreen: Int = Colors.SUCCESS.g, successBlue: Int = Colors.SUCCESS.b): Int {
         return Color(successRed, successGreen, successBlue).rgb
     }
@@ -31,5 +25,13 @@ object EmbedHelpers {
 
     fun moderationColor(modRed: Int = Colors.MODERATION.r, modGreen: Int = Colors.MODERATION.g, modBlue: Int = Colors.MODERATION.b): Int {
         return Color(modRed, modGreen, modBlue).rgb
+    }
+
+    fun imageUpload(file: String): FileUpload {
+        return FileUpload.fromData(PathsHelper.filePath.path(PathsHelper.FileType.IMAGE, file), PathsHelper.filePath.file(file))
+    }
+
+    fun videoUpload(file: String): FileUpload {
+        return FileUpload.fromData(PathsHelper.filePath.path(PathsHelper.FileType.VIDEO, file), PathsHelper.filePath.file(file))
     }
 }

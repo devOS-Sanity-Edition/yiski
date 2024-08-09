@@ -6,6 +6,8 @@ import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.utils.EmbedHelpers
+import one.devos.yiski.common.utils.EmbedHelpers.imageUpload
+import one.devos.yiski.common.utils.PathsHelper
 import one.devos.yiski3.Yiski3
 import one.devos.yiski3.data.HeadcrabSuccess
 import one.devos.yiski3.logger
@@ -68,14 +70,14 @@ class Headcrab : Scaffold {
                 }
             }
 
-            val inputStreamHeadcrabSuccess = EmbedHelpers.imagesPath(Yiski3.config.images.inlineGifImageTables.headcrabsuccess)
+            val inputStreamHeadcrabSuccess = PathsHelper.filePath.file(Yiski3.config.images.inlineGifImageTables.headcrabsuccess)
 
             ctx.interaction.deferReply()
-                .setFiles(FileUpload.fromData(inputStreamHeadcrabSuccess, Yiski3.config.images.inlineGifImageTables.headcrabfailfile))
+                .setFiles(imageUpload(Yiski3.config.images.inlineGifImageTables.headcrabfail))
                 .setEmbeds(Embed {
                     title = "Headcrab failed!"
-                    description = "${user.asMention} has succsefully deflected the headcrab from ${ctx.author.asMention}!"
-                    image = "attachment://${Yiski3.config.images.inlineGifImageTables.headcrabsuccessfile}" // Aubree is being a massive HIMBO
+                    description = "${user.asMention} has successfully deflected the headcrab from ${ctx.author.asMention}!"
+                    image = "attachment://${Yiski3.config.images.inlineGifImageTables.headcrabsuccess}" // Aubree is being a massive HIMBO
                     color = EmbedHelpers.infoColor()
                     if (reason != null) {
                         field("", reasonAsNull(), false)

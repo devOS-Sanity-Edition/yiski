@@ -13,17 +13,17 @@ import xyz.artrinix.aviation.command.slash.annotations.SlashCommand
 import xyz.artrinix.aviation.entities.Scaffold
 
 @YiskiModule
-class IMS : Scaffold {
-    @SlashCommand(name = "ims", description = "yes")
-    suspend fun ims(ctx: SlashContext) {
-        val imsImage = Yiski3.config.images.inlineStaticImagesTables.ims
+class Teehee : Scaffold {
+    @SlashCommand(name = "teehee", description = "got a little silly")
+    suspend fun teehee(ctx: SlashContext) {
+        val file = Yiski3.config.images.inlineStaticImagesTables.teehee
 
         ctx.interaction.deferReply()
-            .setFiles(imageUpload(imsImage))
+            .setFiles(imageUpload(file))
             .setEmbeds(Embed {
-                title = "IMS"
-                description = "Go fuck yourself"
-                image = "attachment://${imsImage}"
+                title = "teehee"
+                description = "*inkling sounds*"
+                image = "attachment://${file}"
                 color = EmbedHelpers.infoColor()
             })
             .await()

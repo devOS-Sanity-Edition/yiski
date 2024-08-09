@@ -7,6 +7,7 @@ import kotlinx.serialization.serializer
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.utils.EmbedHelpers
+import one.devos.yiski.common.utils.EmbedHelpers.imageUpload
 import one.devos.yiski3.Yiski3
 import one.devos.yiski3.data.DevToolsData
 import one.devos.yiski3.logger
@@ -20,10 +21,10 @@ class DevTools : Scaffold {
     @SlashCommand(name = "devtools", description = "How to turn on Discord Dev Tools on stable branch")
     suspend fun devtools(ctx: SlashContext) {
         val devToolsToml = DevToolsToml.read()
-        val devToolsImage = EmbedHelpers.imagesPath(Yiski3.config.images.inlineStaticImagesTables.devtools)
+        val devToolsImage = Yiski3.config.images.inlineStaticImagesTables.devtools
 
         ctx.interaction.deferReply()
-            .setFiles(FileUpload.fromData(devToolsImage, Yiski3.config.images.inlineStaticImagesTables.devtoolsfile))
+            .setFiles(imageUpload(devToolsImage))
             .setEmbeds(Embed {
                 title = devToolsToml.title.embed
                 description = devToolsToml.text.embed
@@ -33,7 +34,7 @@ class DevTools : Scaffold {
                 field(devToolsToml.title.linux, devToolsToml.text.linux, false)
                 field(devToolsToml.title.result, devToolsToml.text.result, false)
                 field(devToolsToml.title.source, devToolsToml.text.source, false)
-                image = "attachment://${Yiski3.config.images.inlineStaticImagesTables.devtoolsfile}"
+                image = "attachment://${devToolsImage}"
             })
             .await()
 
