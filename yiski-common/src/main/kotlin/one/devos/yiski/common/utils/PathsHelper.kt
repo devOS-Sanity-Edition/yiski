@@ -17,8 +17,8 @@ object PathsHelper {
             return fileName
         }
 
-        fun path(filetype: Enum<FileType>, file: String): InputStream {
-            return filePath("${filetype.toString()}/${file.toString()}")
+        fun path(filetype: FileType, file: String): InputStream {
+            return filePath("${filetype.s}/$file")
         }
     }
 }
