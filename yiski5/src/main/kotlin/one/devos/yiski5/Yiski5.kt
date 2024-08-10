@@ -197,8 +197,6 @@ class Yiski5(
     override fun setup() {
         logger.info { "Yiski5 module loaded." }
 
-        aviation.slashCommands.register("one.devos.yiski5.commands")
-
         jda.listener<ReadyEvent> {
             // Mayhem starts here
             // Let the Dragons sleep else there will be a fire in the server closet (in this case, an RPI 4)

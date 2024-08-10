@@ -33,6 +33,7 @@ data class Yiski3ConfigData(
 data class StaticImageTables(
     val devtools: String,
     val ims: String,
+    val lbrf: String,
     val token: String,
     val teehee: String,
 )

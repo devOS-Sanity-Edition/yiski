@@ -13,7 +13,6 @@ dependencies {
 //    testImplementation(kotlin("test"))
     implementation(rootProject.libs.github.api)
     implementation(rootProject.libs.okhttp)
-
 }
 //
 //tasks.test {

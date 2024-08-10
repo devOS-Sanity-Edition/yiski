@@ -20,5 +20,6 @@ repo = "https://github.com/devOS-Sanity-Edition/yiski/"
 license = "MIT"
 authors = [
     "asojidev",
-    "bluebeargreen"
+    "bluebeargreen",
+    "CephalonCosmic"
 ]
