@@ -20,7 +20,7 @@ import javax.imageio.ImageIO
 
 @YiskiModule
 class LittleBitchReportForm : Scaffold {
-    @SlashCommand(name = "lbr", description = "The Little Bitch Report Form, for when someones being a little bitch.")
+    @SlashCommand(name = "lbrf", description = "The Little Bitch Report Form, for when someones being a little bitch.")
     suspend fun lbrf(
         ctx: SlashContext,
         @Description("Who are you reporting?") reporting: Member,
@@ -64,6 +64,7 @@ class LittleBitchReportForm : Scaffold {
         // draw date
         graphic.drawString(java.time.LocalDate.now().toString(), 470, 270)
 
+        //<editor-fold desc="Draw optional arguments">
         if (argumentLost == true) {
             graphic.color = highlightColour
             graphic.composite = highlightingComposite
@@ -107,6 +108,7 @@ class LittleBitchReportForm : Scaffold {
             graphic.composite = highlightingComposite
             graphic.fillRect(93, 497, 16, 16)
         }
+        //</editor-fold>
 
         //<editor-fold desc="Draw assistance">
         graphic.color = highlightColour
