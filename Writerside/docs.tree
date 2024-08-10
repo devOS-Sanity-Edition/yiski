@@ -29,11 +29,11 @@
         <toc-element topic="Yiski5-Commands.md"/>
         <toc-element topic="Yiski6-Commands.md"/>
     </toc-element>
-    <toc-element topic="Runner.topic" toc-title="Runner"></toc-element>
-    <toc-element topic="Modules-Loader.topic" toc-title="Modules Loader">
-    </toc-element>
-    <toc-element topic="Modules.md">
+    <toc-element topic="Runner.md" toc-title="Runner"></toc-element>
+    <toc-element topic="Modules-Loader.md">
         <toc-element topic="Modules-Metadata.md"/>
+        <toc-element topic="Modules.md"/>
     </toc-element>
+
     <toc-element toc-title="GitHub Repo" href="https://github.com/devOS-Sanity-Edition/Yiski"></toc-element>
 </instance-profile>

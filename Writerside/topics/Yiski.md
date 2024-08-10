@@ -1,4 +1,5 @@
 # What is Yiski?
+<format style="italic">by asojidev</format>
 
 <img src="yiski_banner.png" alt="Yiski Logo" height="300"></img>
 

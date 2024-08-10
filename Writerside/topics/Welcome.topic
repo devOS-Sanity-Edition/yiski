@@ -27,9 +27,9 @@
         <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
         <secondary>
             <title>Want to create a Yiski module or contribute to Yiski's development?</title>
-            <a href="" summary="How does the Runner operate? and more.">Runner</a>
-            <a href="" summary="Everything you need to know about Modules.">Modules</a>
-            <a href="" summary="What does the Modules Loader... load?">Modules Loader</a>
+            <a href="Runner.md" summary="How does the Runner operate? and more.">Runner</a>
+            <a href="Modules.md" summary="Everything you need to know about Modules.">Modules</a>
+            <a href="Modules-Loader.md" summary="What does the Modules Loader... load?">Modules Loader</a>
             <a href="https://github.com/devOS-Sanity-Edition/Yiski" type="open-source" summary="To the source code we go!">GitHub Repository</a>
         </secondary>
     </section-starting-page>

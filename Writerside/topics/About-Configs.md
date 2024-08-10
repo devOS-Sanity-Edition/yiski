@@ -1,4 +1,5 @@
 # About Configs
+<format style="italic">by asojidev</format>
 
 ## Why are these configs needed?
 

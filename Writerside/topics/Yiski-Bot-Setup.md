@@ -1,4 +1,5 @@
 # Bot Setup
+<format style="italic">by asojidev</format>
 
 Want to run Yiski on your own? Well, it's a little bit involved, but here's how to set it up.
 
@@ -22,7 +23,7 @@ Here's what you must have installed before tackling self-hosting this bot.
 <p>If you already know how to setup a Discord bot, go ahead and skip this. Just be sure to give it full Administrator privileges, and the Presence, Server Members, and Message Content intent.</p>
 </tldr>
 
-#### Discord
+### Discord
 
 <procedure title="Discord Setup" id="discord_setup">
     <step>

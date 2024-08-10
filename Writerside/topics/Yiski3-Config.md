@@ -1,4 +1,5 @@
 # Yiski3
+<format style="italic">by asojidev</format>
 
 Download <resource src="yiski3.config.toml"/> and put it in the same folder as your Runner.
 
