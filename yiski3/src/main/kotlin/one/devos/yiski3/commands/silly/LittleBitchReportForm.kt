@@ -1,13 +1,13 @@
 package one.devos.yiski3.commands.silly
 
 import dev.minn.jda.ktx.coroutines.await
-import dev.minn.jda.ktx.messages.send
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.utils.PathsHelper
+import one.devos.yiski3.Yiski3.Companion.cmf
 import xyz.artrinix.aviation.annotations.Name
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
@@ -46,14 +46,14 @@ class LittleBitchReportForm : Scaffold {
             ImageIO.read(PathsHelper.filePath.path(PathsHelper.FileType.IMAGE, "lbrf.png"))
         }
 
-        val font: Font = Font("Comic Sans MS", Font.TRUETYPE_FONT, 18)
+//        val font: Font = Font("Comic Mono", Font.TRUETYPE_FONT, 18)
         val graphic: Graphics2D = bufferedImage.createGraphics()
         val highlightingComposite: AlphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F)
         val highlightColour = Color(255, 255, 58, 200)
         // set antialiasing
         graphic.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         // set comic fuckin sans
-        graphic.font = font
+        graphic.font = cmf
 
         // set drawing brush to be black
         graphic.color = Color(0, 0, 0)
@@ -176,7 +176,7 @@ class LittleBitchReportForm : Scaffold {
                 .forEach {
                     // Calculate the height difference between rows based on the font height and groups of text
                     val heightDifference = graphic.fontMetrics.height * it.index
-                    graphic.drawString(it.value.joinToString(" "), 100, 776 + (heightDifference - 2))
+                    graphic.drawString(it.value.joinToString(" "), 100, 776 + (heightDifference + 10)) // it doesnt exactly line up but im not gonna spend another 15 fucking minutes over this
                 }
         }
         //</editor-fold>
