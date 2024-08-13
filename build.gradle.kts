@@ -1,8 +1,10 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
+    id("one.devos.yiski.build")
     alias(libs.plugins.ktor)
-//    alias(libs.plugins.shadow)
     java
 }
 
@@ -16,24 +18,43 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
 
-    (1..6).forEach { module ->
-        implementation(project(":yiski$module"))
-    }
-}
+    api("shade"(project(":yiski-dependencies"))!!)
+    "shade"(project(":yiski-common"))
+    "shade"(project(":yiski-module-metadata"))
+    "shade"(project(":yiski-module-loader"))
 
-tasks.test {
-    useJUnitPlatform()
+    (1..6).forEach { module ->
+        runtimeOnly(project(":yiski$module"))
+    }
 }
 
 kotlin {
     jvmToolchain(21)
 }
 
+tasks {
+
+    jar {
+        manifest {
+            attributes["Main-Class"] = "one.devos.yiski.runner.YiskiRunner"
+        }
+    }
+
+    fatJar {
+        archiveFileName.set("Yiski-$version.jar")
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+}
+
 allprojects {
     apply(plugin = "java")
     apply(plugin = "kotlin")
-    apply(plugin = "application")
     apply(plugin = "io.ktor.plugin")
+    apply(plugin = "com.github.johnrengelman.shadow")
     apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
 
     repositories {
@@ -46,29 +67,16 @@ allprojects {
     }
 
     dependencies {
-        if (project.name != "yiski-common" && !project.name.startsWith("yiski-module"))
-            implementation(project(":yiski-common"))
+        if (project.name != "yiski-dependencies") {
+            if (project.name != "yiski-common" && !project.name.startsWith("yiski-module")) {
+                implementation(project(":yiski-common"))
+            }
 
-        if (!project.name.startsWith("yiski-module")) {
-            implementation(project(":yiski-module-metadata"))
-            implementation(project(":yiski-module-loader"))
+            if (!project.name.startsWith("yiski-module")) {
+                implementation(project(":yiski-module-metadata"))
+                implementation(project(":yiski-module-loader"))
+            }
         }
-
-        api(rootProject.libs.slf4j.api)
-        implementation(kotlin("reflect"))
-        implementation(rootProject.libs.bundles.exposed)
-        implementation(rootProject.libs.bundles.jda) {
-            exclude(module = "open-java")
-        }
-        implementation(rootProject.libs.bundles.ktor)
-        implementation(rootProject.libs.bundles.ktoml)
-        implementation(rootProject.libs.bundles.kotlin)
-        implementation(rootProject.libs.bundles.kotlinx)
-        implementation(rootProject.libs.bundles.lavalink)
-        implementation(rootProject.libs.bundles.logback)
-        implementation(rootProject.libs.postgresql)
-        implementation(rootProject.libs.kotlin.logging)
-        implementation(rootProject.libs.reflection)
     }
 
     // Write the version to the yiski.metadata.toml
@@ -79,14 +87,12 @@ allprojects {
             expand(mutableMapOf("version" to project.version))
         }
     }
+}
 
-    application {
-        mainClass.set("one.devos.yiski.runner.YiskiRunner")
-    }
-
-    ktor {
-        fatJar {
-            archiveFileName.set("Yiski-${project.version}.jar")
+subprojects {
+    dependencies {
+        if (project.name != "yiski-dependencies") {
+            implementation(project(":yiski-dependencies"))
         }
     }
 }

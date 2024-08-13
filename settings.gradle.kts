@@ -9,6 +9,7 @@ include("yiski-module-metadata")
 include("yiski-module-loader")
 
 // Modules
+include("yiski-dependencies")
 include("yiski-common")
 
 (1..6).forEach { module ->
