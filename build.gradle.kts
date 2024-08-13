@@ -18,10 +18,10 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
 
-    api("shade"(project(":yiski-dependencies"))!!)
-    "shade"(project(":yiski-common"))
-    "shade"(project(":yiski-module-metadata"))
-    "shade"(project(":yiski-module-loader"))
+    api(shade(project(":yiski-dependencies"))!!)
+    shade(project(":yiski-common"))
+    shade(project(":yiski-module-metadata"))
+    shade(project(":yiski-module-loader"))
 
     (1..6).forEach { module ->
         runtimeOnly(project(":yiski$module"))
