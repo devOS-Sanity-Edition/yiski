@@ -1,11 +1,14 @@
-package one.devos.yiski.runner
+package one.devos.yiski.runner.aviation
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import one.devos.yiski.common.utils.EmbedHelpers
 import xyz.artrinix.aviation.Aviation
 import xyz.artrinix.aviation.events.*
 import xyz.artrinix.aviation.internal.utils.on
 
 object AviationEventHandler {
+
+    private val logger = KotlinLogging.logger { }
 
     suspend fun setupEvents(aviation: Aviation) {
         aviation.on<AviationExceptionEvent> {

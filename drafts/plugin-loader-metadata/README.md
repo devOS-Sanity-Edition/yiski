@@ -25,7 +25,6 @@ mainClass = ""
 configClass = ""
     [module.packages]
     databasePackage = ""
-    slashCommandsPackage = ""
 
 [information]
 id = ""
@@ -79,7 +78,6 @@ mainClass = "" # Point directly to your class that uses YiskiModuleEntrypoint.
 configClass = "" # Point directly to your config initializer class.
     [module.packages] # Any sort of information about the module's packages.
     databasePackage = "" # Optional, point directly to your Database package if you have database tables.
-    slashCommandsPackage = "" # Optional, point directly to your Slash Commands package if you have slash commands.
 
 [information]
 id = "" # Named ID of your Yiski Module
@@ -106,7 +104,6 @@ mainClass = "one.devos.basicmodule.BasicModule"
 configClass = "one.devos.basicmodule.BasicModuleConfig"
     [module.packages]
     databasePackage = "one.devos.basicmodule.database"
-    slashCommandsPackage = "one.devos.basicmodule.commands"
 
 [information]
 id = "basicmodule"

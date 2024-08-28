@@ -1,9 +1,9 @@
 package one.devos.yiski3
 
-import com.akuleshov7.ktoml.file.TomlFileReader
 import kotlinx.serialization.serializer
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.entrypoints.ConfigSetupEntrypoint
+import one.devos.yiski.utils.TomlReader
 import one.devos.yiski3.data.Yiski3ConfigData
 import kotlin.system.exitProcess
 
@@ -17,7 +17,7 @@ class Yiski3Config : ConfigSetupEntrypoint {
     override fun read() {
         config = try {
             logger.info { "Attemping to load config" }
-            TomlFileReader.decodeFromFile(serializer(), configPath)
+            TomlReader.decodeFromFile(serializer(), configPath)
         } catch (e: Exception) {
             logger.error {
                 """

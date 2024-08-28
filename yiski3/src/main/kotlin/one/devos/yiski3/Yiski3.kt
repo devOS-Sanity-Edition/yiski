@@ -49,9 +49,17 @@ class Yiski3(
         // ...fucking hell.
         //
         // `val cmfis: InputStream = PathsHelper.filePath.path(PathsHelper.FileType.FONT, Yiski3.config.fonts.comicmono)` instead of the below *any* day personally.
-        val cmfis: InputStream = PathsHelper.filePath("assets/fonts/comicmono.ttf")
-        val cmff: Font = Font.createFont(Font.TRUETYPE_FONT, cmfis)
-        val cmf = cmff.deriveFont(18.0F)
+        val cmfis: InputStream by lazy {
+            PathsHelper.filePath("assets/fonts/comicmono.ttf")
+        }
+
+        val cmff: Font by lazy {
+            Font.createFont(Font.TRUETYPE_FONT, cmfis)
+        }
+
+        val cmf by lazy {
+            cmff.deriveFont(18.0F)
+        }
     }
 
     init {

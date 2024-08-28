@@ -1,12 +1,15 @@
 package one.devos.yiski.common.database
 
 import io.github.oshai.kotlinlogging.KotlinLogging
+import one.devos.yiski.common.YiskiConstants
+import one.devos.yiski.common.YiskiShared
 import one.devos.yiski.common.annotations.DatabaseEntry
 import one.devos.yiski.common.data.YiskiBotConfig
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.reflections.Reflections
 import org.reflections.scanners.Scanners
+import org.reflections.util.ConfigurationBuilder
 
 
 class DatabaseManager(credentials: YiskiBotConfig.PostgresConfig) {
@@ -54,7 +57,9 @@ class DatabaseManager(credentials: YiskiBotConfig.PostgresConfig) {
     }
 
     fun registerTables(tablesPackage: String) {
-        val reflections: Reflections = Reflections(tablesPackage, Scanners.TypesAnnotated, Scanners.SubTypes)
+        val reflections = Reflections(ConfigurationBuilder.build()
+            .forPackage(tablesPackage, YiskiShared.moduleLoader.classLoader)
+            .addScanners(Scanners.TypesAnnotated, Scanners.SubTypes))
 
         val tables = reflections.getTypesAnnotatedWith(DatabaseEntry::class.java)
             .map { it.kotlin }

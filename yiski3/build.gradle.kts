@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    id("one.devos.yiski.build")
 }
 
 group = "one.devos"
@@ -10,14 +11,13 @@ repositories {
 }
 
 dependencies {
-//    testImplementation(kotlin("test"))
     implementation(rootProject.libs.github.api)
+    shade(rootProject.libs.github.api)
+
     implementation(rootProject.libs.okhttp)
+    shade(rootProject.libs.okhttp)
 }
-//
-//tasks.test {
-//    useJUnitPlatform()
-//}
+
 kotlin {
     jvmToolchain(21)
 }

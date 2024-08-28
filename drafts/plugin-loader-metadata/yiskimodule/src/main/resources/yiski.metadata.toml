@@ -8,7 +8,6 @@ mainClass = "one.devos.basicmodule.BasicModule"
 configClass = "one.devos.basicmodule.BasicModuleConfig"
     [module.packages]
     databasePackage = "one.devos.basicmodule.database"
-    slashCommandsPackage = "one.devos.basicmodule.commands"
 
 [information]
 id = "basicmodule"

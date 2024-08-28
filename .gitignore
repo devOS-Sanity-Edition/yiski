@@ -43,6 +43,7 @@ bin/
 .DS_Store
 
 ### Yiski Discord Bot ###
+**/modules
 **/run
 **/config.toml
 **/yiski1_config.toml

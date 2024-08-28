@@ -23,7 +23,7 @@ fun ModuleLoader.getMainEntrypoint(
         return null
     }
 
-    val entrypointClass = Class.forName(name)
+    val entrypointClass = findClass(name) ?: return null
     val entrypoint = loadEntrypoint(entrypointClass, database, aviation, jda, config)
     if (entrypoint !is YiskiModuleEntrypoint) {
         throw IllegalArgumentException("$name does not implement YiskiModuleEntrypoint interface!")
@@ -39,7 +39,7 @@ fun ModuleLoader.getConfigSetupEntrypoint(metadata: ModuleMetadata): ConfigSetup
         return null
     }
 
-    val entrypointClass = Class.forName(name)
+    val entrypointClass = findClass(name) ?: return null
     val entrypoint = loadEntrypoint(entrypointClass)
     if (entrypoint !is ConfigSetupEntrypoint) {
         throw IllegalArgumentException("$name does not implement ConfigSetupEntrypoint interface!")

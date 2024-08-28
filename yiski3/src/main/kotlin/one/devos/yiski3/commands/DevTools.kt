@@ -1,13 +1,12 @@
 package one.devos.yiski3.commands
 
-import com.akuleshov7.ktoml.file.TomlFileReader
 import dev.minn.jda.ktx.coroutines.await
 import dev.minn.jda.ktx.messages.Embed
 import kotlinx.serialization.serializer
-import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.utils.EmbedHelpers
 import one.devos.yiski.common.utils.EmbedHelpers.imageUpload
+import one.devos.yiski.utils.TomlReader
 import one.devos.yiski3.Yiski3
 import one.devos.yiski3.data.DevToolsData
 import one.devos.yiski3.logger
@@ -48,7 +47,7 @@ object DevToolsToml {
     fun read() : DevToolsData {
         return try {
             logger.info { "Attempting to load the Devtools TOML..." }
-            TomlFileReader.decodeFromString(serializer(), devToolsTomlPath)
+            TomlReader.decodeFromString(serializer(), devToolsTomlPath)
         } catch (e: Exception) {
             logger.error {
                 "Failed to load the Devtools TOML. Uh oh."
