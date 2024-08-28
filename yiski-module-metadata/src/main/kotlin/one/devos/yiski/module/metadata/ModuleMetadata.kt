@@ -31,8 +31,7 @@ data class ModuleMetadata(
 
         @Serializable
         data class PackagesConfig(
-            val databasePackage: String,
-            val slashCommandsPackage: String
+            val databasePackage: String
         )
 
     }

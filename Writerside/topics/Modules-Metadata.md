@@ -41,16 +41,13 @@ information about itself.
 
 ### Packages
 
-> Package paths are optional, but required if you're using anything related to Tables or Slash Commands
+> Package paths are optional, but required if you're using anything related to Tables
 {style="note"}
 
 > Do not point these to a file, point it to the package containing the classes/objects.
 
 `databasePackage`
 : Your module's package for where all the SQL/Exposed SQL Tables are stored
-
-`slashCommandsPackage`
-: Your module's package for where all the Slash Commands are stored
 
 ## Information
 

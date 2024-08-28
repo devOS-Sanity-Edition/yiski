@@ -9,7 +9,6 @@ configClass = ""
 
 [module.packages]
 databasePackage = ""
-slashCommandsPackage = ""
 
 [information]
 id = ""

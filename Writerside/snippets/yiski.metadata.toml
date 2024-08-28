@@ -9,7 +9,6 @@ configClass = "one.devos.yiski1.Yiski1Config"
 
 [module.packages]
 databasePackage = "one.devos.yiski1.tables"
-slashCommandsPackage = "one.devos.yiski1.commands"
 
 [information]
 id = "yiski1"
