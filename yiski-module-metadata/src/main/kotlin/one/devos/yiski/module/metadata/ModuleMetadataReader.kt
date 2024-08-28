@@ -1,8 +1,8 @@
 package one.devos.yiski.module.metadata
 
-import com.akuleshov7.ktoml.file.TomlFileReader
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.serializer
+import one.devos.yiski.utils.TomlReader
 import kotlin.system.exitProcess
 
 object ModuleMetadataReader {
@@ -11,7 +11,7 @@ object ModuleMetadataReader {
 
     fun read(content: String): ModuleMetadata {
         return try {
-            TomlFileReader.decodeFromString(serializer(), content)
+            TomlReader.decodeFromString(serializer(), content)
         } catch (e: Exception) {
             logger.error {
                 """
