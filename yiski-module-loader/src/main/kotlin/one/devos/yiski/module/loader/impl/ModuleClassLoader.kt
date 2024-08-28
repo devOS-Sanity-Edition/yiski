@@ -39,6 +39,7 @@ class ModuleClassLoader(parent: ClassLoader) : URLClassLoader(getDefaultClasspat
         loaderExceptions.add("java.")
         loaderExceptions.add("javax.")
         loaderExceptions.add("kotlin.")
+        loaderExceptions.add("kotlinx.")
         loaderExceptions.add("sun.")
         loaderExceptions.add("com.sun.")
         loaderExceptions.add("jdk.")
@@ -47,7 +48,9 @@ class ModuleClassLoader(parent: ClassLoader) : URLClassLoader(getDefaultClasspat
         loaderExceptions.add("one.devos.yiski.module.")
         loaderExceptions.add("one.devos.yiski.common.")
 
+        loaderExceptions.add("net.dv8tion.jda.")
         loaderExceptions.add("org.jetbrains.exposed.")
+        loaderExceptions.add("xyz.artrinix.aviation.")
     }
 
     override fun loadClass(name: String): Class<*> {

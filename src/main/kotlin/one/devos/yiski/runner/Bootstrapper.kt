@@ -32,9 +32,10 @@ internal object Bootstrapper {
 
     private val logger = KotlinLogging.logger("Yiski")
 
-    lateinit var jda: JDA
     lateinit var aviation: Aviation
+    lateinit var jda: JDA
 
+    @Suppress("unused")
     fun start() {
         runBlocking { run() }
     }
@@ -67,11 +68,6 @@ internal object Bootstrapper {
             }
         }
 
-        jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
-            setActivity(Activity.of(Activity.ActivityType.valueOf(YiskiConstants.config.discord.activityType.uppercase()), YiskiConstants.config.discord.activityStatus))
-            intents += listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT)
-        }
-
         aviation = AviationBuilder()
             .apply {
                 ratelimitProvider = DefaultRateLimitStrategy()
@@ -82,29 +78,24 @@ internal object Bootstrapper {
             }
             .build()
             .apply {
-                AviationEventHandler.setupEvents(this)
-                modules.forEach { module ->
-                    module.module.packages?.let { packages ->
-                        val slashCommandsPackage = packages.slashCommandsPackage
-                        if (slashCommandsPackage.isEmpty()) {
-                            return@forEach
-                        }
-
-                        val indexer = ModuleScaffoldIndexer(slashCommandsPackage)
-                        for (scaffold in indexer.getScaffolds()) {
-                            slashCommands.register(scaffold)
-                        }
-                    }
+                for (scaffold in ModuleScaffoldIndexer.getScaffolds()) {
+                    slashCommands.register(scaffold)
                 }
+
+                AviationEventHandler.setupEvents(this)
             }
+
+        jda = default(YiskiConstants.config.discord.botToken, enableCoroutines = true) {
+            setActivity(Activity.of(Activity.ActivityType.valueOf(YiskiConstants.config.discord.activityType.uppercase()), YiskiConstants.config.discord.activityStatus))
+            intents += listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT)
+        }
 
         jda.addEventListener(aviation)
 
         jda.listener<ReadyEvent> {
             try {
                 logger.info { "Yiski started!" }
-//                aviation.syncCommands(jda)
-                aviation.syncCommandsForTestGuilds(jda)
+                aviation.syncCommands(jda)
             } catch (e: Exception) {
                 logger.error(e) {
                     "Something has gone very wrong with the Ready Event."
