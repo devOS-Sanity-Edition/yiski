@@ -11,6 +11,5 @@ object YiskiConstants {
     val aviationVersion: String get() = Aviation::class.java.`package`.implementationVersion ?: "Aviation Version isn't available, go ask Storm."
     val jdaVersion: String get() = JDAInfo.VERSION
     val config = Config.loadConfig()
-    val moduleLoader = ModuleLoader()
     val database = DatabaseManager(config.database)
 }

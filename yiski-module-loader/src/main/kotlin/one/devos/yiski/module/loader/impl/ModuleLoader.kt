@@ -11,10 +11,9 @@ import java.util.jar.JarFile
 
 val logger = KotlinLogging.logger {  }
 
-class ModuleLoader {
+class ModuleLoader(val classLoader: ModuleClassLoader) {
 
     private val discoverers = mutableSetOf<ModuleDiscoverer>()
-    private val classLoader = ModuleClassLoader(emptyList(), this::class.java.classLoader)
 
     private val modules = mutableSetOf<ModuleMetadata>()
 
@@ -63,6 +62,14 @@ class ModuleLoader {
 
     fun addDiscoverer(discoverer: ModuleDiscoverer) = apply {
         discoverers += discoverer
+    }
+
+    fun findClass(name: String): Class<*>? {
+        return try {
+            classLoader.loadClass(name)
+        } catch (e: ClassNotFoundException) {
+            null
+        }
     }
 
     /**

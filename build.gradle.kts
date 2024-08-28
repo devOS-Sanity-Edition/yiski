@@ -1,10 +1,8 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
+    id("com.gradleup.shadow")
     id("one.devos.yiski.build")
-    alias(libs.plugins.ktor)
     java
 }
 
@@ -35,9 +33,7 @@ kotlin {
 tasks {
 
     jar {
-        manifest {
-            attributes["Main-Class"] = "one.devos.yiski.runner.YiskiRunner"
-        }
+        manifest.attributes("Main-Class" to "one.devos.yiski.runner.YiskiRunner")
     }
 
     fatJar {
@@ -53,8 +49,6 @@ tasks {
 allprojects {
     apply(plugin = "java")
     apply(plugin = "kotlin")
-    apply(plugin = "io.ktor.plugin")
-    apply(plugin = "com.github.johnrengelman.shadow")
     apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
 
     repositories {
@@ -79,12 +73,30 @@ allprojects {
         }
     }
 
-    // Write the version to the yiski.metadata.toml
-    tasks.processResources {
-        inputs.property("version", project.version)
+    tasks {
+        // Write the version to the yiski.metadata.toml
+        processResources {
+            inputs.property("version", project.version)
 
-        filesMatching("yiski.metadata.toml") {
-            expand(mutableMapOf("version" to project.version))
+            filesMatching("yiski.metadata.toml") {
+                expand(mutableMapOf("version" to project.version))
+            }
+        }
+    }
+
+    afterEvaluate {
+        tasks {
+            if (plugins.hasPlugin("one.devos.yiski.build")) {
+                fatJar {
+                    logger.lifecycle("> Moving fat JAR to modules directory")
+                    destinationDirectory.set(rootProject.file("modules"))
+                }
+            } else {
+                jar {
+                    logger.lifecycle("> Moving normal JAR to modules directory")
+                    destinationDirectory.set(rootProject.file("modules"))
+                }
+            }
         }
     }
 }

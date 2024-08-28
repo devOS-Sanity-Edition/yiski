@@ -11,13 +11,23 @@ class BuildPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val shade = project.configurations.create("shade")
 
-        project.tasks.register("fatJar", ShadowJar::class.java) {
+        val fatJar = project.tasks.register("fatJar", ShadowJar::class.java) {
             group = "devOS"
             description = "Creates a fat JAR with all dependencies"
 
             configurations.add(shade)
             manifest.inheritFrom(project.tasks.named("jar", Jar::class.java).get().manifest)
             from(project.extensions.getByType(SourceSetContainer::class.java).named("main").get().output)
+        }
+
+        project.artifacts.add("shade", fatJar)
+
+        if (
+            project.plugins.hasPlugin("java") ||
+            project.plugins.hasPlugin("java-library") ||
+            project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")
+        ) {
+            project.tasks.named("assemble").get().dependsOn(fatJar)
         }
     }
 

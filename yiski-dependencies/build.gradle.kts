@@ -1,3 +1,11 @@
+plugins {
+    kotlin("jvm")
+    id("one.devos.yiski.build")
+}
+
+group = "one.devos"
+version = "1.0-SNAPSHOT"
+
 repositories {
     mavenCentral()
     maven("https://oss.sonatype.org/content/repositories/snapshots")
@@ -24,4 +32,8 @@ dependencies {
     api(rootProject.libs.postgresql)
     api(rootProject.libs.kotlin.logging)
     api(rootProject.libs.reflection)
+}
+
+kotlin {
+    jvmToolchain(21)
 }
