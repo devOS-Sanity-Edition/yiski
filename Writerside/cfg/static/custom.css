@@ -279,17 +279,23 @@
 .navigation-links {
     border-top: 1px transparent;
 }
+
+/* label and title backdrop roudning and gradient adjustment */
 .title__backdrop {
     background-image: linear-gradient(180deg, var(--primary-color-25), transparent 50%);
     border-radius: 0.5em 0.5em 0.5em 0;
 }
 
-.label__backdrop {
-    border-radius: 0.25em 0.25em 0 0;
-}
-
 .label__content {
     border-radius: 1em 1em 1em 1em;
+}
+
+._tab_1fcqo6x_13 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    overflow: unset; /* WE RAN INTO A CHROMIUM BUG AND WORKED AROUND THIS STUPID FUCKER */
 }
 
 /* Footer */
