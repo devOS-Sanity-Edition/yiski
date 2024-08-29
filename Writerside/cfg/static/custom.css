@@ -298,6 +298,12 @@
     overflow: unset; /* WE RAN INTO A CHROMIUM BUG AND WORKED AROUND THIS STUPID FUCKER */
 }
 
+/* hover card when hovering over links with information */
+._card_1uu62mp_6 {
+    border-radius: 0.5em;
+    border-color: var(--primary-color-75);
+}
+
 /* Footer */
 .app__footer {
     background-color: var(--primary-color-10);

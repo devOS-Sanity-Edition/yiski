@@ -29,8 +29,12 @@ information about itself.
 
 ## Metadata
 
+> Refer to [here](#metadata-changelog) on information about Metadata Versions.
+{style="tip"}
+
 `version`
 : Config version, **do not EVER** touch unless you know what you're doing.
+
 
 ## Runner
 
@@ -77,6 +81,8 @@ information about itself.
 
 ## Metadata Changelog
 
+The metadata at the time of writing is currently not finished, so all versions for now are DRAFT# versions.
+
 **DRAFT1** - Metadata Version: `0`
 : Initial implementation
 : Implements Metadata table with `version` int field
@@ -94,7 +100,3 @@ information about itself.
 
 **DRAFT2** - Metadata Version: `0`
 : Removed `slashCommandsPackage` due to complications with Reflection library, and now the Modules Loader will scan for classes implementing `Scaffold` instead.
-
-<seealso>
-    <!--Provide links to related how-to guides, overviews, and tutorials.-->
-</seealso>
