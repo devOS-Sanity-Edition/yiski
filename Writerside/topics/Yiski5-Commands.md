@@ -1,5 +1,6 @@
 # Yiski5
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
 
 `/reset-vent`
 : Manually resets the vent channel

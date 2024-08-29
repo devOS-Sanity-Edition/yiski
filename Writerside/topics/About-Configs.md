@@ -1,5 +1,6 @@
 # About Configs
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
 
 ## Why are these configs needed?
 

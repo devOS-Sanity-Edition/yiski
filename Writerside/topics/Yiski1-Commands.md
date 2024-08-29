@@ -1,5 +1,6 @@
 # Yiski1
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
 
 # Basic
 

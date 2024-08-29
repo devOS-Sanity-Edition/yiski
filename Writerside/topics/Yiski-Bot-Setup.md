@@ -1,5 +1,6 @@
 # Bot Setup
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
 
 Want to run Yiski on your own? Well, it's a little bit involved, but here's how to set it up.
 

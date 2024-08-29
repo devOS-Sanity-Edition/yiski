@@ -1,5 +1,6 @@
 # Module Loader
-<format style="italic">by Deftu</format>
+
+<primary-label ref="author-deftu"/>
 
 ## Initial setup
 

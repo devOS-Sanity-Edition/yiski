@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE labels SYSTEM "https://resources.jetbrains.com/writerside/1.0/labels-list.dtd">
+<labels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/labels.xsd">
+    <primary-label short-name="ASOJIDEV" id="author-asojidev" name="by asojidev" color="blue"/>
+    <primary-label short-name="BLUEBEARGREEN" id="author-bluebeargreen" name="by bluebeargreen" color="tangerine"/>
+    <primary-label short-name="CEPHALONCOSMIC" id="author-cephaloncosmic" name="by CephalonCosmic" color="purple"/>
+    <primary-label short-name="DEFTU" id="author-deftu" name="by Deftu" color="strawberry"/>
+
+    <secondary-label id="co-author-asojidev" name="Co-authored by asojidev" color="blue"/>
+    <secondary-label id="co-author-bluebeargreen" name="Co-authored by bluebeargreen" color="tangerine"/>
+    <secondary-label id="co-author-cephaloncosmic" name="Co-authored by CephalonCosmic" color="purple"/>
+    <secondary-label id="co-author-deftu" name="Co-authored by Deftu" color="strawberry"/>
+
+    <secondary-label id="module" name="Module" color="strawberry"/>
+    <secondary-label id="experimental" name="Experimental" color="red"/>
+</labels>

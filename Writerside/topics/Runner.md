@@ -1,5 +1,6 @@
 # Yiski's Main Runner
-<format style="italic">by Deftu</format>
+
+<primary-label ref="author-deftu"/>
 
 The bot's launch entrypoint, or main runner, is responsible for initially setting up JDA, database management, etc. 
 Of course, it is also responsible for managing each of the bot's modules using the module loading system.

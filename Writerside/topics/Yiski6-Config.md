@@ -1,5 +1,6 @@
 # Yiski6
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
 
 > This exists as a seperate bot at the moment, but hasn't been ported yet. Support will be limited. No documentation provided other than what's in the file as comments.
 {style="warning"}

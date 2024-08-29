@@ -1,5 +1,7 @@
 # Runner
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
+<secondary-label ref="co-author-deftu"/>
 
 Download <resource src="config.toml"/> and put it in the same folder as your Runner.
 

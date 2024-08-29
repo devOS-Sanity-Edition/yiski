@@ -138,7 +138,7 @@
 /* Firefox */
 * {
     scrollbar-width: auto;
-    scrollbar-color: var(--actual-primary-color) #ffffff;
+    scrollbar-color: var(--actual-primary-color) var(--wh-color-bg-main);
     scrollbar-gutter: stable;
 }
 
@@ -149,11 +149,34 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: var(--wh-color-bg-main);
 }
 
 *::-webkit-scrollbar-thumb {
     background-color: rgb(var(--actual-primary-color));
+    border-radius: 0.5em;
+    border: 1px transparent;
+}
+
+.code-block {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+    scrollbar-gutter: stable;
+    mask-image: none;
+}
+
+.code-block::-webkit-scrollbar {
+    width: 0.5em;
+    scrollbar-gutter: stable;
+}
+
+.code-block::-webkit-scrollbar-track {
+    background: var(--wh-color-text-main);
+}
+
+.code-block::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--actual-primary-color));
+    color: rgb(var(--actual-primary-color));
     border-radius: 0.5em;
     border: 1px transparent;
 }
@@ -163,6 +186,8 @@
 .starting-page-card {
     border-radius: 0.5em;
     border: 1px solid var(--primary-color-25);
+    background-size: 50px 50px;
+    background-image: radial-gradient(circle, var(--primary-color-25) 1px, var(--wh-color-bg-main) 1px);
 }
 
 .starting-page-card:hover, .starting-page-title__card:hover {
@@ -254,11 +279,17 @@
 .navigation-links {
     border-top: 1px transparent;
 }
+.title__backdrop {
+    background-image: linear-gradient(180deg, var(--primary-color-25), transparent 50%);
+    border-radius: 0.5em 0.5em 0.5em 0;
+}
 
-/* removes unnessecary padding at the top of all pages, if i could do negatives i'd remove more but this is as much as
-i could do */
-.app__article {
-    padding-top: unset;
+.label__backdrop {
+    border-radius: 0.25em 0.25em 0 0;
+}
+
+.label__content {
+    border-radius: 1em 1em 1em 1em;
 }
 
 /* Footer */

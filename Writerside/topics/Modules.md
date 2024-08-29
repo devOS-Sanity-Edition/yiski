@@ -1,5 +1,6 @@
 # Modules
-<format style="italic">by Deftu</format>
+
+<primary-label ref="author-deftu"/>
 
 Each module must provide its own implementation of `YiskiModuleEntrypoint` and `ConfigSetupEntrypoint`, and then provide the full path to both implementations in their respective fields of its `yiski.metadata.toml`.
 

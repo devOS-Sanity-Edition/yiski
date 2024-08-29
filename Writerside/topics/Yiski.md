@@ -1,5 +1,6 @@
 # What is Yiski?
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
 
 <img src="yiski_banner.png" alt="Yiski Logo" height="300"></img>
 

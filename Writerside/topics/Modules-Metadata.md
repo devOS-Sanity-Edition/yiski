@@ -1,8 +1,11 @@
 # Modules Metadata
-<format style="italic">by asojidev</format>
+
+<primary-label ref="author-asojidev"/>
+<secondary-label ref="co-author-deftu"/>
+<secondary-label ref="experimental"/>
 
 > The Metadata is still a work in progress, this shows the current utilized draft of Yiski's Module Metadata.
-{style="warning"}
+> {style="warning"}
 
 Every module needs its own Metadata file, a file that contains information about what to load.
 Specifically, it tells the Runner to run the module's respective config, PostgresQL tables, slash commands, and
@@ -22,7 +25,7 @@ information about itself.
 </tabs>
 
 > Assume all fields here are required unless specified otherwise.
-{style="note"}
+> {style="note"}
 
 ## Metadata
 
@@ -39,10 +42,10 @@ information about itself.
 `configClass`
 : Config class to allow a module to be configurable through a file
 
-### Packages
+## Packages
 
 > Package paths are optional, but required if you're using anything related to Tables
-{style="note"}
+> {style="note"}
 
 > Do not point these to a file, point it to the package containing the classes/objects.
 
@@ -71,6 +74,26 @@ information about itself.
 
 `authors`
 : An array of names of people who have contributed to the module
+
+## Metadata Changelog
+
+**DRAFT1** - Metadata Version: `0`
+: Initial implementation
+: Implements Metadata table with `version` int field
+: Implements Runner table with `mainClass` string field
+: Implements Module table with `config` string field
+: Implements Packages table with `databasePackage` and `slashCommandsPackage` string field
+: Implements Information table with the following fields:
+:  - `id` - String
+:  - `name` - String
+:  - `description` - String
+:  - `version` - String, but follow semver
+:  - `repo` - String, use link
+:  - `license` - String
+:  - `authors` - String array, can accept only 1 string in array
+
+**DRAFT2** - Metadata Version: `0`
+: Removed `slashCommandsPackage` due to complications with Reflection library, and now the Modules Loader will scan for classes implementing `Scaffold` instead.
 
 <seealso>
     <!--Provide links to related how-to guides, overviews, and tutorials.-->
