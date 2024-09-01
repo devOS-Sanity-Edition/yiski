@@ -13,7 +13,14 @@ class Modules : Scaffold {
         ctx.sendEmbed {
             setTitle("${YiskiShared.moduleLoader.getModules().size} modules loaded")
             YiskiShared.moduleLoader.getModules().forEach {
-                addField("${it.information.name} - ${it.information.version}", it.information.description, true)
+                addField("${it.information.name} - ${it.information.authors}",
+                    """
+                        **Description**: ${it.information.description}
+                        **ID**: `${it.information.id}`
+                        **Version**: `${it.information.version}`
+                        **License**: `${it.information.license}`
+                        
+                    """.trimIndent(), false)
             }
         }
     }

@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "one.devos"
-version = "1.0-SNAPSHOT"
+version = rootProject.version.toString()
 
 dependencies {
     implementation(project(":yiski-module-metadata"))

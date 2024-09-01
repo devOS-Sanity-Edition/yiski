@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.incremental.deleteDirectoryContents
+
 plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
@@ -7,7 +9,7 @@ plugins {
 }
 
 group = "one.devos"
-version = System.getenv("GITHUB_SHA") ?: "Development"
+version = "${project.property("yiski.version")}${System.getProperty("GITHUB_SHA") ?: "-DEVELOPMENT"}"
 
 repositories {
     mavenCentral()
@@ -42,6 +44,12 @@ tasks {
 
     test {
         useJUnitPlatform()
+    }
+
+    named("clean") {
+        doLast {
+            rootProject.file("modules").deleteDirectoryContents()
+        }
     }
 
 }

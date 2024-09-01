@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "one.devos"
-version = "1.0-SNAPSHOT"
+version = rootProject.version.toString()
 
 repositories {
     mavenCentral()
