@@ -19,7 +19,6 @@ class Modules : Scaffold {
                         **ID**: `${it.information.id}`
                         **Version**: `${it.information.version}`
                         **License**: `${it.information.license}`
-                        
                     """.trimIndent(), false)
             }
         }

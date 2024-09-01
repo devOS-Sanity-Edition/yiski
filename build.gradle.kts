@@ -24,7 +24,7 @@ dependencies {
     shade(project(":yiski-module-loader"))
 
     (1..6).forEach { module ->
-        runtimeOnly(project(":yiski$module"))
+        implementation(project(":yiski$module"))
     }
 }
 
@@ -116,3 +116,4 @@ subprojects {
         }
     }
 }
+
