@@ -6,6 +6,7 @@ plugins {
     id("com.gradleup.shadow")
     id("one.devos.yiski.build")
     java
+    alias(libs.plugins.ktor)
 }
 
 group = "one.devos"
@@ -117,3 +118,9 @@ subprojects {
     }
 }
 
+application { // apparently needed for ktor? ok.
+    mainClass.set("one.devos.yiski.runner.YiskiRunnerKt")
+
+    val isDevelopment: Boolean = project.ext.has("development")
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+}
