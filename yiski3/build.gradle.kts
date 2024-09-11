@@ -16,6 +16,9 @@ dependencies {
 
     implementation(rootProject.libs.okhttp)
     shade(rootProject.libs.okhttp)
+
+    implementation(files("libs/osu4j-2.0.1.jar"))
+    shade(files("libs/osu4j-2.0.1.jar"))
 }
 
 kotlin {

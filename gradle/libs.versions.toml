@@ -51,9 +51,12 @@ jda-ktx = { module = "club.minnced:jda-ktx", version.ref = "jda-ktx" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-cio-jvm = { module = "io.ktor:ktor-client-cio-jvm", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
 ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
 ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor" }
+ktor-server-content-negogiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 # Ktoml
 ktoml-core = { module = "com.akuleshov7:ktoml-core", version.ref = "ktoml" }
 ktoml-file = { module = "com.akuleshov7:ktoml-file", version.ref = "ktoml" }
@@ -106,13 +109,20 @@ kotlinx = [
     "kotlinx-coroutines-core",
     "kotlinx-serialization-json"
 ]
-ktor = [
+ktor-universal = [
+    "ktor-serialization-kotlinx-json"
+]
+ktor-client = [
     "ktor-client-core",
     "ktor-client-cio",
     "ktor-client-cio-jvm",
+    "ktor-client-content-negotiation"
+]
+ktor-server = [
     "ktor-server-core",
     "ktor-server-cio",
-    "ktor-server-config-yaml"
+    "ktor-server-config-yaml",
+    "ktor-server-content-negogiation"
 ]
 ktoml = [
     "ktoml-core",

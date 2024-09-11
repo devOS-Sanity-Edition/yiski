@@ -23,7 +23,9 @@ dependencies {
     }
 
     api(rootProject.libs.slf4j.api)
-    api(rootProject.libs.bundles.ktor)
+    api(rootProject.libs.bundles.ktor.universal)
+    api(rootProject.libs.bundles.ktor.client)
+    api(rootProject.libs.bundles.ktor.server)
     api(rootProject.libs.bundles.ktoml)
     api(rootProject.libs.bundles.kotlin)
     api(rootProject.libs.bundles.kotlinx)

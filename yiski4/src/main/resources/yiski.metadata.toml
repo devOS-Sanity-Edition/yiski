@@ -1,0 +1,23 @@
+[metadata]
+version = 0
+
+[runner]
+mainClass = "one.devos.yiski4.Yiski4"
+
+[module]
+configClass = "one.devos.yiski4.Yiski4Config"
+
+[information]
+id = "yiski4"
+name = "Yiski4"
+description = "Check your system's hardware stats"
+version = "${version}"
+repo = "https://github.com/devOS-Sanity-Edition/yiski/"
+license = "MIT"
+authors = [
+    "asojidev",
+    "bluebeargreen",
+    "CephalonCosmic",
+    "dynamyc010",
+    "lizzythewitch"
+]

@@ -7,7 +7,8 @@ import one.devos.yiski.common.AbstractYiskiConfig
 @Serializable
 data class Yiski3ConfigData(
     val images: ImageConfig,
-    val videos: VideosConfig
+    val videos: VideosConfig,
+    val apiKeys: ApiKeysConfig
 ) : AbstractYiskiConfig {
     @Serializable
     data class ImageConfig(
@@ -26,6 +27,12 @@ data class Yiski3ConfigData(
         val memoryleak: String,
         val rtx: String,
         val whatareyoudoing: String,
+        val osufailscreen: String
+    )
+
+    @Serializable
+    data class ApiKeysConfig(
+        val osu: String
     )
 }
 
