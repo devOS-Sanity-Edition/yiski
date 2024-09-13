@@ -43,6 +43,7 @@ data class StaticImageTables(
     val lbrf: String,
     val token: String,
     val teehee: String,
+    val treeeater: String
 )
 
 @Serializable
