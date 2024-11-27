@@ -59,6 +59,7 @@ allprojects {
     apply(plugin = "java")
     apply(plugin = "kotlin")
     apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
+    apply(plugin = "idea")
 
     repositories {
         mavenCentral()
@@ -68,6 +69,7 @@ allprojects {
         maven("https://maven.deftu.dev/releases")
         maven("https://mvn.devos.one/snapshots")
     }
+
 
     dependencies {
         if (project.name != "yiski-dependencies") {
@@ -81,6 +83,8 @@ allprojects {
             }
         }
     }
+
+
 
     tasks {
         // Write the version to the yiski.metadata.toml

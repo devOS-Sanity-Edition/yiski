@@ -76,7 +76,7 @@ class Osu : Scaffold {
 
                 color = EmbedHelpers.infoColor()
                 thumbnail = "https://a.ppy.sh/${user.id}"
-                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both.")
+                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both. osu!lazer scores will be grabbed once osuv2kt is done.")
 
             }).await()
 
@@ -142,7 +142,7 @@ class Osu : Scaffold {
 
                 color = EmbedHelpers.infoColor()
                 thumbnail = "https://a.ppy.sh/${user.id}"
-                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both.")
+                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both. osu!lazer scores will be grabbed once osuv2kt is done.")
             }).await()
         } catch (e: OsuAPIException) {
             response.editOriginalEmbeds(Embed {
@@ -205,7 +205,7 @@ class Osu : Scaffold {
 
                 color = EmbedHelpers.infoColor()
                 thumbnail = "https://a.ppy.sh/${user.id}"
-                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both.")
+                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both. osu!lazer scores will be grabbed once osuv2kt is done.")
             }).await()
         } catch (e: OsuAPIException) {
             response.editOriginalEmbeds(Embed {
@@ -268,7 +268,7 @@ class Osu : Scaffold {
 
                 color = EmbedHelpers.infoColor()
                 thumbnail = "https://a.ppy.sh/${user.id}"
-                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both.")
+                footer("Note that top scores on this are for osu!stable and not osu!lazer. Everything else is both. osu!lazer scores will be grabbed once osuv2kt is done.")
             }).await()
         } catch (e: OsuAPIException) {
             response.editOriginalEmbeds(Embed {

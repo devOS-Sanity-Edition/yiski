@@ -95,7 +95,7 @@ internal object Bootstrapper {
         jda.listener<ReadyEvent> {
             try {
                 logger.info { "Yiski started!" }
-                aviation.syncCommandsForTestGuilds(jda)
+//                aviation.syncCommandsForTestGuilds(jda)
                 aviation.syncCommands(jda)
             } catch (e: Exception) {
                 logger.error(e) {
