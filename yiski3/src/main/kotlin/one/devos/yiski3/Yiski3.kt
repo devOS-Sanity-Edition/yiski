@@ -9,6 +9,7 @@ import one.devos.yiski.common.database.DatabaseManager
 import one.devos.yiski.common.entrypoints.YiskiModuleEntrypoint
 import one.devos.yiski.common.utils.PathsHelper
 import one.devos.yiski3.data.Yiski3ConfigData
+import org.kohsuke.github.GitHub
 import org.kohsuke.github.GitHubBuilder
 import org.kohsuke.github.extras.okhttp3.OkHttpGitHubConnector
 import xyz.artrinix.aviation.Aviation
@@ -38,7 +39,7 @@ class Yiski3(
         val config: Yiski3ConfigData
             get() = instance.config
 
-        val gitHub = GitHubBuilder().withOAuthToken(YiskiConstants.config.universal.githubToken).withConnector(OkHttpGitHubConnector(OkHttpClient())).build()
+        val gitHub: GitHub = GitHubBuilder().withOAuthToken(YiskiConstants.config.universal.githubToken).withConnector(OkHttpGitHubConnector(OkHttpClient())).build()
 
         // sorry for it being slightly cryptic with the val names but i could honestly give less than a flying fuck
 
@@ -57,7 +58,7 @@ class Yiski3(
             Font.createFont(Font.TRUETYPE_FONT, cmfis)
         }
 
-        val cmf by lazy {
+        val cmf: Font by lazy {
             cmff.deriveFont(18.0F)
         }
     }
