@@ -65,7 +65,7 @@ internal fun uwuify(input: String): String {
     val array = output.toCharArray()
     for((eOffset, char) in array.withIndex()) {
         val index = array.indexOf(char)
-        if(punctuation.contains(char) && (index == array.size-1 || array[index+1] == ' ') // ', ' or '! ' etc or last character of the input because I don't want emojis in text.like.this
+        if(punctuation.contains(char) && (index == array.size-1 || array[index+1] == ' ') // ', ' or '! ' etc. or last character of the input because I don't want emojis in text.like.this
             && randomWithChance(emojiChance)) {
             output = output.suffixChar(char, emojis[Random.nextInt(0, emojis.size-1)], eOffset)
         }
