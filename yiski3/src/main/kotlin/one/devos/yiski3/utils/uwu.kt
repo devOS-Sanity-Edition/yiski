@@ -12,8 +12,8 @@ private var emojiChance = 50
 
 internal fun uwuify(input: String): String {
     if (input.length == 2) {
-        stutterChance = input[0].toInt()
-        emojiChance = input[1].toInt()
+        stutterChance = input[0].code
+        emojiChance = input[1].code
     }
 
     var output = input
