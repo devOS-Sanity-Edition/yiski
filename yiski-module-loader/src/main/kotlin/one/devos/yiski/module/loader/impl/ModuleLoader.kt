@@ -87,7 +87,11 @@ class ModuleLoader(val classLoader: ModuleClassLoader) {
 
         val constructor = clz.declaredConstructors.first()
         if (constructor.parameterCount != args.size) {
-            throw IllegalArgumentException("Invalid number of arguments for entrypoint constructor! (expected ${args.size} - ${args.map { it::class.java.simpleName }.joinToString(", ")})")
+            throw IllegalArgumentException("Invalid number of arguments for entrypoint constructor! (expected ${args.size} - ${
+                args.joinToString(
+                    ", "
+                ) { it::class.java.simpleName }
+            })")
         }
 
         val instance = constructor.newInstance(*args)
