@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.utils.FileUpload
 import one.devos.yiski.common.annotations.YiskiModule
 import one.devos.yiski.common.utils.PathsHelper
-import one.devos.yiski3.Yiski3.Companion.cmf
+import one.devos.yiski3.Yiski3.Companion.CosmicMonoFont
 import xyz.artrinix.aviation.annotations.Name
 import xyz.artrinix.aviation.command.slash.SlashContext
 import xyz.artrinix.aviation.command.slash.annotations.Description
@@ -53,7 +53,7 @@ class LittleBitchReportForm : Scaffold {
         // set antialiasing
         graphic.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         // set comic fuckin sans
-        graphic.font = cmf
+        graphic.font = CosmicMonoFont
 
         // set drawing brush to be black
         graphic.color = Color(0, 0, 0)
