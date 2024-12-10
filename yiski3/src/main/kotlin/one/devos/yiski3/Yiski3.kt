@@ -50,7 +50,7 @@ class Yiski3(
         //
         // `val cmfis: InputStream = PathsHelper.filePath.path(PathsHelper.FileType.FONT, Yiski3.config.fonts.comicmono)` instead of the below *any* day personally.
         val cmfis: InputStream by lazy {
-            PathsHelper.filePath("assets/fonts/comicmono.ttf")
+            PathsHelper.filePath("assets/fonts/ComicMono.ttf")
         }
 
         val cmff: Font by lazy {
