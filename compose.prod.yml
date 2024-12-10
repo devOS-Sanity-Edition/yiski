@@ -1,0 +1,17 @@
+include: ['./compose.yml']
+
+services:
+  yiski:
+    container_name: Yiski
+    image: ghcr.io/devos-sanity-edition/yiski:latest
+    depends_on:
+      - postgres
+      - cache
+    volumes:
+      - ./config.toml:/app/config.toml
+      - ./yiski1.config.toml:/app/yiski1.config.toml
+      #      - ./yiski2.config.toml:/app/yiski2.config.toml
+      - ./yiski3.config.toml:/app/yiski3.config.toml
+      - ./yiski4.config.toml:/app/yiski4.config.toml
+      - ./yiski5.config.toml:/app/yiski5.config.toml
+  #      - ./yiski6.config.toml:/app/yiski6.config.toml

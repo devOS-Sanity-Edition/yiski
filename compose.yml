@@ -1,8 +1,9 @@
 services:
   # For main database related stuff, ie infractions, headcrab, more
   postgres:
-    container_name: postgres_container
     image: postgres:16-alpine
+    container_name: yiski-database
+    restart: unless-stopped
     environment:
       POSTGRES_DB: yiski
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -11,35 +12,17 @@ services:
       - postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    restart: unless-stopped
 
   # For caching related tasks
-  dragonfly:
-    image: 'docker.dragonflydb.io/dragonflydb/dragonfly'
+  cache:
+    image: valkey/valkey:8-alpine
+    container_name: yiski-cache
     ulimits:
       memlock: -1
     ports:
       - "6379:6379"
-    # For better performance, consider `host` mode instead `port` to avoid docker NAT.
-    # `host` mode is NOT currently supported in Swarm Mode.
-    # https://docs.docker.com/compose/compose-file/compose-file-v3/#network_mode
-    # network_mode: "host"
     volumes:
-      - dragonflydata:/data
-
-  # unfinished
-  yiski:
-    container_name: Yiski
-    image: devos-se/yiski-dev:latest
-    volumes:
-      - ./config.toml:/app/config.toml
-      - ./yiski1.config.toml:/app/yiski1.config.toml
-#      - ./yiski2.config.toml:/app/yiski2.config.toml
-#      - ./yiski3.config.toml:/app/yiski3.config.toml
-#      - ./yiski4.config.toml:/app/yiski4.config.toml
-      - ./yiski5.config.toml:/app/yiski5.config.toml
-#      - ./yiski6.config.toml:/app/yiski6.config.toml
-
+      - cache:/data
 volumes:
   postgres:
-  dragonflydata:
+  cache:

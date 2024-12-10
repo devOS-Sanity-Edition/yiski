@@ -1,8 +1,9 @@
 FROM gcr.io/distroless/java21-debian12:latest
 
 ENV APP_HOME=/app
-COPY ./Yiski.jar $APP_HOME/
+
+COPY ./yiski-all.jar $APP_HOME/
 
 WORKDIR $APP_HOME
 
-CMD ["sh", "-c", "java -jar Yiski.jar"]
+CMD ["yiski-all.jar"]
