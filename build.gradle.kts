@@ -1,12 +1,12 @@
-import org.jetbrains.kotlin.incremental.deleteDirectoryContents
-
 plugins {
-    kotlin("jvm") version "2.0.0"
-    kotlin("plugin.serialization") version "2.0.0"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.serialization") version "2.1.0"
     id("com.gradleup.shadow")
     id("one.devos.yiski.build")
     java
     alias(libs.plugins.ktor)
+    id("com.github.ben-manes.versions") version "0.51.0"
+    id("nl.littlerobots.version-catalog-update") version "0.8.5"
 }
 
 group = "one.devos"
@@ -49,7 +49,7 @@ tasks {
 
     named("clean") {
         doLast {
-            rootProject.file("modules").deleteDirectoryContents()
+            rootProject.file("modules").deleteRecursively()
         }
     }
 
