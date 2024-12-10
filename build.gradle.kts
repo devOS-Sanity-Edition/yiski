@@ -123,7 +123,7 @@ subprojects {
 }
 
 application { // apparently needed for ktor? ok.
-    mainClass.set("one.devos.yiski.runner.YiskiRunnerKt")
+    mainClass.set("one.devos.yiski.runner.YiskiRunner")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
