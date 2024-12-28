@@ -3,7 +3,6 @@ package one.devos.yiski.runner
 import dev.minn.jda.ktx.events.listener
 import dev.minn.jda.ktx.jdabuilder.default
 import dev.minn.jda.ktx.jdabuilder.intents
-import io.github.oshai.kotlinlogging.KLogger
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.runBlocking
 import net.dv8tion.jda.api.JDA
@@ -95,14 +94,14 @@ internal object Bootstrapper {
         jda.listener<ReadyEvent> {
             try {
                 logger.info { "Yiski started!" }
-//                aviation.syncCommandsForTestGuilds(jda)
-                aviation.syncCommands(jda)
             } catch (e: Exception) {
                 logger.error(e) {
                     "Something has gone very wrong with the Ready Event."
                 }
             }
         }
+
+        aviation.syncCommands(jda)
 
         jda.listener<MessageReceivedEvent> { event ->
             if (event.author.isBot || !event.isFromGuild) return@listener
