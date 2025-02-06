@@ -32,7 +32,7 @@ jobs:
           arguments: shadowJar
 
       - name: 'Yiski: a devOS discord bot'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Yiski
           path: build/libs/yiski-all.jar
@@ -43,10 +43,10 @@ jobs:
     needs: build
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 'Download artifact of built jar'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Yiski
 
