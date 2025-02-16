@@ -4,6 +4,9 @@ import dev.minn.jda.ktx.events.listener
 import dev.minn.jda.ktx.jdabuilder.default
 import dev.minn.jda.ktx.jdabuilder.intents
 import io.github.oshai.kotlinlogging.KotlinLogging
+import io.ktor.server.application.*
+import io.ktor.server.cio.*
+import io.ktor.server.engine.*
 import kotlinx.coroutines.runBlocking
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Activity
@@ -132,6 +135,9 @@ internal object Bootstrapper {
                 t.printStackTrace()
             }
         }
+
+        embeddedServer(CIO, port = 39480, host = "0.0.0.0", module = Application::module)
+            .start(wait = true)
     }
 
 }
