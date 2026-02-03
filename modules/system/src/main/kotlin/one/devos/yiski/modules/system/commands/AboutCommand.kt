@@ -16,6 +16,7 @@ import dev.lizainslie.moeka.platforms.discord.Discord
 import dev.lizainslie.moeka.platforms.discord.commands.DiscordCommandContext
 import dev.lizainslie.moeka.platforms.discord.commands.enforceDiscordSlash
 import one.devos.yiski.common.GitHub
+import one.devos.yiski.common.Quotes
 import one.devos.yiski.common.Versions
 
 val AboutCommand = defineCommand(
@@ -82,7 +83,7 @@ val AboutCommand = defineCommand(
                             spacing = SeparatorSpacingSize.Small
                         }
 
-                        textDisplay { content = "-# this bot was written on less braincells than an orange cat" }
+                        textDisplay { content = "-# ${Quotes.randomQuote()}" }
 
                         actionRow {
                             linkButton(repository.url) {
