@@ -26,79 +26,79 @@ val AboutCommand = defineCommand(
     platform(Discord)
 
     handle {
-        if (this is DiscordCommandContext) {
-            val self = Discord.kord.getSelf()
-            val selfAvatar = self.avatar?.cdnUrl?.toUrl() ?: Discord.kord.getSelf().defaultAvatar.cdnUrl.toUrl()
-            val repository = GitHub.getRepository()
+        if (this !is DiscordCommandContext) return@handle
 
-            enforceDiscordSlash {
-                interaction.respondPublic {
-                    messageFlags {
-                        +MessageFlag.IsComponentsV2
-                    }
+        val self = Discord.kord.getSelf()
+        val selfAvatar = self.avatar?.cdnUrl?.toUrl() ?: Discord.kord.getSelf().defaultAvatar.cdnUrl.toUrl()
+        val repository = GitHub.getRepository()
 
-                    container {
-                        accentColor = Color(0, 168, 107)
-
-                        section {
-                            thumbnailAccessory { url = selfAvatar }
-                            textDisplay { content = "# Yiski" }
-                            textDisplay { content = "the inhouse bot that wants to be sprung off a cliff" }
-                        }
-
-                        separator {
-                            divider = true
-                            spacing = SeparatorSpacingSize.Small
-                        }
-
-                        textDisplay { content = "## About" }
-
-                        textDisplay {
-                            content = """
-                                Yiski is an in-house Discord bot developed by people in devOS: Sanity Edition, mainly lead by [asojidev](https://github.com/asoji). The aim is to be an all-in-one bot that provides utility, moderation, and silly shenanigans. It also fills in gaps for things that either didn't exist or weren't good enough for our needs, primarily a vent channel wiper and TTS.
-                                
-                                There have been previous bots before this made by different people in the devOS community, but they have had their issues, and sometimes other solutions don't work out as well as we want them to.
-                            """.trimIndent()
-                        }
-
-                        separator {
-                            divider = true
-                            spacing = SeparatorSpacingSize.Small
-                        }
-
-                        textDisplay { content = "## Technical details" }
-
-                        textDisplay {
-                            content = """
-                                ### Major Versions
-                                Yiski version: ${Versions.YISKI_VERSION}
-                                Kord version: ${Versions.KORD_VERSION}
-                                Moeka version: ${Versions.MOEKA_VERSION}
-                                Kotlin version: ${KotlinVersion.CURRENT}
-                            """.trimIndent()
-                        }
-
-                        separator {
-                            divider = true
-                            spacing = SeparatorSpacingSize.Small
-                        }
-
-                        textDisplay { content = "-# ${Quotes.randomQuote()}" }
-
-                        actionRow {
-                            linkButton(repository.url) {
-                                emoji = DiscordPartialEmoji(name = "\uD83D\uDCD8")
-                                label = "GitHub"
-                            }
-
-                            linkButton("${repository.url}/issues") {
-                                emoji = DiscordPartialEmoji(name = "\uD83D\uDD16")
-                                label = "Issues / File a bug or feedback"
-                            }
-                        }
-                    }
-
+        enforceDiscordSlash {
+            interaction.respondPublic {
+                messageFlags {
+                    +MessageFlag.IsComponentsV2
                 }
+
+                container {
+                    accentColor = Color(0, 168, 107)
+
+                    section {
+                        thumbnailAccessory { url = selfAvatar }
+                        textDisplay { content = "# Yiski" }
+                        textDisplay { content = "the inhouse bot that wants to be sprung off a cliff" }
+                    }
+
+                    separator {
+                        divider = true
+                        spacing = SeparatorSpacingSize.Small
+                    }
+
+                    textDisplay { content = "## About" }
+
+                    textDisplay {
+                        content = """
+                            Yiski is an in-house Discord bot developed by people in devOS: Sanity Edition, mainly lead by [asojidev](https://github.com/asoji). The aim is to be an all-in-one bot that provides utility, moderation, and silly shenanigans. It also fills in gaps for things that either didn't exist or weren't good enough for our needs, primarily a vent channel wiper and TTS.
+                                
+                            There have been previous bots before this made by different people in the devOS community, but they have had their issues, and sometimes other solutions don't work out as well as we want them to.
+                        """.trimIndent()
+                    }
+
+                    separator {
+                        divider = true
+                        spacing = SeparatorSpacingSize.Small
+                    }
+
+                    textDisplay { content = "## Technical details" }
+
+                    textDisplay {
+                        content = """
+                            ### Major Versions
+                            Yiski version: ${Versions.YISKI_VERSION}
+                            Kord version: ${Versions.KORD_VERSION}
+                            Moeka version: ${Versions.MOEKA_VERSION}
+                            Kotlin version: ${KotlinVersion.CURRENT}
+                        """.trimIndent()
+                    }
+
+                    separator {
+                        divider = true
+                        spacing = SeparatorSpacingSize.Small
+                    }
+
+                    textDisplay { content = "-# ${Quotes.randomQuote()}" }
+
+                    actionRow {
+                        linkButton(repository.url) {
+                            emoji = DiscordPartialEmoji(name = "\uD83D\uDCD8")
+                            label = "GitHub"
+                        }
+
+                        linkButton("${repository.url}/issues") {
+                            emoji = DiscordPartialEmoji(name = "\uD83D\uDD16")
+                            label = "Issues / File a bug or feedback"
+                        }
+                    }
+                }
+
             }
         }
     }

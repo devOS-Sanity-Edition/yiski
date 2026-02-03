@@ -25,7 +25,7 @@ subprojects {
     }
 
     kotlin {
-        jvmToolchain(24)
+        jvmToolchain(25)
     }
 
     gitVersioning.apply {
