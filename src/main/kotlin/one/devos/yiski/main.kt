@@ -1,2 +1,0 @@
-package one.devos.yiski
-

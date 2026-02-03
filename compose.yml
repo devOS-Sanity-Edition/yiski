@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: yiski-database
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: yiski
+      POSTGRES_USER: ${POSTGRES_USER:-yiski}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-yiski}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+volumes:
+  postgres:

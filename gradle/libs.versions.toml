@@ -1,0 +1,114 @@
+[versions]
+# Plugins
+kotlin = "2.3.0"
+ktor = "3.4.0"
+git-versioning = "6.4.4"
+shadow = "9.3.1"
+
+# Libraries
+clikt = "5.1.0"
+exposed = "1.0.0"
+github-api = "1.330"
+kord = "feat-components-v2-updates-SNAPSHOT" #""0.17.0"
+kotlin-logging = "7.0.14"
+kotlinx-coroutines = "1.10.2"
+kotlinx-serialization = "1.10.0"
+logback-classic = "1.5.26"
+moeka = "0.1.2"
+postgresql = "42.7.9"
+reflections = "0.10.2"
+slf4j = "2.0.17"
+stacktrace-decoroutinator = "2.6.1"
+
+[libraries]
+# Discord
+discord-kord-core = { group = "dev.kord", name = "kord-core", version.ref = "kord" }
+
+# Clikt
+clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+
+# Exposed
+exposed-core = { group = "org.jetbrains.exposed", name = "exposed-core", version.ref = "exposed" }
+exposed-dao = { group = "org.jetbrains.exposed", name = "exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { group = "org.jetbrains.exposed", name = "exposed-jdbc", version.ref = "exposed" }
+exposed-migration-core = { group = "org.jetbrains.exposed", name = "exposed-migration-core", version.ref = "exposed" }
+exposed-migration-jdbc = { group = "org.jetbrains.exposed", name = "exposed-migration-jdbc", version.ref = "exposed" }
+exposed-json = { group = "org.jetbrains.exposed", name = "exposed-json", version.ref = "exposed" }
+exposed-datetime = { group = "org.jetbrains.exposed", name = "exposed-kotlin-datetime", version.ref = "exposed" }
+
+exposed-driver-postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql" }
+
+github-api = { group = "org.kohsuke", name = "github-api", version.ref = "github-api" }
+
+# Kotlin
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-scripting-jsr223 = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-jsr223", version.ref = "kotlin" }
+
+# Kolinx
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+# Ktor Client
+ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+ktor-client-cio-jvm = { group = "io.ktor", name = "ktor-client-cio-jvm", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
+
+# Ktor Server
+ktor-server-cio = { group = "io.ktor", name = "ktor-server-cio-jvm", version.ref = "ktor" }
+ktor-server-content-negogiation = { group = "io.ktor", name = "ktor-server-content-negotiation", version.ref = "ktor" }
+ktor-server-core = { group = "io.ktor", name = "ktor-server-core-jvm", version.ref = "ktor" }
+
+# Ktor Shared
+ktor-shared-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# Logging
+logging-slf4j = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+logging-logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback-classic"}
+logging-kotlin = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlin-logging" }
+
+# Moeka
+moeka-core = { group = "dev.lizainslie.moeka", name = "moeka-core", version.ref = "moeka" }
+moeka-discord = { group = "dev.lizainslie.moeka", name = "moeka-discord", version.ref = "moeka" }
+
+reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections" }
+# Stacktrace logging
+stacktrace-decoroutinator = { group = "dev.reformator.stacktracedecoroutinator", name = "stacktrace-decoroutinator-jvm", version.ref = "stacktrace-decoroutinator" }
+
+[bundles]
+logging = [ "logging-slf4j", "logging-logback", "logging-kotlin" ]
+exposed = [
+    "exposed-core",
+    "exposed-dao",
+    "exposed-jdbc",
+    "exposed-migration-core",
+    "exposed-migration-jdbc",
+    "exposed-json",
+    "exposed-datetime",
+]
+ktor-client = [
+    "ktor-client-cio",
+    "ktor-client-cio-jvm",
+    "ktor-client-content-negotiation",
+    "ktor-client-core",
+    "ktor-client-logging"
+]
+ktor-server = [
+    "ktor-server-cio",
+    "ktor-server-content-negogiation",
+    "ktor-server-core"
+]
+moeka = [
+    "moeka-core",
+    "moeka-discord"
+]
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+versioning-git = { id = "me.qoomon.git-versioning", version.ref = "git-versioning" }

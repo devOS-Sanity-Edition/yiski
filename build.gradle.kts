@@ -1,18 +1,64 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
-    kotlin("jvm") version "2.3.0"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.shadow)
+    alias(libs.plugins.versioning.git)
 }
 
-group = "one.devos"
-version = "1.0-SNAPSHOT"
+subprojects {
+    apply(plugin = rootProject.libs.plugins.kotlin.jvm.get().pluginId)
+    apply(plugin = rootProject.libs.plugins.kotlin.serialization.get().pluginId)
+    apply(plugin = rootProject.libs.plugins.kotlin.kapt.get().pluginId)
+    apply(plugin = rootProject.libs.plugins.shadow.get().pluginId)
+    apply(plugin = rootProject.libs.plugins.versioning.git.get().pluginId)
 
-repositories {
-    mavenCentral()
-}
+    group = "one.devos"
+    version = "0.0.0-SNAPSHOT"
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
+    dependencies {
+        if (project.name != "common") {
+            api(project(":common"))
+        }
+    }
 
-tasks.test {
-    useJUnitPlatform()
+    kotlin {
+        jvmToolchain(24)
+    }
+
+    gitVersioning.apply {
+        refs {
+            branch(".+") {
+                version = "\${ref}-\${commit.short}\${dirty.snapshot}"
+            }
+            tag("v(?<version>.*)") {
+                version = "\${ref.version}"
+            }
+        }
+
+        rev {
+            version = "\${commit}"
+        }
+    }
+
+    tasks {
+        jar {
+            manifest {
+                attributes(
+                    mapOf(
+                        "Implementation-Title" to project.name,
+                        "Implementation-Version" to project.version,
+                        "Implementation-Vendor" to project.group,
+                    )
+                )
+            }
+        }
+
+        withType<ShadowJar> {
+            mergeServiceFiles()
+            archiveFileName.set("${project.name}-${project.version}-all.${archiveExtension.get()}")
+        }
+    }
 }
