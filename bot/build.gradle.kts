@@ -35,9 +35,9 @@ dependencies {
     implementation(project(":modules:system"))
 
     // Modules - dynamically loaded because this bot is a clusterf**k
-    file("modules").listFiles()?.forEach { file ->
+    file("../modules").listFiles()?.forEach { file ->
         if (file.isDirectory && file.resolve("build.gradle.kts").exists()) {
-            compileOnly(":modules:${file.name}")
+            api(project(":modules:${file.name}"))
         }
     }
 }
