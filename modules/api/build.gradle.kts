@@ -3,7 +3,10 @@ plugins {
 }
 
 dependencies {
-    api(libs.bundles.moeka)
+    api(libs.bundles.moeka) {
+        exclude(module = "kord-core")
+    }
+    implementation(libs.discord.kord.core)
 
     implementation(libs.bundles.ktor.client)
     implementation(libs.bundles.ktor.server)
